@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.miage.toulouse.m1.JEE</groupId>
+  <artifactId>ERP_LaTaime</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>ERP_LaTaime</name>
+<modules>  <module>ERP_LaTaime-ear</module>
+    <module>ERP_LaTaime-web</module>
+    <module>ERP_LaTaime-ejb</module>
+  </modules>
+</project>
