@@ -1,0 +1,11 @@
+fr\miage\toulouse\m1\JEE\metier\MetierProduit.class
+fr\miage\toulouse\m1\JEE\facades\UtilisateurFacade.class
+fr\miage\toulouse\m1\JEE\entities\Utilisateur_.class
+fr\miage\toulouse\m1\JEE\metier\MetierProduitLocal.class
+fr\miage\toulouse\m1\JEE\facades\UtilisateurFacadeLocal.class
+fr\miage\toulouse\m1\JEE\facades\ProduitFacadeLocal.class
+fr\miage\toulouse\m1\JEE\facades\ProduitFacade.class
+fr\miage\toulouse\m1\JEE\facades\AbstractFacade.class
+fr\miage\toulouse\m1\JEE\entities\Utilisateur.class
+fr\miage\toulouse\m1\JEE\entities\Produit.class
+fr\miage\toulouse\m1\JEE\entities\Produit_.class
