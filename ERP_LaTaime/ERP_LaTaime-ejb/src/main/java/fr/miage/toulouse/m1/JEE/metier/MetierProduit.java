@@ -6,6 +6,9 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.facades.ProduitFacadeLocal;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -15,26 +18,33 @@ import javax.ejb.Stateless;
 @Stateless
 public class MetierProduit implements MetierProduitLocal {
 
+    @EJB
+    private ProduitFacadeLocal produitFacade;
+    
     @Override
     public void creerProduit(String libele, double prixUnitaire, String description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        produitFacade.creerProduit(libele, prixUnitaire, description);
     }
 
     @Override
     public Produit getProduit(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return produitFacade.find(id);
     }
 
     @Override
-    public Produit getProduit(String libele) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setPrixUnitaire(long id, double prixUnitaire) {
+        getProduit(id).setPrixUnitaire(prixUnitaire);
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 
     @Override
-    public void setPrixUnitaire(Produit produit, double prixUnitaire) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Produit> getAllProduit() {
+        return produitFacade.findAll();
     }
+
+    @Override
+    public void setQuantite(long id, long quantite) {
+        getProduit(id).setQuantite(quantite);
+    }
+    
+    
 }

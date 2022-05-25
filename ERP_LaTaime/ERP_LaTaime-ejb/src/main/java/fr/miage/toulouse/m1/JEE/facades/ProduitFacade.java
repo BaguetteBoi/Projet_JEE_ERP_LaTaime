@@ -28,5 +28,14 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     public ProduitFacade() {
         super(Produit.class);
     }
+
+    @Override
+    public void creerProduit(String libele, double prixUnitaire, String description) {
+        Produit produit = new Produit();
+        produit.setLibele(libele);
+        produit.setPrixUnitaire(prixUnitaire);
+        produit.setDescription(description);
+        this.create(produit);
+    }
     
 }

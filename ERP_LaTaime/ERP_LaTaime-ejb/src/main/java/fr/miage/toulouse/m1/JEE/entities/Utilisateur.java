@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +24,14 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-@NotNull
-private Long idUtilisateur;
-@NotNull
-String nom;
-@NotNull
-String prenom;
-@NotNull
-String type;
+    @NotNull
+    private Long idUtilisateur;
+    @NotNull
+    String nom;
+    @NotNull
+    String prenom;
+    @NotNull
+    String type;
 
     public Utilisateur() {
     }
@@ -67,7 +68,6 @@ String type;
         this.type = type;
     }
 
- 
     public Long getId() {
         return id;
     }
@@ -78,19 +78,42 @@ String type;
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.idUtilisateur);
+        hash = 97 * hash + Objects.hashCode(this.nom);
+        hash = 97 * hash + Objects.hashCode(this.prenom);
+        hash = 97 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
+    
+
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Utilisateur)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Utilisateur other = (Utilisateur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Utilisateur other = (Utilisateur) obj;
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        if (!Objects.equals(this.prenom, other.prenom)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUtilisateur, other.idUtilisateur)) {
             return false;
         }
         return true;
@@ -98,7 +121,6 @@ String type;
 
     @Override
     public String toString() {
-        return "fr.miage.toulouse.m1.JEE.entities.Utilisateur[ id=" + id + " ]";
+        return "Utilisateur{" + "id=" + id + ", idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
     }
-    
 }
