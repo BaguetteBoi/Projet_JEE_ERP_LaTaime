@@ -23,14 +23,14 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-@NotNull
-private Long idUtilisateur;
-@NotNull
-String nom;
-@NotNull
-String prenom;
-@NotNull
-String type;
+    @NotNull
+    private Long idUtilisateur;
+    @NotNull
+    String nom;
+    @NotNull
+    String prenom;
+    @NotNull
+    String type;
 
     public Utilisateur() {
     }
@@ -67,7 +67,6 @@ String type;
         this.type = type;
     }
 
- 
     public Long getId() {
         return id;
     }
@@ -100,5 +99,5 @@ String type;
     public String toString() {
         return "fr.miage.toulouse.m1.JEE.entities.Utilisateur[ id=" + id + " ]";
     }
-    
+
 }

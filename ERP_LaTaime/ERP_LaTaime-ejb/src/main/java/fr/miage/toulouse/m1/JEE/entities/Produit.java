@@ -39,6 +39,38 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
+    public String getLibele() {
+        return libele;
+    }
+
+    public void setLibele(String libele) {
+        this.libele = libele;
+    }
+
+    public Long getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Long quantite) {
+        this.quantite = quantite;
+    }
+
+    public double getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
