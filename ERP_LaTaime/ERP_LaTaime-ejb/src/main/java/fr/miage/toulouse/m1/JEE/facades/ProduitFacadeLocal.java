@@ -30,4 +30,5 @@ public interface ProduitFacadeLocal {
 
     int count();
     
+    public void creerProduit(String libele, double prixUnitaire, String description);
 }

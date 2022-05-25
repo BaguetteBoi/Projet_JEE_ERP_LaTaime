@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -19,7 +20,9 @@ public interface MetierProduitLocal {
     
     public Produit getProduit(long id);
     
-    public Produit getProduit(String libele);
+    public List<Produit> getAllProduit();
     
-    public void setPrixUnitaire(Produit produit, double prixUnitaire);
+    public void setQuantite(long id, long prixUnitaire);
+       
+    public void setPrixUnitaire(long id, double prixUnitaire);
 }
