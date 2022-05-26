@@ -25,4 +25,10 @@ public interface MetierProduitLocal {
     public void setQuantite(long id, long prixUnitaire);
        
     public void setPrixUnitaire(long id, double prixUnitaire);
+    
+    public void supprimerProduit(long id);
+    
+    public void modifierProduit(long id, String libele, String description);
+    
+    public boolean isProduitEnStock(long id);
 }
