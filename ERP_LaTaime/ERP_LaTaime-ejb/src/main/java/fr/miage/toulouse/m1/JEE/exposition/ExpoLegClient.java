@@ -5,6 +5,10 @@
  */
 package fr.miage.toulouse.m1.JEE.exposition;
 
+import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
+import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
+import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -14,6 +18,14 @@ import javax.ejb.Stateless;
 @Stateless
 public class ExpoLegClient implements ExpoLegClientLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @EJB
+    private MetierUtilisateurLocal metierUtilisateur;
+
+    @EJB
+    private MetierProduitLocal metierProduit;
+
+    @EJB
+    private MetierCommandeLocal metierCommande;
+
+    
 }
