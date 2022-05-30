@@ -5,7 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.entities;
 
-import fr.miage.toulouse.m1.JEE.entities.Commande.statusComm;
+import fr.miage.toulouse.m1.JEE.entities.Commande.StatusComm;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -14,7 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.Map;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -29,30 +31,32 @@ public class Commande implements Serializable {
     
     private Long idCommande;
     
+   @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateCommande;
     
-    public enum statusComm {
+    public enum StatusComm {
         livre, nonLivre, annule;
     }
     
-    public statusComm status;
+    public StatusComm status;
               
     private Double montantCommande;
     
-    private Dictionary <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
-    
-    private Long idU;
-    
+    private Map <Produit,Integer> listeIdProdQte; // id porduit/quantite commande 
+        
     @ManyToOne
     private Utilisateur utilisateur;
     
     /**
      *
      */
-    public statusComm getStatus() {
+    public StatusComm getStatus() {
         return status;
     }
     
+    public void setStatus(StatusComm s) {
+        status = s;
+    }
     
     /**
      * Get the value of utilisateur
@@ -72,17 +76,6 @@ public class Commande implements Serializable {
         this.utilisateur = utilisateur;
     }
 
-
-    public Long getIdU() {
-        return idU;
-    }
-
-    public void setIdU(Long idU) {
-        this.idU = idU;
-    }
-    
-    
-
     public Double getMontantCommande() {
         return montantCommande;
     }
@@ -91,12 +84,16 @@ public class Commande implements Serializable {
         this.montantCommande = montantCommande;
     }
 
-    public Dictionary<Long, Integer> getListeIdProdQte() {
+    public Map<Produit, Integer> getListeIdProdQte() {
         return listeIdProdQte;
     }
 
-    public void setListeIdProdQte(Dictionary<Long, Integer> listeIdProdQte) {
+    public void setListeIdProdQte(Map<Produit, Integer> listeIdProdQte) {
         this.listeIdProdQte = listeIdProdQte;
+    }
+    
+    public void addListeIdProdQte(Produit prod, int qte) {
+        this.listeIdProdQte.put(prod, qte);
     }
     
     public Long getIdCommande() {

@@ -42,6 +42,6 @@ public interface CommandeFacadeLocal {
 
     public List<Commande> getCommandesAnnules(List<Commande> commandes);
     
-    public void setStatusCommande(Commande commande);
+    public void setStatusCommande(Commande commande, Integer i);
     
 }

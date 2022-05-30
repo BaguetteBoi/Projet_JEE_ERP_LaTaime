@@ -9,6 +9,7 @@ import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

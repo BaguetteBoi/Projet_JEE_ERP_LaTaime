@@ -6,8 +6,10 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.Map;
 import javax.ejb.Local;
 
 /**
@@ -18,7 +20,7 @@ import javax.ejb.Local;
 public interface MetierCommandeLocal {
     
     
-    public void creerCommande(Long idU ,Dictionary d, Date dateCommande);
+    public void creerCommande(Utilisateur u ,Map d, Date dateCommande);
     
     public Commande getCommandeId();
     
