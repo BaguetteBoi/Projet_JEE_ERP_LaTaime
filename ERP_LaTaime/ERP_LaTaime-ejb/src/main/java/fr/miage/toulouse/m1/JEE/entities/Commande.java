@@ -34,7 +34,7 @@ public class Commande implements Serializable {
     private Double montantCommande;
     
     private Map <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
-    
+   
     @ManyToOne
     private Utilisateur utilisateur;
 
