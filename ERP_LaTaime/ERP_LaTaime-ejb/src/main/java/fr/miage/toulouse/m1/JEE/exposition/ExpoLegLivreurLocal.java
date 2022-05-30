@@ -5,6 +5,8 @@
  */
 package fr.miage.toulouse.m1.JEE.exposition;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,4 +16,7 @@ import javax.ejb.Local;
 @Local
 public interface ExpoLegLivreurLocal {
     
+    public List<Commande> getCommandeALivrer();
+    
+    public void setStatusCommande (Long id, String status);
 }

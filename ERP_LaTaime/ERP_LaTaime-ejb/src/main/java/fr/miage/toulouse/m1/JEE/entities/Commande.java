@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.Dictionary;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -34,6 +35,28 @@ public class Commande implements Serializable {
     private Dictionary <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
     
     private Long idU;
+    
+    @ManyToOne
+    private Utilisateur utilisateur;
+
+    /**
+     * Get the value of utilisateur
+     *
+     * @return the value of utilisateur
+     */
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    /**
+     * Set the value of utilisateur
+     *
+     * @param utilisateur new value of utilisateur
+     */
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
 
     public Long getIdU() {
         return idU;

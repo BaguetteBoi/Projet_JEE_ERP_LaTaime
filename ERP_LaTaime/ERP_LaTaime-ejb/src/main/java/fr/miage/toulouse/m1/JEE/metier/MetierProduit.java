@@ -60,7 +60,7 @@ public class MetierProduit implements MetierProduitLocal {
         Produit p = getProduit(id);
         
         if (!libele.isEmpty()) {
-            p.setLibele(libele);
+            p.setLibelle(libele);
         }
         if (!description.isEmpty()) {
             p.setDescription(description);

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,13 +25,35 @@ public class Produit implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String libele;
+    private String libelle;
     
     private Long quantite;
     
     private double prixUnitaire;
     
     private String description;
+    
+    @ManyToOne
+    private TypeProduit typeProduit;
+
+    /**
+     * Get the value of typeProduit
+     *
+     * @return the value of typeProduit
+     */
+    public TypeProduit getTypeProduit() {
+        return typeProduit;
+    }
+
+    /**
+     * Set the value of typeProduit
+     *
+     * @param typeProduit new value of typeProduit
+     */
+    public void setTypeProduit(TypeProduit typeProduit) {
+        this.typeProduit = typeProduit;
+    }
+
     
     public Long getId() {
         return id;
@@ -40,12 +63,12 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
-    public String getLibele() {
-        return libele;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setLibele(String libele) {
-        this.libele = libele;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     public Long getQuantite() {
@@ -76,7 +99,7 @@ public class Produit implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.libele);
+        hash = 53 * hash + Objects.hashCode(this.libelle);
         hash = 53 * hash + Objects.hashCode(this.quantite);
         hash = 53 * hash + (int) (Double.doubleToLongBits(this.prixUnitaire) ^ (Double.doubleToLongBits(this.prixUnitaire) >>> 32));
         hash = 53 * hash + Objects.hashCode(this.description);
@@ -98,7 +121,7 @@ public class Produit implements Serializable {
         if (Double.doubleToLongBits(this.prixUnitaire) != Double.doubleToLongBits(other.prixUnitaire)) {
             return false;
         }
-        if (!Objects.equals(this.libele, other.libele)) {
+        if (!Objects.equals(this.libelle, other.libelle)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
@@ -115,7 +138,7 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", libele=" + libele + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + ", description=" + description + '}';
+        return "Produit{" + "id=" + id + ", libele=" + libelle + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + ", description=" + description + '}';
     }
     
 }

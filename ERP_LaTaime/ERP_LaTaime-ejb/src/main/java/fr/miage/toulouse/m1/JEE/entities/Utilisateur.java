@@ -6,11 +6,13 @@
 package fr.miage.toulouse.m1.JEE.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -27,11 +29,41 @@ public class Utilisateur implements Serializable {
     @NotNull
     private Long idUtilisateur;
     @NotNull
-    String nom;
+    private String nom;
     @NotNull
-    String prenom;
+    private String prenom;
     @NotNull
-    String type;
+    private TypeU type;
+    
+    @OneToMany
+    private List<Commande> commandes;
+
+    /**
+     * Get the value of commande
+     *
+     * @return the value of commande
+     */
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    /**
+     * Set the value of commande
+     *
+     * @param commandes new value of commande
+     */
+    public void setCommande(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+    
+    /**
+     * Add the value of commande
+     *
+     * @param commande new value of commande
+     */
+    public void addCommande(Commande commande) {
+        this.commandes.add(commande);
+    }
 
     public Utilisateur() {
     }
@@ -60,11 +92,11 @@ public class Utilisateur implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getType() {
+    public TypeU getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeU type) {
         this.type = type;
     }
 
@@ -122,5 +154,9 @@ public class Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "Utilisateur{" + "id=" + id + ", idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
+    }
+    
+    public enum TypeU{
+        Client, Commercial, Livreur
     }
 }
