@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.facades;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,6 +39,55 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         commande.setListeIdProdQte(d);
         commande.setIdU(idU);
         this.create(commande);
+    }
+
+    @Override
+    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
+        List<Commande> commNnLivres = null;
+        for ( Commande commande : commandes){
+            if (commande.getStatus()== Commande.statusComm.nonLivre){
+                commNnLivres.add(commande);
+            }
+        }
+        return commNnLivres;
+    }
+
+    @Override
+    public List<Commande> getCommandesLivres(List<Commande> commandes) {
+        List<Commande> commLivres = null;
+        for ( Commande commande : commandes){
+            if (commande.getStatus()== Commande.statusComm.livre){
+                commLivres.add(commande);
+            }
+        }
+        return commLivres;
+    }
+    
+    @Override
+    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
+        List<Commande> commAnnules = null;
+        for ( Commande commande : commandes){
+            if (commande.getStatus()== Commande.statusComm.annule){
+                commAnnules.add(commande);
+            }
+        }
+        return commAnnules;
+    }
+
+    @Override
+    public void setStatusCommande(Commande commande, Integer i) {
+        switch(i) {   
+            case 1:
+              commande.setStatus(Commande.statusComm.livre);
+              break;
+            case 2:
+              commande.setStatus(Commande.statusComm.nonLivre);
+              break;
+            case 3:
+              commande.setStatus(Commande.statusComm.annule);
+              break;
+            default:
+        }
     }
 
 }

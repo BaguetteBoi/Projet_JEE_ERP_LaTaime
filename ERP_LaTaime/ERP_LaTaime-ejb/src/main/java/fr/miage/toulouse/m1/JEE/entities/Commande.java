@@ -5,6 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.entities;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande.statusComm;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -30,6 +31,12 @@ public class Commande implements Serializable {
     
     private Date dateCommande;
     
+    public enum statusComm {
+        livre, nonLivre, annule;
+    }
+    
+    public statusComm status;
+              
     private Double montantCommande;
     
     private Dictionary <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
@@ -38,7 +45,15 @@ public class Commande implements Serializable {
     
     @ManyToOne
     private Utilisateur utilisateur;
-
+    
+    /**
+     *
+     */
+    public statusComm getStatus() {
+        return status;
+    }
+    
+    
     /**
      * Get the value of utilisateur
      *
@@ -84,7 +99,7 @@ public class Commande implements Serializable {
         this.listeIdProdQte = listeIdProdQte;
     }
     
-    public Long getId() {
+    public Long getIdCommande() {
         return idCommande;
     }
 

@@ -17,12 +17,19 @@ import javax.ejb.Local;
 @Local
 public interface MetierCommandeLocal {
     
+    
     public void creerCommande(Long idU ,Dictionary d, Date dateCommande);
     
-    public Commande getCommandeId(long idCommande);
+    public Commande getCommandeId();
     
-    public Commande getCommandeMontant(Double montantCommande);
+    public Commande setCommandeId(long idCommande);
+    
+    public Commande getCommandeMontant();
+    
+    public Commande setCommandeMontant(Commande commande, Double montantCommande);
     
     public void setDateCommande(Commande commande, Date dateCommande);
     
+    public void getDateCommande();
+
 }
