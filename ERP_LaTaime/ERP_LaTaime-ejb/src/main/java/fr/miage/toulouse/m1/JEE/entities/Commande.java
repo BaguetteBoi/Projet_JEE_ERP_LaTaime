@@ -5,6 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.entities;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande.statusComm;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -13,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.Dictionary;
-import java.util.Map;
 import javax.persistence.ManyToOne;
 
 /**
@@ -31,13 +31,29 @@ public class Commande implements Serializable {
     
     private Date dateCommande;
     
+    public enum statusComm {
+        livre, nonLivre, annule;
+    }
+    
+    public statusComm status;
+              
     private Double montantCommande;
     
-    private Map <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
+    private Dictionary <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
+    
+    private Long idU;
     
     @ManyToOne
     private Utilisateur utilisateur;
-
+    
+    /**
+     *
+     */
+    public statusComm getStatus() {
+        return status;
+    }
+    
+    
     /**
      * Get the value of utilisateur
      *
@@ -55,7 +71,18 @@ public class Commande implements Serializable {
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
- 
+
+
+    public Long getIdU() {
+        return idU;
+    }
+
+    public void setIdU(Long idU) {
+        this.idU = idU;
+    }
+    
+    
+
     public Double getMontantCommande() {
         return montantCommande;
     }
@@ -64,15 +91,15 @@ public class Commande implements Serializable {
         this.montantCommande = montantCommande;
     }
 
-    public Map<Long, Integer> getListeIdProdQte() {
+    public Dictionary<Long, Integer> getListeIdProdQte() {
         return listeIdProdQte;
     }
 
-    public void setListeIdProdQte(Map<Long, Integer> listeIdProdQte) {
+    public void setListeIdProdQte(Dictionary<Long, Integer> listeIdProdQte) {
         this.listeIdProdQte = listeIdProdQte;
     }
     
-    public Long getId() {
+    public Long getIdCommande() {
         return idCommande;
     }
 

@@ -20,7 +20,7 @@ import javax.ejb.Local;
 @Local
 public interface CommandeFacadeLocal {
 
- void create(Commande commande);
+    void create(Commande commande);
 
     void edit(Commande commande);
 
@@ -35,5 +35,13 @@ public interface CommandeFacadeLocal {
     int count();
     
     public void creerCommande(Utilisateur u, Map d , Date dateCommande);
+    
+    public List<Commande> getCommandesNnLivres(List<Commande> commandes);
+    
+    public List<Commande> getCommandesLivres(List<Commande> commandes);
+
+    public List<Commande> getCommandesAnnules(List<Commande> commandes);
+    
+    public void setStatusCommande(Commande commande);
     
 }
