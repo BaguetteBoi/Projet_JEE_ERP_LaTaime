@@ -5,6 +5,8 @@
  */
 package fr.miage.toulouse.m1.JEE.metier;
 
+import fr.miage.toulouse.m1.JEE.entities.TypeProduit;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,4 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface MetierTypeProduitLocal {
     
+    public List<TypeProduit> getAllTypeProduit();
+    
+    public TypeProduit getTypeProduit(Long id);
+    
+    public void creerTypeProduit(String libelle);
+    
+    public void supprimerTypeProduit(Long id);
 }
