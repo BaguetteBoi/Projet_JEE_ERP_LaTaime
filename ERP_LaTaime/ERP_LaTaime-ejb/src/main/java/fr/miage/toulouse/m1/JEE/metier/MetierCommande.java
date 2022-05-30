@@ -6,9 +6,10 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import java.util.Date;
-import java.util.Dictionary;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -25,8 +26,8 @@ public class MetierCommande implements MetierCommandeLocal {
     
 
     @Override
-    public void creerCommande(Long idU ,Dictionary d, Date dateCommande) {
-        commandeFacade.creerCommande(idU, d, dateCommande);
+    public void creerCommande(Utilisateur u ,Map d, Date dateCommande) {
+        commandeFacade.creerCommande(u, d, dateCommande);
     }
 
     @Override

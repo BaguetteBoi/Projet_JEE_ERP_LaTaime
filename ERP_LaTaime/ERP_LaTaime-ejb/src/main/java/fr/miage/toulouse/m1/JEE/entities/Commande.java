@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.Map;
 import javax.persistence.ManyToOne;
 
 /**
@@ -32,9 +33,7 @@ public class Commande implements Serializable {
     
     private Double montantCommande;
     
-    private Dictionary <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
-    
-    private Long idU;
+    private Map <Long,Integer> listeIdProdQte; // id porduit/quantite commande 
     
     @ManyToOne
     private Utilisateur utilisateur;
@@ -56,18 +55,7 @@ public class Commande implements Serializable {
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
-
-
-    public Long getIdU() {
-        return idU;
-    }
-
-    public void setIdU(Long idU) {
-        this.idU = idU;
-    }
-    
-    
-
+ 
     public Double getMontantCommande() {
         return montantCommande;
     }
@@ -76,11 +64,11 @@ public class Commande implements Serializable {
         this.montantCommande = montantCommande;
     }
 
-    public Dictionary<Long, Integer> getListeIdProdQte() {
+    public Map<Long, Integer> getListeIdProdQte() {
         return listeIdProdQte;
     }
 
-    public void setListeIdProdQte(Dictionary<Long, Integer> listeIdProdQte) {
+    public void setListeIdProdQte(Map<Long, Integer> listeIdProdQte) {
         this.listeIdProdQte = listeIdProdQte;
     }
     

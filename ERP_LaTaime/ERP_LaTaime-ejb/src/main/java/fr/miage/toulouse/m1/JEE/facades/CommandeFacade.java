@@ -6,8 +6,10 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,11 +34,11 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public void creerCommande(Long idU, Dictionary d, Date dateCommande) {
+    public void creerCommande(Utilisateur u, Map d, Date dateCommande) {
         Commande commande = new Commande();
+        commande.setUtilisateur(u);
         commande.setDateCommande(dateCommande);
         commande.setListeIdProdQte(d);
-        commande.setIdU(idU);
         this.create(commande);
     }
 
