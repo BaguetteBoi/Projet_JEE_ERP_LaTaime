@@ -27,8 +27,8 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
-    private Long idUtilisateur;
-    @NotNull
+   
+    
     private String nom;
     @NotNull
     private String prenom;
@@ -68,14 +68,6 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
-    public Long getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    public void setIdUtilisateur(Long idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
     public String getNom() {
         return nom;
     }
@@ -112,7 +104,6 @@ public class Utilisateur implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.idUtilisateur);
         hash = 97 * hash + Objects.hashCode(this.nom);
         hash = 97 * hash + Objects.hashCode(this.prenom);
         hash = 97 * hash + Objects.hashCode(this.type);
@@ -145,15 +136,13 @@ public class Utilisateur implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.idUtilisateur, other.idUtilisateur)) {
-            return false;
-        }
+       
         return true;
     }
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
+        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
     }
     
     public enum TypeU{
