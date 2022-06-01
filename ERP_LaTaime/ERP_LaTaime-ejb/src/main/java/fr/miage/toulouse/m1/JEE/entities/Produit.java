@@ -34,24 +34,24 @@ public class Produit implements Serializable {
     private String description;
     
     @ManyToOne
-    private TypeProduit typeProduit;
+    private CategorieProduit categorieProduit;
 
     /**
-     * Get the value of typeProduit
+     * Get the value of categorieProduit
      *
-     * @return the value of typeProduit
+     * @return the value of categorieProduit
      */
-    public TypeProduit getTypeProduit() {
-        return typeProduit;
+    public CategorieProduit getCategorieProduit() {
+        return categorieProduit;
     }
 
     /**
-     * Set the value of typeProduit
+     * Set the value of categorieProduit
      *
-     * @param typeProduit new value of typeProduit
+     * @param categorieProduit new value of categorieProduit
      */
-    public void setTypeProduit(TypeProduit typeProduit) {
-        this.typeProduit = typeProduit;
+    public void setCategorieProduit(CategorieProduit categorieProduit) {
+        this.categorieProduit = categorieProduit;
     }
 
     

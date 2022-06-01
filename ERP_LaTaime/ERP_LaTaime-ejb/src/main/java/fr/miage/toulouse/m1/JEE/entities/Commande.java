@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.Map;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -25,39 +24,36 @@ import javax.persistence.Temporal;
 @Entity
 public class Commande implements Serializable {
 
-   private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
+
     private Long idCommande;
-    
-   @Temporal(javax.persistence.TemporalType.DATE)
+
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateCommande;
-    
+
     public enum StatusComm {
         livre, nonLivre, annule;
     }
-    
+
     public StatusComm status;
-              
+
     private Double montantCommande;
-    
-    private Map <Produit,Integer> listeIdProdQte; // id porduit/quantite commande 
-        
+
+    private Map<Produit, Integer> listeIdProdQte; // id porduit/quantite commande 
+
     @ManyToOne
     private Utilisateur utilisateur;
-    
-    /**
-     *
-     */
+
     public StatusComm getStatus() {
         return status;
     }
-    
+
     public void setStatus(StatusComm s) {
         status = s;
     }
-    
+
     /**
      * Get the value of utilisateur
      *
@@ -91,11 +87,11 @@ public class Commande implements Serializable {
     public void setListeIdProdQte(Map<Produit, Integer> listeIdProdQte) {
         this.listeIdProdQte = listeIdProdQte;
     }
-    
+
     public void addListeIdProdQte(Produit prod, int qte) {
         this.listeIdProdQte.put(prod, qte);
     }
-    
+
     public Long getIdCommande() {
         return idCommande;
     }
@@ -103,7 +99,7 @@ public class Commande implements Serializable {
     public void setIdCommande(Long idCommande) {
         this.idCommande = idCommande;
     }
-    
+
     public Date getDateCommande() {
         return dateCommande;
     }
@@ -128,7 +124,6 @@ public class Commande implements Serializable {
         hash = 59 * hash + Objects.hashCode(this.montantCommande);
         return hash;
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -158,5 +153,5 @@ public class Commande implements Serializable {
     public String toString() {
         return "Commande{" + "idCommande=" + idCommande + ", dateCommande=" + dateCommande + ", montantCommande=" + montantCommande + '}';
     }
-    
+
 }

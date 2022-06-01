@@ -5,33 +5,33 @@
  */
 package fr.miage.toulouse.m1.JEE.metier;
 
-import fr.miage.toulouse.m1.JEE.entities.TypeProduit;
-import fr.miage.toulouse.m1.JEE.facades.TypeProduitFacadeLocal;
+import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import fr.miage.toulouse.m1.JEE.facades.CategorieProduitFacadeLocal;
 
 /**
  *
  * @author AntoineGougault
  */
 @Stateless
-public class MetierTypeProduit implements MetierTypeProduitLocal {
+public class MetierCategorieProduit implements MetierCategorieProduitLocal {
 
     @EJB
-    private TypeProduitFacadeLocal typeProduitFacade;
+    private CategorieProduitFacadeLocal typeProduitFacade;
 
     
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
     @Override
-    public List<TypeProduit> getAllTypeProduit() {
+    public List<CategorieProduit> getAllTypeProduit() {
         return typeProduitFacade.findAll();
     }
 
     @Override
-    public TypeProduit getTypeProduit(Long id) {
+    public CategorieProduit getTypeProduit(Long id) {
         return typeProduitFacade.find(id);
     }
 

@@ -5,7 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.facades;
 
-import fr.miage.toulouse.m1.JEE.entities.TypeProduit;
+import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author AntoineGougault
  */
 @Local
-public interface TypeProduitFacadeLocal {
+public interface CategorieProduitFacadeLocal {
 
-    void create(TypeProduit typeProduit);
+    void create(CategorieProduit typeProduit);
 
-    void edit(TypeProduit typeProduit);
+    void edit(CategorieProduit typeProduit);
 
-    void remove(TypeProduit typeProduit);
+    void remove(CategorieProduit typeProduit);
 
-    TypeProduit find(Object id);
+    CategorieProduit find(Object id);
 
-    List<TypeProduit> findAll();
+    List<CategorieProduit> findAll();
 
-    List<TypeProduit> findRange(int[] range);
+    List<CategorieProduit> findRange(int[] range);
 
     int count();
     

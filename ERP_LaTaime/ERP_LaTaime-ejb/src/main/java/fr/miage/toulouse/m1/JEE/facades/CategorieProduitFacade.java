@@ -5,7 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.facades;
 
-import fr.miage.toulouse.m1.JEE.entities.TypeProduit;
+import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author AntoineGougault
  */
 @Stateless
-public class TypeProduitFacade extends AbstractFacade<TypeProduit> implements TypeProduitFacadeLocal {
+public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> implements CategorieProduitFacadeLocal {
 
     @PersistenceContext(unitName = "fr.miage.toulouse.m1.JEE_ERP_LaTaime-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -25,13 +25,13 @@ public class TypeProduitFacade extends AbstractFacade<TypeProduit> implements Ty
         return em;
     }
 
-    public TypeProduitFacade() {
-        super(TypeProduit.class);
+    public CategorieProduitFacade() {
+        super(CategorieProduit.class);
     }
 
     @Override
     public void creerTypeProduit(String libelle) {
-        TypeProduit typeProduit = new TypeProduit();
+        CategorieProduit typeProduit = new CategorieProduit();
         typeProduit.setLibelle(libelle);
         this.create(typeProduit);
     }
