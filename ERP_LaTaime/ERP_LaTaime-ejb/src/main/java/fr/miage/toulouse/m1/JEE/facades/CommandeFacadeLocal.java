@@ -44,4 +44,6 @@ public interface CommandeFacadeLocal {
     
     public void setStatusCommande(Long id, Integer i);
     
+    public void annulerCommande (Long id);
+    
 }

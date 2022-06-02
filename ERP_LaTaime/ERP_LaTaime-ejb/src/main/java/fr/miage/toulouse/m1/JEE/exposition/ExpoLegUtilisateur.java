@@ -10,7 +10,9 @@ import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -43,5 +45,12 @@ public class ExpoLegUtilisateur implements ExpoLegUtilisateurLocal {
       return this.metierUtilisateur.getCommandes(id);
     }
 
-    
+   public void creerCommande(Utilisateur u, Map d, Date dateCommande){
+      this.metierCommande.creerCommande(u, d, dateCommande);
+    }
+   
+   public void annulerCommande (Long id)
+   {
+       this.metierCommande.annulerCommande(id);
+   }
 }
