@@ -47,4 +47,12 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
      public void debiterSolde(Long id, Long solde){
          this.utilisateurFacade.debiterSolde(id, solde);
      }
+     
+     public void creerUtilisateurCommercial(String nom, String prenom){
+         this.utilisateurFacade.creerUtilisateurCommercial(nom, prenom);
+     }
+     
+     public void creerUtilisateurLivreur(String nom, String prenom){
+         this.utilisateurFacade.creerUtilisateurLivreur(nom, prenom);
+     }
 }

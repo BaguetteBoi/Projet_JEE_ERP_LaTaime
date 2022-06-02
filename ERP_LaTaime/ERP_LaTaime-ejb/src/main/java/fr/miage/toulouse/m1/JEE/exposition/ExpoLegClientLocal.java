@@ -22,4 +22,7 @@ public interface ExpoLegClientLocal {
   public List<Commande> getCommandes(Long id);
   public void crediterSolde(Long id, Long solde);
    public void debiterSolde(Long id, Long solde);
+   public void creerUtilisateurLivreur(String nom, String prenom);
+   public void creerUtilisateurCommercial(String nom, String prenom);
+ 
 }
