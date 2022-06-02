@@ -36,7 +36,15 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
     // "Insert Code > Add Business Method")
     @Override
     public List<Commande> getCommandes(Long id) {
-       
+
         return this.utilisateurFacade.getCommandes(id);
-         }
+    }
+    
+    public void crediterSolde(Long id, Long solde){
+        this.utilisateurFacade.crediterSolde(id, solde);
+    }
+    
+     public void debiterSolde(Long id, Long solde){
+         this.utilisateurFacade.debiterSolde(id, solde);
+     }
 }
