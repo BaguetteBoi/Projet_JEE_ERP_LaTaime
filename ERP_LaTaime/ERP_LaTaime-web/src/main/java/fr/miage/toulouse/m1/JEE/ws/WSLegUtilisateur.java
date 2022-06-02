@@ -7,13 +7,13 @@ package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
-import fr.miage.toulouse.m1.JEE.exposition.ExpoLegUtilisateurLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
 
 /**
  *
@@ -23,7 +23,7 @@ import javax.jws.WebService;
 public class WSLegUtilisateur {
 
     @EJB
-    private ExpoLegUtilisateurLocal ejbRef;// Add business logic below. (Right-click in editor and choose
+    private ExpoLegClientLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
     @WebMethod(operationName = "CreerUtilisateur")

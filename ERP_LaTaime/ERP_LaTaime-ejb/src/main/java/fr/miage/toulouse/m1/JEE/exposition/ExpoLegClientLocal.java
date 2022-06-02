@@ -15,7 +15,7 @@ import javax.ejb.Local;
  * @author AntoineGougault
  */
 @Local
-public interface ExpoLegUtilisateurLocal {
+public interface ExpoLegClientLocal {
     
   public void CreerUtilisateur(String nom, String prenom);
   public Utilisateur getUtilisateur(Long idUtilisateur);
