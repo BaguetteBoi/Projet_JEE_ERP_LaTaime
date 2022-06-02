@@ -45,7 +45,11 @@ public class CategorieProduit implements Serializable {
      * @param produits new value of produits
      */
     public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+        try {
+            this.produits = produits;
+        }catch(Exception e){
+            System.out.println("Erreur setProduits : "+e);
+        }
     }
     
     /**
@@ -73,7 +77,11 @@ public class CategorieProduit implements Serializable {
      * @param libelle new value of libelle
      */
     public void setLibelle(String libelle) {
-        this.libelle = libelle;
+        try {
+            this.libelle = libelle;
+        }catch(Exception e){
+            System.out.println("Erreur libelle Produit : "+e);
+        }
     }
 
 
@@ -82,7 +90,11 @@ public class CategorieProduit implements Serializable {
     }
 
     public void setId(Long id) {
-        this.id = id;
+        try {
+            this.id = id;
+        }catch(Exception e){
+            System.out.println("Erreur setProduits : "+e);
+        }
     }
 
     @Override
