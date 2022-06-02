@@ -41,11 +41,11 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
 
     @Override
     public Produit getProduit(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.find(id);
     }
 
     @Override
-    public List<Produit> getAllProduit() {
+    public List<Produit> getAllProduits() {
         List<Produit> lp = findAll();
         return lp;
     }
@@ -73,10 +73,18 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
 
     @Override
     public void modifierProduit(long id, String libelle, String description) {
-        Produit p = find(id);
-        p.setLibelle(libelle);
-        p.setDescription(description);
-        this.edit(p);
+        Produit p = getProduit(id);
+        
+        if (!libelle.isEmpty()) {
+            p.setLibelle(libelle);
+        }
+        if (!description.isEmpty()) {
+            p.setDescription(description);
+        }
+        
+        if (!libelle.isEmpty() || !description.isEmpty()) {
+            this.edit(p);
+        }
     }
 
     @Override

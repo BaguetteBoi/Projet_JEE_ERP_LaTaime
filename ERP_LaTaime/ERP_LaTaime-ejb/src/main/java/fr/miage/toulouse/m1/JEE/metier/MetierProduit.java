@@ -28,52 +28,37 @@ public class MetierProduit implements MetierProduitLocal {
 
     @Override
     public Produit getProduit(long id) {
-        return produitFacade.find(id);
+        return produitFacade.getProduit(id);
     }
 
     @Override
     public void setPrixUnitaire(long id, double prixUnitaire) {
-        Produit p = getProduit(id);
-        p.setPrixUnitaire(prixUnitaire);
-        produitFacade.edit(p);
+        produitFacade.setPrixUnitaire(id, prixUnitaire);
     }
 
     @Override
-    public List<Produit> getAllProduit() {
-        return produitFacade.findAll();
+    public List<Produit> getAllProduits() {
+        return produitFacade.getAllProduits();
     }
 
     @Override
     public void setQuantite(long id, long quantite) {
-        Produit p = getProduit(id);
-        p.setQuantite(quantite);
-        produitFacade.edit(p);
+        produitFacade.setQuantite(id, quantite);
     }
 
     @Override
     public void supprimerProduit(long id) {
-        produitFacade.remove(getProduit(id));
+        produitFacade.supprimerProduit(id);
     }
 
     @Override
     public void modifierProduit(long id, String libele, String description) {
-        Produit p = getProduit(id);
-        
-        if (!libele.isEmpty()) {
-            p.setLibelle(libele);
-        }
-        if (!description.isEmpty()) {
-            p.setDescription(description);
-        }
-        
-        if (!libele.isEmpty() || !description.isEmpty()) {
-            produitFacade.edit(p);
-        }
+        produitFacade.modifierProduit(id, libele, description);
     }
 
     @Override
     public boolean isProduitEnStock(long id) {
-        return (getProduit(id).getQuantite() > 0);
+        return produitFacade.isProduitEnStock(id);
     }
 
 }
