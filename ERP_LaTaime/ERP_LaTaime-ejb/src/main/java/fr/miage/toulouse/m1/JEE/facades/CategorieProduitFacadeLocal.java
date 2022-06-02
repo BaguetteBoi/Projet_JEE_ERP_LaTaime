@@ -32,4 +32,10 @@ public interface CategorieProduitFacadeLocal {
     
     public void creerTypeProduit(String libelle);
     
+    public void supprimerTypeProduit(Long id);
+    
+    public void majTypeProduit(Long id, String libelle);
+    
+    public List<CategorieProduit> getAllTypeProduit();
+    
 }

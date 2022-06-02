@@ -31,10 +31,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
 
     @Override
     public void creerUtilisateur(String nom, String prenom) {
-           Utilisateur user = new Utilisateur();
-           user.setNom(nom);
-           user.setPrenom(prenom);
-           this.create(user);
-          }
+        Utilisateur user = new Utilisateur();
+        user.setNom(nom);
+        user.setPrenom(prenom);
+        this.create(user);
+    }
     
 }

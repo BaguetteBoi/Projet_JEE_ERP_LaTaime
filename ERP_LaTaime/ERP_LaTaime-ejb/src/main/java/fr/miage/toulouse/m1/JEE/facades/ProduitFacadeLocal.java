@@ -31,4 +31,18 @@ public interface ProduitFacadeLocal {
     int count();
     
     public void creerProduit(String libele, double prixUnitaire, String description);
+        
+    public Produit getProduit(long id);
+    
+    public List<Produit> getAllProduit();
+    
+    public void setQuantite(long id, long prixUnitaire);
+       
+    public void setPrixUnitaire(long id, double prixUnitaire);
+    
+    public void supprimerProduit(long id);
+    
+    public void modifierProduit(long id, String libele, String description);
+    
+    public boolean isProduitEnStock(long id);
 }

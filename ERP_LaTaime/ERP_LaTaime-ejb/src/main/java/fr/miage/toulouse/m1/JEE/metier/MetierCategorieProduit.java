@@ -37,11 +37,16 @@ public class MetierCategorieProduit implements MetierCategorieProduitLocal {
 
     @Override
     public void creerTypeProduit(String libelle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        typeProduitFacade.creerTypeProduit(libelle);
     }
 
     @Override
     public void supprimerTypeProduit(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        typeProduitFacade.supprimerTypeProduit(id);
+    }
+
+    @Override
+    public void majTypeProduit(Long id, String libelle) {
+        typeProduitFacade.majTypeProduit(id, libelle);
     }
 }
