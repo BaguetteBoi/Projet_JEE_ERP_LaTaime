@@ -20,4 +20,6 @@ public interface ExpoLegClientLocal {
   public void CreerUtilisateur(String nom, String prenom);
   public Utilisateur getUtilisateur(Long idUtilisateur);
   public List<Commande> getCommandes(Long id);
+  public void crediterSolde(Long id, Long solde);
+   public void debiterSolde(Long id, Long solde);
 }

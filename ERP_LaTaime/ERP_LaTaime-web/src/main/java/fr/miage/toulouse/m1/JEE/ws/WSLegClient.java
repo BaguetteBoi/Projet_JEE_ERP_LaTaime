@@ -19,8 +19,8 @@ import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
  *
  * @author AntoineGougault
  */
-@WebService(serviceName = "WSLegUtilisateur")
-public class WSLegUtilisateur {
+@WebService(serviceName = "WSLegClient")
+public class WSLegClient {
 
     @EJB
     private ExpoLegClientLocal ejbRef;// Add business logic below. (Right-click in editor and choose

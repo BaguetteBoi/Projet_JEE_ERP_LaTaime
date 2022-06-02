@@ -34,4 +34,8 @@ public interface UtilisateurFacadeLocal {
     public List<Commande> getCommandes(Long id);
     
     public void creerUtilisateur( String nom, String prenom);
+    
+    public void crediterSolde(Long id, Long solde);
+    
+     public void debiterSolde(Long id, Long solde);
 }

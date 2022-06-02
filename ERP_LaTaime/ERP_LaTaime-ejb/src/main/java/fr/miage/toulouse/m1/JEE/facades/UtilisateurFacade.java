@@ -33,17 +33,44 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
 
     @Override
     public void creerUtilisateur(String nom, String prenom) {
-           Utilisateur user = new Utilisateur();
-           user.setNom(nom);
-           user.setPrenom(prenom);
-           this.create(user);
-          }
+        Utilisateur user = new Utilisateur();
+        user.setNom(nom);
+        user.setPrenom(prenom);
+        this.create(user);
+    }
 
     @Override
-    public List<Commande> getCommandes(Long id ) {
-         Utilisateur user = this.find(id);
-         return user.getCommandes();
-         
+    public List<Commande> getCommandes(Long id) {
+        Utilisateur user = this.find(id);
+        return user.getCommandes();
+
+    }
+
+    @Override
+    public void crediterSolde(Long id, Long solde) {
+        Utilisateur user = this.find(id);
+        try {
+            Long currentsolde = user.getSolde();
+            Long totsolde = solde + currentsolde;
+            user.setSolde(totsolde);
+        } catch (Exception e) {
+            System.out.println("Erreur le solde à créditer est invalide");
+        }
     }
     
+    @Override
+    public void debiterSolde(Long id, Long solde) {
+        Utilisateur user = this.find(id);
+        try {
+            Long currentsolde = user.getSolde();
+            Long totsolde = currentsolde - solde;
+            if (totsolde>=0)
+            { 
+            user.setSolde(totsolde);
+            }
+        } catch (Exception e) {
+            System.out.println("Solde insuffisant veuillez créditer votre compte");
+        }
+    }
+
 }
