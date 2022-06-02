@@ -34,7 +34,7 @@ public interface ProduitFacadeLocal {
         
     public Produit getProduit(long id);
     
-    public List<Produit> getAllProduit();
+    public List<Produit> getAllProduits();
     
     public void setQuantite(long id, long prixUnitaire);
        

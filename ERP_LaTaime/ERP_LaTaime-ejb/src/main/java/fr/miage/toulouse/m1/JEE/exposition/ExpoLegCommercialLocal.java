@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -26,6 +27,22 @@ public interface ExpoLegCommercialLocal {
     public List<CategorieProduit> getAllTypeProduit();
 
     //Produit
+    
+    public void creerProduit(String libele, double prixUnitaire, String description);
+        
+    public Produit getProduit(long id);
+    
+    public List<Produit> getAllProduits();
+    
+    public void setQuantite(long id, long prixUnitaire);
+       
+    public void setPrixUnitaire(long id, double prixUnitaire);
+    
+    public void supprimerProduit(long id);
+    
+    public void modifierProduit(long id, String libele, String description);
+    
+    public boolean isProduitEnStock(long id);
   
     
 }
