@@ -28,5 +28,7 @@ public interface MetierUtilisateurLocal {
     
      public void debiterSolde(Long id, Long solde);
      
-     // public void creerCommercial (Long id,String nom, String prenom); 
+     public void creerUtilisateurLivreur(String nom, String prenom);
+     
+     public void creerUtilisateurCommercial(String nom, String prenom);
 }

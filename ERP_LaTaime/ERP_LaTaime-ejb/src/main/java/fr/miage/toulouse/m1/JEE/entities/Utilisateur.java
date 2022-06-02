@@ -182,6 +182,6 @@ public class Utilisateur implements Serializable {
     }
     
     public enum TypeU{
-        Client, Commercial, Livreur
+        Client, Commercial, Livreur, Admin
     }
 }

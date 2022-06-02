@@ -61,4 +61,16 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     public void debiterSolde(Long id, Long solde){
         this.metierUtilisateur.debiterSolde(id, solde);
     }
+
+    @Override
+    public void creerUtilisateurLivreur(String nom, String prenom) {
+       this.metierUtilisateur.creerUtilisateurLivreur(nom, prenom);
+    }
+
+    @Override
+    public void creerUtilisateurCommercial(String nom, String prenom) {
+      this.metierUtilisateur.creerUtilisateurCommercial(nom, prenom);
+    }
+
+    
 }
