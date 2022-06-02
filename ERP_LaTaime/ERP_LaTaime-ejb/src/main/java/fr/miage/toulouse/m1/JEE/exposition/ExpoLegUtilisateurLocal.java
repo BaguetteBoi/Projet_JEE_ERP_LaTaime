@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.miage.toulouse.m1.JEE.metier;
+package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
@@ -12,13 +12,12 @@ import javax.ejb.Local;
 
 /**
  *
- * @author AdnaneElBeqqali
+ * @author AntoineGougault
  */
 @Local
-public interface MetierUtilisateurLocal {
-   public void CreerUtilisateur(String nom, String prenom);
-   
-   public Utilisateur getUtilisateur(Long idUtilisateur);
-   // Partie d'ajout de commandes au métier de l'utilisateur 
-   public List<Commande> getCommandes(Long id);
+public interface ExpoLegUtilisateurLocal {
+    
+  public void CreerUtilisateur(String nom, String prenom);
+  public Utilisateur getUtilisateur(Long idUtilisateur);
+  public List<Commande> getCommandes(Long id);
 }

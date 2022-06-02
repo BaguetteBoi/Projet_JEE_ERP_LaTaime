@@ -5,8 +5,10 @@
  */
 package fr.miage.toulouse.m1.JEE.metier;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.UtilisateurFacadeLocal;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -23,13 +25,18 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
     @Override
     public void CreerUtilisateur(String nom, String prenom) {
         this.utilisateurFacade.creerUtilisateur(nom, prenom);
-        }
+    }
 
     @Override
     public Utilisateur getUtilisateur(Long idUtilisateur) {
         return this.utilisateurFacade.find(idUtilisateur);
-          }
+    }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    @Override
+    public List<Commande> getCommandes(Long id) {
+       
+        return this.utilisateurFacade.getCommandes(id);
+         }
 }

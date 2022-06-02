@@ -5,7 +5,9 @@
  */
 package fr.miage.toulouse.m1.JEE.facades;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,5 +38,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
            user.setPrenom(prenom);
            this.create(user);
           }
+
+    @Override
+    public List<Commande> getCommandes(Long id ) {
+         Utilisateur user = this.find(id);
+         return user.getCommandes();
+         
+    }
     
 }
