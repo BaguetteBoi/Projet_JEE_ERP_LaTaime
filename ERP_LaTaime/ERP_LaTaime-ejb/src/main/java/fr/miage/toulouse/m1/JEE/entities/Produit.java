@@ -51,7 +51,11 @@ public class Produit implements Serializable {
      * @param categorieProduit new value of categorieProduit
      */
     public void setCategorieProduit(CategorieProduit categorieProduit) {
-        this.categorieProduit = categorieProduit;
+        try {
+            this.categorieProduit = categorieProduit;
+        }catch(Exception e){
+            System.out.println("Erreur Catégorie produit : "+e);
+        }
     }
 
     
@@ -60,7 +64,11 @@ public class Produit implements Serializable {
     }
 
     public void setId(Long id) {
-        this.id = id;
+        try {
+            this.id = id;
+        }catch(Exception e){
+            System.out.println("Erreur id produit : "+e);
+        }
     }
 
     public String getLibelle() {
@@ -68,15 +76,23 @@ public class Produit implements Serializable {
     }
 
     public void setLibelle(String libelle) {
-        this.libelle = libelle;
+        try {
+            this.libelle = libelle;
+        }catch(Exception e){
+            System.out.println("Erreur libelle produit : "+e);
+        }
     }
 
     public Long getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(Long quantite) {
-        this.quantite = quantite;
+    public void setQuantite(Long quantite) {       
+        try {
+            this.quantite = quantite;
+        }catch(Exception e){
+            System.out.println("Erreur quantite produit : "+e);
+        }
     }
 
     public double getPrixUnitaire() {
@@ -84,7 +100,11 @@ public class Produit implements Serializable {
     }
 
     public void setPrixUnitaire(double prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
+        try {
+            this.prixUnitaire = prixUnitaire;
+        }catch(Exception e){
+            System.out.println("Erreur prix unitaire produit : "+e);
+        }
     }
 
     public String getDescription() {
@@ -92,7 +112,11 @@ public class Produit implements Serializable {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        try {
+            this.description = description;
+        }catch(Exception e){
+            System.out.println("Erreur description produit : "+e);
+        }
     }
 
     @Override

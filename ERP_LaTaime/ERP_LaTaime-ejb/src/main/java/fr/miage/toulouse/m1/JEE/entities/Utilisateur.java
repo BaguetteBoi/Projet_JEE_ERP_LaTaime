@@ -45,6 +45,7 @@ public class Utilisateur implements Serializable {
      */
     public List<Commande> getCommandes() {
         return commandes;
+        
     }
 
     /**
@@ -53,7 +54,11 @@ public class Utilisateur implements Serializable {
      * @param commandes new value of commande
      */
     public void setCommande(List<Commande> commandes) {
-        this.commandes = commandes;
+        try {
+            this.commandes = commandes;
+        }catch(Exception e){
+            System.out.println("Erreur Commandes Utilisateur : "+e);
+        }
     }
     
     /**
@@ -62,7 +67,11 @@ public class Utilisateur implements Serializable {
      * @param commande new value of commande
      */
     public void addCommande(Commande commande) {
-        this.commandes.add(commande);
+        try {
+            this.commandes.add(commande);
+        }catch(Exception e){
+            System.out.println("Erreur ajout commande Utilisateur : "+e);
+        }
     }
 
     public Utilisateur() {
@@ -72,8 +81,12 @@ public class Utilisateur implements Serializable {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String nom) {  
+        try {
+            this.nom = nom;
+        }catch(Exception e){
+            System.out.println("Erreur Nom Utilisateur : "+e);
+        }
     }
 
     public String getPrenom() {
@@ -81,7 +94,11 @@ public class Utilisateur implements Serializable {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        try {
+            this.prenom = prenom;
+        }catch(Exception e){
+            System.out.println("Erreur Prenom Utilisateur : "+e);
+        }
     }
 
     public TypeU getType() {
@@ -89,7 +106,11 @@ public class Utilisateur implements Serializable {
     }
 
     public void setType(TypeU type) {
-        this.type = type;
+        try {
+            this.type = type;
+        }catch(Exception e){
+            System.out.println("Erreur Type Utilisateur : "+e);
+        }
     }
 
     public Long getId() {
@@ -97,7 +118,11 @@ public class Utilisateur implements Serializable {
     }
 
     public void setId(Long id) {
-        this.id = id;
+        try {
+            this.id = id;
+        }catch(Exception e){
+            System.out.println("Erreur ID Utilisateur : "+e);
+        }
     }
 
     @Override

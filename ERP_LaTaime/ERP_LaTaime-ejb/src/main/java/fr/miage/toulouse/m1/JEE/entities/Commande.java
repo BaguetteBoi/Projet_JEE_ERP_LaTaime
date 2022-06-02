@@ -51,7 +51,12 @@ public class Commande implements Serializable {
     }
 
     public void setStatus(StatusComm s) {
-        status = s;
+        try {
+            status = s;
+        }catch(Exception e){
+            System.out.println("Erreur Status commande : "+e);
+        }
+        
     }
 
     /**
@@ -69,7 +74,12 @@ public class Commande implements Serializable {
      * @param utilisateur new value of utilisateur
      */
     public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+        
+        try {
+            this.utilisateur = utilisateur;
+        }catch(Exception e){
+            System.out.println("Erreur setUtilisateur commande : "+e);
+        }
     }
 
     public Double getMontantCommande() {
@@ -77,7 +87,11 @@ public class Commande implements Serializable {
     }
 
     public void setMontantCommande(Double montantCommande) {
-        this.montantCommande = montantCommande;
+        try {
+            this.montantCommande = montantCommande;
+        }catch(Exception e){
+            System.out.println("Erreur Montant commande : "+e);
+        }
     }
 
     public Map<Produit, Integer> getListeIdProdQte() {
@@ -85,11 +99,19 @@ public class Commande implements Serializable {
     }
 
     public void setListeIdProdQte(Map<Produit, Integer> listeIdProdQte) {
-        this.listeIdProdQte = listeIdProdQte;
+        try {
+            this.listeIdProdQte = listeIdProdQte;
+        }catch(Exception e){
+            System.out.println("Erreur setListeIdProdQte commande : "+e);
+        }
     }
 
     public void addListeIdProdQte(Produit prod, int qte) {
-        this.listeIdProdQte.put(prod, qte);
+        try {
+            this.listeIdProdQte.put(prod, qte);
+        }catch(Exception e){
+            System.out.println("Erreur addListeIdProdQte commande : "+e);
+        }
     }
 
     public Long getIdCommande() {
@@ -97,7 +119,11 @@ public class Commande implements Serializable {
     }
 
     public void setIdCommande(Long idCommande) {
-        this.idCommande = idCommande;
+        try {
+            this.idCommande = idCommande;
+        }catch(Exception e){
+            System.out.println("Erreur setIdCommande commande : "+e);
+        }
     }
 
     public Date getDateCommande() {
@@ -105,7 +131,11 @@ public class Commande implements Serializable {
     }
 
     public void setDateCommande(Date dateCommande) {
-        this.dateCommande = dateCommande;
+        try {
+            this.dateCommande = dateCommande;
+        }catch(Exception e){
+            System.out.println("Erreur date commande : "+e);
+        }
     }
 
     public Double getMontant() {
@@ -113,7 +143,11 @@ public class Commande implements Serializable {
     }
 
     public void setMontant(Double montant) {
-        this.montantCommande = montant;
+        try {
+            this.montantCommande = montant;
+        }catch(Exception e){
+            System.out.println("Erreur Montant commande : "+e);
+        }
     }
 
     @Override
