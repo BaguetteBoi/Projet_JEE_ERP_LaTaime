@@ -75,6 +75,12 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
         return commAnnules;
     }
+    
+     @Override
+    public void annulerCommande (Long id) {
+         Commande commande1 = find(id);
+         commande1.setStatus(Commande.StatusComm.annule);
+    }
 
     @Override
     public void setStatusCommande(Long id, Integer i) {

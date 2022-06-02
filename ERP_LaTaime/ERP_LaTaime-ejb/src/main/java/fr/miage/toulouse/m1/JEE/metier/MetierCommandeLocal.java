@@ -30,5 +30,7 @@ public interface MetierCommandeLocal {
     public List<Commande> getCommandesAnnules(List<Commande> commandes);
     
     public void setStatusCommande(Long id, Integer i);
+    
+    public void annulerCommande (Long id);
 
 }

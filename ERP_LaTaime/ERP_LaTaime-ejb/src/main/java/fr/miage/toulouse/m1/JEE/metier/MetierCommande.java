@@ -53,4 +53,9 @@ public class MetierCommande implements MetierCommandeLocal {
     public void setStatusCommande(Long id, Integer i) {
         commandeFacade.setStatusCommande(id, i);
     }
+    
+     @Override
+    public void annulerCommande (Long id) {
+        commandeFacade.annulerCommande(id);
+    }
 }
