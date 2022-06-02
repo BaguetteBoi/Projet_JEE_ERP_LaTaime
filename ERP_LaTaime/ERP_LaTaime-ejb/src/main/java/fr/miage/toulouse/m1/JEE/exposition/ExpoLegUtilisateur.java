@@ -5,18 +5,19 @@
  */
 package fr.miage.toulouse.m1.JEE.exposition;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author AntoineGougault
- */
+
+
 @Stateless
-public class ExpoLegClient implements ExpoLegClientLocal {
+public class ExpoLegUtilisateur implements ExpoLegUtilisateurLocal {
 
     @EJB
     private MetierUtilisateurLocal metierUtilisateur;
@@ -26,6 +27,21 @@ public class ExpoLegClient implements ExpoLegClientLocal {
 
     @EJB
     private MetierCommandeLocal metierCommande;
+
+    @Override
+    public void CreerUtilisateur(String nom, String prenom) {
+       this.metierUtilisateur.CreerUtilisateur(nom, prenom);
+    }
+
+    @Override
+    public Utilisateur getUtilisateur(Long idUtilisateur) {
+      return this.metierUtilisateur.getUtilisateur(idUtilisateur);
+        }
+
+    @Override
+    public List<Commande> getCommandes(Long id) {
+      return this.metierUtilisateur.getCommandes(id);
+    }
 
     
 }

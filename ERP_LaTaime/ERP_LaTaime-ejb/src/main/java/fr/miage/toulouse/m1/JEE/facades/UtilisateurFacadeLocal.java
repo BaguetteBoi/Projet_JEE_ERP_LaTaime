@@ -5,6 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.facades;
 
+import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,6 +30,8 @@ public interface UtilisateurFacadeLocal {
     List<Utilisateur> findRange(int[] range);
 
     int count();
+    
+    public List<Commande> getCommandes(Long id);
     
     public void creerUtilisateur( String nom, String prenom);
 }
