@@ -10,6 +10,7 @@ import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -29,36 +30,27 @@ public class MetierCommande implements MetierCommandeLocal {
         commandeFacade.creerCommande(u, d, dateCommande);
     }
 
-    @Override
-    public Commande getCommandeId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Commande getCommandeMontant() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void getDateCommande() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public void setDateCommande(Commande commande, Date dateCommande) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+
     @Override
-    public Commande setCommandeId(long idCommande) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
+       return commandeFacade.getCommandesNnLivres(commandes);
     }
 
     @Override
-    public Commande setCommandeMontant(Commande commande, Double montantCommande) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Commande> getCommandesLivres(List<Commande> commandes) {
+       return commandeFacade.getCommandesLivres(commandes);
+    }
+
+    @Override
+    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
+        return commandeFacade.getCommandesAnnules(commandes);
+    }
+
+    @Override
+    public void setStatusCommande(Long id, Integer i) {
+        commandeFacade.setStatusCommande(id, i);
     }
 }
