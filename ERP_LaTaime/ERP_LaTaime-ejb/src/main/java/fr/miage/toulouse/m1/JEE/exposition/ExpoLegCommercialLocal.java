@@ -5,6 +5,8 @@
  */
 package fr.miage.toulouse.m1.JEE.exposition;
 
+import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +15,17 @@ import javax.ejb.Local;
  */
 @Local
 public interface ExpoLegCommercialLocal {
+    
+     //crud categories (type prod)
+    public void creerTypeProduit(String libelle);
+    
+    public void supprimerTypeProduit(Long id);
+    
+    public void majTypeProduit(Long id, String libelle);
+    
+    public List<CategorieProduit> getAllTypeProduit();
+
+    //Produit
+  
     
 }

@@ -23,4 +23,7 @@ public interface MetierCategorieProduitLocal {
     public void creerTypeProduit(String libelle);
     
     public void supprimerTypeProduit(Long id);
+        
+    public void majTypeProduit(Long id, String libelle);
+    
 }

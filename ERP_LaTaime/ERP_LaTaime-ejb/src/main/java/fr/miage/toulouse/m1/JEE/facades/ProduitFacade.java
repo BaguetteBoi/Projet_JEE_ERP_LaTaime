@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,6 +37,52 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
         produit.setPrixUnitaire(prixUnitaire);
         produit.setDescription(description);
         this.create(produit);
+    }
+
+    @Override
+    public Produit getProduit(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Produit> getAllProduit() {
+        List<Produit> lp = findAll();
+        return lp;
+    }
+
+    @Override
+    public void setQuantite(long id, long quantite) {
+        Produit p = find(id);
+        p.setQuantite(quantite);
+        this.edit(p);
+
+    }
+
+    @Override
+    public void setPrixUnitaire(long id, double prixUnitaire) {
+        Produit p = find(id);
+        p.setPrixUnitaire(prixUnitaire);
+        this.edit(p);
+    }
+
+    @Override
+    public void supprimerProduit(long id) {
+        Produit p = find(id);
+        this.remove(p);
+    }
+
+    @Override
+    public void modifierProduit(long id, String libelle, String description) {
+        Produit p = find(id);
+        p.setLibelle(libelle);
+        p.setDescription(description);
+        this.edit(p);
+    }
+
+    @Override
+    public boolean isProduitEnStock(long id) {
+        Produit p = find(id);
+        return p.getQuantite()>0;
     }
     
 }

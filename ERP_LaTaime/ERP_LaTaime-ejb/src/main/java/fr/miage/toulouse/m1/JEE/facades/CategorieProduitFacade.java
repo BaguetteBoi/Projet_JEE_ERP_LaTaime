@@ -6,6 +6,8 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +36,25 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
         CategorieProduit typeProduit = new CategorieProduit();
         typeProduit.setLibelle(libelle);
         this.create(typeProduit);
+    }
+
+    @Override
+    public void supprimerTypeProduit(Long id) {
+        CategorieProduit cp = find(id);
+        this.remove(cp);
+    }
+    
+    @Override
+    public List<CategorieProduit> getAllTypeProduit() {
+        List<CategorieProduit> cp = findAll();
+        return cp;
+    }
+
+    @Override
+    public void majTypeProduit(Long id, String libelle) {
+        CategorieProduit cp = find(id);
+        cp.setLibelle(libelle);
+        this.edit(cp);
     }
     
 }
