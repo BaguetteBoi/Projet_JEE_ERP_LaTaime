@@ -19,7 +19,7 @@ import javax.ejb.Stateless;
 
 
 @Stateless
-public class ExpoLegUtilisateur implements ExpoLegUtilisateurLocal {
+public class ExpoLegClient implements ExpoLegClientLocal {
 
     @EJB
     private MetierUtilisateurLocal metierUtilisateur;
