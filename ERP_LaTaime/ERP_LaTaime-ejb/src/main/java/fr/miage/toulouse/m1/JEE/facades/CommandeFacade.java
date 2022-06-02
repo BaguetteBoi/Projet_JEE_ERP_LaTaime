@@ -77,7 +77,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public void setStatusCommande(Commande commande, Integer i) {
+    public void setStatusCommande(Long id, Integer i) {
+        
+        Commande commande = find(id);
         switch(i) {   
             case 1:
               commande.setStatus(Commande.StatusComm.livre);
@@ -90,6 +92,8 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
               break;
             default:
         }
+        
+        this.edit(commande);
     }
 
 }

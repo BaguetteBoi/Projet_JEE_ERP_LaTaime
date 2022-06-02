@@ -32,13 +32,24 @@ public class ExpoLegLivreur implements ExpoLegLivreurLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+
     @Override
-    public List<Commande> getCommandeALivrer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
+       return metierCommande.getCommandesNnLivres(commandes);   
     }
 
     @Override
-    public void setStatusCommande(Long id, String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Commande> getCommandesLivres(List<Commande> commandes) {
+        return metierCommande.getCommandesLivres(commandes);
+    }
+
+    @Override
+    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
+        return metierCommande.getCommandesAnnules(commandes);
+    }
+
+    @Override
+    public void setStatusCommande(Long idCommande, Integer i) {
+        metierCommande.setStatusCommande(idCommande, i);
     }
 }

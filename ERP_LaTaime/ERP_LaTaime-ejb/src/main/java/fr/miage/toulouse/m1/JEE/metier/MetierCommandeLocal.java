@@ -9,6 +9,7 @@ import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.Local;
 
@@ -22,16 +23,12 @@ public interface MetierCommandeLocal {
     
     public void creerCommande(Utilisateur u ,Map d, Date dateCommande);
     
-    public Commande getCommandeId();
+    public List<Commande> getCommandesNnLivres(List<Commande> commandes);
     
-    public Commande setCommandeId(long idCommande);
+    public List<Commande> getCommandesLivres(List<Commande> commandes);
+
+    public List<Commande> getCommandesAnnules(List<Commande> commandes);
     
-    public Commande getCommandeMontant();
-    
-    public Commande setCommandeMontant(Commande commande, Double montantCommande);
-    
-    public void setDateCommande(Commande commande, Date dateCommande);
-    
-    public void getDateCommande();
+    public void setStatusCommande(Long id, Integer i);
 
 }
