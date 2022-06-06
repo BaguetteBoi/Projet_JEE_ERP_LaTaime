@@ -37,7 +37,7 @@ public class Commande implements Serializable {
         livre, nonLivre, annule;
     }
 
-    public StatusComm status;
+    private StatusComm status;
 
     private Double montantCommande;
 

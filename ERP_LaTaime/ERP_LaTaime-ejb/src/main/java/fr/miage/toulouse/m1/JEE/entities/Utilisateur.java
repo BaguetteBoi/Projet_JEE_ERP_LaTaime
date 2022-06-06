@@ -26,13 +26,13 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull
+    
     private String nom;
-    @NotNull
+    
     private String prenom;
-    @NotNull
+    
     private TypeU type;
-    @NotNull
+    
     private Long solde;
     @OneToMany
     private List<Commande> commandes;

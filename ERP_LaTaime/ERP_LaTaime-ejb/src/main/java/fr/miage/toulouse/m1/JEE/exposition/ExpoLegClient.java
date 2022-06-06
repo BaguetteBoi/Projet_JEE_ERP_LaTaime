@@ -53,11 +53,13 @@ public class ExpoLegClient implements ExpoLegClientLocal {
    {
        this.metierCommande.annulerCommande(id);
    }
+    @Override
    public void crediterSolde(Long id, Long solde)
    {
        this.metierUtilisateur.crediterSolde(id, solde);
    }
    
+    @Override
     public void debiterSolde(Long id, Long solde){
         this.metierUtilisateur.debiterSolde(id, solde);
     }
