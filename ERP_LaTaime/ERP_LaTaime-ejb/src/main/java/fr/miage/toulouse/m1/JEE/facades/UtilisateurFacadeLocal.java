@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur.TypeU;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,16 +31,16 @@ public interface UtilisateurFacadeLocal {
     List<Utilisateur> findRange(int[] range);
 
     int count();
-    
+
     public List<Commande> getCommandes(Long id);
-    
-    public void creerUtilisateur( String nom, String prenom);
-    
+
     public void crediterSolde(Long id, Long solde);
+
+    public void debiterSolde(Long id, Long solde);
     
-     public void debiterSolde(Long id, Long solde);
-     
-     public void creerUtilisateurLivreur(String nom, String prenom);
-     
-     public void creerUtilisateurCommercial(String nom, String prenom);
+    public void creerUtilisateurClient(String nom, String prenom);
+
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom);
+
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom);
 }

@@ -16,13 +16,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface ExpoLegClientLocal {
-    
-  public void CreerUtilisateur(String nom, String prenom);
   public Utilisateur getUtilisateur(Long idUtilisateur);
   public List<Commande> getCommandes(Long id);
   public void crediterSolde(Long id, Long solde);
-   public void debiterSolde(Long id, Long solde);
-   public void creerUtilisateurLivreur(String nom, String prenom);
-   public void creerUtilisateurCommercial(String nom, String prenom);
- 
+  public void debiterSolde(Long id, Long solde);
+  public void creerUtilisateurClient(String nom, String prenom); 
 }

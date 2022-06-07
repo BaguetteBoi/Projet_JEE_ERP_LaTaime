@@ -31,11 +31,6 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     private MetierCommandeLocal metierCommande;
 
     @Override
-    public void CreerUtilisateur(String nom, String prenom) {
-       this.metierUtilisateur.CreerUtilisateur(nom, prenom);
-    }
-
-    @Override
     public Utilisateur getUtilisateur(Long idUtilisateur) {
       return this.metierUtilisateur.getUtilisateur(idUtilisateur);
         }
@@ -65,14 +60,8 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
 
     @Override
-    public void creerUtilisateurLivreur(String nom, String prenom) {
-       this.metierUtilisateur.creerUtilisateurLivreur(nom, prenom);
+    public void creerUtilisateurClient(String nom, String prenom) {
+        this.metierUtilisateur.creerUtilisateurClient(nom, prenom);
     }
-
-    @Override
-    public void creerUtilisateurCommercial(String nom, String prenom) {
-      this.metierUtilisateur.creerUtilisateurCommercial(nom, prenom);
-    }
-
     
 }

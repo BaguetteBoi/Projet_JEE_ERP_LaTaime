@@ -23,11 +23,6 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
     private UtilisateurFacadeLocal utilisateurFacade;
 
     @Override
-    public void CreerUtilisateur(String nom, String prenom) {
-        this.utilisateurFacade.creerUtilisateur(nom, prenom);
-    }
-
-    @Override
     public Utilisateur getUtilisateur(Long idUtilisateur) {
         return this.utilisateurFacade.find(idUtilisateur);
     }
@@ -40,19 +35,28 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
         return this.utilisateurFacade.getCommandes(id);
     }
     
+    @Override
     public void crediterSolde(Long id, Long solde){
         this.utilisateurFacade.crediterSolde(id, solde);
     }
     
+    @Override
      public void debiterSolde(Long id, Long solde){
          this.utilisateurFacade.debiterSolde(id, solde);
      }
      
-     public void creerUtilisateurCommercial(String nom, String prenom){
-         this.utilisateurFacade.creerUtilisateurCommercial(nom, prenom);
+     @Override
+     public void creerUtilisateurClient(String nom, String prenom){
+         this.utilisateurFacade.creerUtilisateurClient(nom, prenom);
      }
      
-     public void creerUtilisateurLivreur(String nom, String prenom){
-         this.utilisateurFacade.creerUtilisateurLivreur(nom, prenom);
+     @Override
+     public void creerUtilisateurCommercial(Long id, String nom, String prenom){
+         this.utilisateurFacade.creerUtilisateurCommercial(id, nom, prenom);
+     }
+     
+     @Override
+     public void creerUtilisateurLivreur(Long id, String nom, String prenom){
+         this.utilisateurFacade.creerUtilisateurLivreur(id, nom, prenom);
      }
 }

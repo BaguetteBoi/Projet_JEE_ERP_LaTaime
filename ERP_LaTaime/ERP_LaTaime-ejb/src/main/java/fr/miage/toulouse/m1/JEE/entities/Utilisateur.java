@@ -26,64 +26,19 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+    @NotNull
     private String nom;
-    
+    @NotNull
     private String prenom;
-    
+    @NotNull
     private TypeU type;
     
+    private long numCompteBancaire;
+
     private Long solde;
     @OneToMany
     private List<Commande> commandes;
 
-    
-    public Long getSolde() {
-        return solde;
-    }
-
-    public void setSolde(Long solde) {
-        this.solde = solde;
-    }
-
-    
-    
-    
-    /**
-     * Get the value of commande
-     *
-     * @return the value of commande
-     */
-    public List<Commande> getCommandes() {
-        return commandes;
-        
-    }
-
-    /**
-     * Set the value of commande
-     *
-     * @param commandes new value of commande
-     */
-    public void setCommande(List<Commande> commandes) {
-        try {
-            this.commandes = commandes;
-        }catch(Exception e){
-            System.out.println("Erreur Commandes Utilisateur : "+e);
-        }
-    }
-    
-    /**
-     * Add the value of commande
-     *
-     * @param commande new value of commande
-     */
-    public void addCommande(Commande commande) {
-        try {
-            this.commandes.add(commande);
-        }catch(Exception e){
-            System.out.println("Erreur ajout commande Utilisateur : "+e);
-        }
-    }
 
     public Utilisateur() {
     }
@@ -133,6 +88,68 @@ public class Utilisateur implements Serializable {
             this.id = id;
         }catch(Exception e){
             System.out.println("Erreur ID Utilisateur : "+e);
+        }
+    }
+    
+    public Long getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Long solde) {
+        this.solde = solde;
+    }
+
+    /**
+     * Get the value of numCompteBancaire
+     *
+     * @return the value of numCompteBancaire
+     */
+    public long getNumCompteBancaire() {
+        return numCompteBancaire;
+    }
+
+    /**
+     * Set the value of numCompteBancaire
+     *
+     * @param numCompteBancaire new value of numCompteBancaire
+     */
+    public void setNumCompteBancaire(long numCompteBancaire) {
+        this.numCompteBancaire = numCompteBancaire;
+    }   
+    
+    /**
+     * Get the value of commande
+     *
+     * @return the value of commande
+     */
+    public List<Commande> getCommandes() {
+        return commandes;
+        
+    }
+
+    /**
+     * Set the value of commande
+     *
+     * @param commandes new value of commande
+     */
+    public void setCommande(List<Commande> commandes) {
+        try {
+            this.commandes = commandes;
+        }catch(Exception e){
+            System.out.println("Erreur Commandes Utilisateur : "+e);
+        }
+    }
+    
+    /**
+     * Add the value of commande
+     *
+     * @param commande new value of commande
+     */
+    public void addCommande(Commande commande) {
+        try {
+            this.commandes.add(commande);
+        }catch(Exception e){
+            System.out.println("Erreur ajout commande Utilisateur : "+e);
         }
     }
 

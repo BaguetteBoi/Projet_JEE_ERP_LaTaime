@@ -93,6 +93,14 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     public boolean isProduitEnStock(long id) {
         return metierProduit.isProduitEnStock(id);
     }
-   
     
+    @Override
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom) {
+        this.metierUtilisateur.creerUtilisateurCommercial(id, nom, prenom);
+    }
+
+    @Override
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom) {
+        this.metierUtilisateur.creerUtilisateurLivreur(id, nom, prenom);
+    }    
 }

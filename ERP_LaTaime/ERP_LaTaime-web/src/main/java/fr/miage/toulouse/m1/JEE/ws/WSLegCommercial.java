@@ -105,4 +105,17 @@ public class WSLegCommercial {
         return ejbRef.isProduitEnStock(idp);
     }
     
+    @WebMethod(operationName = "creerUtilisateurCommercial")
+    @Oneway
+    public void creerUtilisateurCommercial(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+        Long idp = Long.parseLong(id);
+        ejbRef.creerUtilisateurCommercial(idp, nom, prenom);
+    } 
+    
+    @WebMethod(operationName = "creerUtilisateurLivreur")
+    @Oneway
+    public void creerUtilisateurLivreur(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+        Long idp = Long.parseLong(id);
+        ejbRef.creerUtilisateurLivreur(idp, nom, prenom);
+    }
 }

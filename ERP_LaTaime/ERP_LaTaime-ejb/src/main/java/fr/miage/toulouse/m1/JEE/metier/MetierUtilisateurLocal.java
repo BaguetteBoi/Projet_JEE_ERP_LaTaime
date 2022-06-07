@@ -17,8 +17,6 @@ import javax.ejb.Local;
 @Local
 public interface MetierUtilisateurLocal {
 
-    public void CreerUtilisateur(String nom, String prenom);
-
     public Utilisateur getUtilisateur(Long idUtilisateur);
     // Partie d'ajout de commandes au métier de l'utilisateur 
 
@@ -28,7 +26,9 @@ public interface MetierUtilisateurLocal {
     
      public void debiterSolde(Long id, Long solde);
      
-     public void creerUtilisateurLivreur(String nom, String prenom);
+     public void creerUtilisateurClient(String nom, String prenom);
      
-     public void creerUtilisateurCommercial(String nom, String prenom);
+     public void creerUtilisateurLivreur(Long id, String nom, String prenom);
+     
+     public void creerUtilisateurCommercial(Long id, String nom, String prenom);
 }

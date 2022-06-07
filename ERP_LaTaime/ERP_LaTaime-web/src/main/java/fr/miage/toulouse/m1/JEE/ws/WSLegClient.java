@@ -26,12 +26,6 @@ public class WSLegClient {
     private ExpoLegClientLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
-    @WebMethod(operationName = "CreerUtilisateur")
-    @Oneway
-    public void CreerUtilisateur(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
-        ejbRef.CreerUtilisateur(nom, prenom); 
-    }
-
     @WebMethod(operationName = "getUtilisateur")
     public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") String idUtilisateur) {
         Long idu = Long.parseLong(idUtilisateur);
@@ -60,16 +54,9 @@ public class WSLegClient {
         ejbRef.debiterSolde(idu, sld);
     }
 
-    @WebMethod(operationName = "creerUtilisateurLivreur")
+    @WebMethod(operationName = "creerUtilisateurClient")
     @Oneway
-    public void creerUtilisateurLivreur(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
-        ejbRef.creerUtilisateurLivreur(nom, prenom);
-    }
-
-    @WebMethod(operationName = "creerUtilisateurCommercial")
-    @Oneway
-    public void creerUtilisateurCommercial(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
-        ejbRef.creerUtilisateurCommercial(nom, prenom);
-    }
-    
+    public void creerUtilisateurClient(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+        ejbRef.creerUtilisateurClient(nom, prenom);
+    }    
 }
