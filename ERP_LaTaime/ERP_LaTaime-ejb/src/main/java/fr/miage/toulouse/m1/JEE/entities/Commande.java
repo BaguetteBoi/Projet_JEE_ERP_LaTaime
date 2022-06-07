@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 
 /**
  *
+ * Classe commande contenant une liste de produits. Et établit une facturation lors du changement de son statut.
  * @author Edris
  */
 @Entity
@@ -183,9 +184,26 @@ public class Commande implements Serializable {
         return true;
     }
 
+<<<<<<< Updated upstream
     @Override
     public String toString() {
         return "Commande{" + "idCommande=" + idCommande + ", dateCommande=" + dateCommande + ", montantCommande=" + montantCommande + '}';
     }
+=======
+    /** Méthode Facturer, qui permet de retourner une facture dès que le statut 
+     * de la commande est validé (différent de annulé) */
+    public String facturer() {
+        
+        String qteProd = "";
+        
+      //  for ()
+        return "Commande{" + "idCommande=" + idCommande +
+                "\n dateCommande=" + dateCommande +
+                "\n status=" + status +
+                "\n montantCommande=" + montantCommande+
+                "\n listeIdProdQte=" + qteProd + ", utilisateur=" + utilisateur + '}';
+    }
+    
+>>>>>>> Stashed changes
 
 }

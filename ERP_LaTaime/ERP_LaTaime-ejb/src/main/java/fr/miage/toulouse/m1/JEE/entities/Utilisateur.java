@@ -16,7 +16,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ *Classe Utilisateur qui définit l'utilisateur avec tous ces attributs.
+ * Cette classe comprend aussi la liste des produits qui sont attribués au même utilisateur.
+ * 
  * @author AdnaneElBeqqali
  */
 @Entity
@@ -180,7 +182,10 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
     }
-    
+    /** La classe TypeU définit le type de l'utilisateur.
+     * Un utilisateur peut être un client, un commercial, un livreur ou un et un seul Admin qui possède le compte de laTaime 
+     * 
+     */
     public enum TypeU{
         Client, Commercial, Livreur, Admin
     }
