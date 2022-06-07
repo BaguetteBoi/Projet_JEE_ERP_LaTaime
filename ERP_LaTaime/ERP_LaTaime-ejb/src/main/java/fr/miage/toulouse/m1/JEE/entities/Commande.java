@@ -190,12 +190,15 @@ public class Commande implements Serializable {
         
         String qteProd = "";
         
-        for ()
-        return "Commande{" + "idCommande=" + idCommande +
-                "\n dateCommande=" + dateCommande +
-                "\n status=" + status +
-                "\n montantCommande=" + montantCommande+
-                "\n listeIdProdQte=" + qteProd + ", utilisateur=" + utilisateur + '}';
+        for (int i = 0; i<listeIdProdQte.size();i++){
+            qteProd += listeIdProdQte.get(i)+"\n";
+        }
+        return  "Client = " + utilisateur +
+                "Id commande = " + idCommande +
+                "\n Date de la commande = " + dateCommande +
+                "\n Status de la commande = " + status +
+                "\n Montant = " + montantCommande+
+                "\n Liste des produits et quantités = " + qteProd;
     }
     
 
