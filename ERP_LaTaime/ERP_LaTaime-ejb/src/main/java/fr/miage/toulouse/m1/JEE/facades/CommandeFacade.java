@@ -33,7 +33,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     public CommandeFacade() {
         super(Commande.class);
     }
-
+/** Méthode permettant de créer un commande de produits d'un utilisateur */
     @Override
     public void creerCommande(Utilisateur u, Map d, Date dateCommande) {
         Commande commande = new Commande();
@@ -42,7 +42,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         commande.setUtilisateur(u);
         this.create(commande);
     }
-
+/**Méthode permettant de récupérer la liste des commandes non-livrés  */
     @Override
     public List<Commande> getCommandesNnLivres() {
         List<Commande> commandes = this.findAll();
@@ -54,7 +54,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
         return commNnLivres;
     }
-
+/**Méthode permettant de récupérer la liste des commandes livrés  */
     @Override
     public List<Commande> getCommandesLivres() {
         List<Commande> commandes = this.findAll();
@@ -66,7 +66,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
         return commLivres;
     }
-    
+    /**Méthode permettant de récupérer la liste des commandes annulés*/
     @Override
     public List<Commande> getCommandesAnnules() {
         List<Commande> commandes = this.findAll();
@@ -78,13 +78,13 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
         return commAnnules;
     }
-    
+    /**Méthode permettant d'annuler une commande*/
      @Override
     public void annulerCommande (Long id) {
          Commande commande1 = find(id);
          commande1.setStatus(Commande.StatusComm.annule);
     }
-
+/**Méthode permettant de changer le statut d'une commande*/
     @Override
     public void setStatusCommande(Long id, Integer i) {
         

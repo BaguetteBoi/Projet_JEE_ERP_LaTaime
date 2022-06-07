@@ -31,7 +31,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     public UtilisateurFacade() {
         super(Utilisateur.class);
     }
-    
+    /**Méthode permettant de créer un nouvel utilisateur. On va faire appel à cette méthode afin de pouvoir créer tout type d'utilisateurs. */
     @Override
     public void creerUtilisateur(String nom, String prenom) {
         Utilisateur user = new Utilisateur();
@@ -39,14 +39,14 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         user.setPrenom(prenom);
         this.create(user);
     }
-    
+    /**Méthode permettant de récupérer l'ensemble des commandes crées par l'utilisateur client*/
     @Override
     public List<Commande> getCommandes(Long id) {
         Utilisateur user = this.find(id);
         return user.getCommandes();
         
     }
-    
+    /**Méthode permettant de créditer le solde de l'utilisateur client */
     @Override
     public void crediterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -58,7 +58,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
             System.out.println("Erreur le solde à créditer est invalide");
         }
     }
-    
+     /**Méthode permettant de débiter le solde de l'utilisateur client */
     @Override
     public void debiterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -72,7 +72,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
             System.out.println("Solde insuffisant veuillez créditer votre compte");
         }
     }
-
+ /**Méthode permettant de créer un utilisateur Commercial */
     public void creerUtilisateurCommercial(String nom, String prenom) {
         Utilisateur user = this.find(id);
         
@@ -85,7 +85,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
     
-
+/**Méthode permettant de créer un utilisateur Livreur */
 public void creerUtilisateurLivreur(String nom, String prenom)
  {
         Utilisateur user=this.find(id);
