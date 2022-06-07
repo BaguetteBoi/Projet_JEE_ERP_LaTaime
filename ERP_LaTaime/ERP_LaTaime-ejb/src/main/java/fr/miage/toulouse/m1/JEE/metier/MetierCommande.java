@@ -35,18 +35,18 @@ public class MetierCommande implements MetierCommandeLocal {
 
 
     @Override
-    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
-       return commandeFacade.getCommandesNnLivres(commandes);
+    public List<Commande> getCommandesNnLivres() {
+       return commandeFacade.getCommandesNnLivres();
     }
 
     @Override
-    public List<Commande> getCommandesLivres(List<Commande> commandes) {
-       return commandeFacade.getCommandesLivres(commandes);
+    public List<Commande> getCommandesLivres() {
+       return commandeFacade.getCommandesLivres();
     }
 
     @Override
-    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
-        return commandeFacade.getCommandesAnnules(commandes);
+    public List<Commande> getCommandesAnnules() {
+        return commandeFacade.getCommandesAnnules();
     }
 
     @Override

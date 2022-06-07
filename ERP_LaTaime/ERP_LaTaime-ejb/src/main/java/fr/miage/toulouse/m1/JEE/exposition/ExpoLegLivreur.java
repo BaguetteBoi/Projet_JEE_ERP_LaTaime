@@ -34,18 +34,18 @@ public class ExpoLegLivreur implements ExpoLegLivreurLocal {
 
 
     @Override
-    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
-       return metierCommande.getCommandesNnLivres(commandes);   
+    public List<Commande> getCommandesNnLivres() {
+       return metierCommande.getCommandesNnLivres();   
     }
 
     @Override
-    public List<Commande> getCommandesLivres(List<Commande> commandes) {
-        return metierCommande.getCommandesLivres(commandes);
+    public List<Commande> getCommandesLivres() {
+        return metierCommande.getCommandesLivres();
     }
 
     @Override
-    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
-        return metierCommande.getCommandesAnnules(commandes);
+    public List<Commande> getCommandesAnnules() {
+        return metierCommande.getCommandesAnnules();
     }
 
     @Override

@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +44,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public List<Commande> getCommandesNnLivres(List<Commande> commandes) {
-        List<Commande> commNnLivres = null;
+    public List<Commande> getCommandesNnLivres() {
+        List<Commande> commandes = this.findAll();
+        List<Commande> commNnLivres =  new ArrayList<Commande> ();
         for ( Commande commande : commandes){
             if (commande.getStatus()== Commande.StatusComm.nonLivre){
                 commNnLivres.add(commande);
@@ -54,8 +56,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public List<Commande> getCommandesLivres(List<Commande> commandes) {
-        List<Commande> commLivres = null;
+    public List<Commande> getCommandesLivres() {
+        List<Commande> commandes = this.findAll();
+        List<Commande> commLivres =  new ArrayList<Commande> ();
         for ( Commande commande : commandes){
             if (commande.getStatus()== Commande.StatusComm.livre){
                 commLivres.add(commande);
@@ -65,8 +68,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
     
     @Override
-    public List<Commande> getCommandesAnnules(List<Commande> commandes) {
-        List<Commande> commAnnules = null;
+    public List<Commande> getCommandesAnnules() {
+        List<Commande> commandes = this.findAll();
+        List<Commande> commAnnules = new ArrayList<Commande> ();
         for ( Commande commande : commandes){
             if (commande.getStatus()== Commande.StatusComm.annule){
                 commAnnules.add(commande);

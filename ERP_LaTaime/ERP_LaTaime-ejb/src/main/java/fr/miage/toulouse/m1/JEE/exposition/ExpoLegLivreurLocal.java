@@ -16,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface ExpoLegLivreurLocal {
     
-    public List<Commande> getCommandesNnLivres(List<Commande> commandes);
+    public List<Commande> getCommandesNnLivres();
     
-    public List<Commande> getCommandesLivres(List<Commande> commandes);
+    public List<Commande> getCommandesLivres();
 
-    public List<Commande> getCommandesAnnules(List<Commande> commandes);
+    public List<Commande> getCommandesAnnules();
     
     public void setStatusCommande(Long idCommande, Integer i);
 }

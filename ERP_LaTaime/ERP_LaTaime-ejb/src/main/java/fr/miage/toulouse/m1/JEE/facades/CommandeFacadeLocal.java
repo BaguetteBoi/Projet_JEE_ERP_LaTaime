@@ -36,11 +36,11 @@ public interface CommandeFacadeLocal {
     
     public void creerCommande(Utilisateur u, Map d , Date dateCommande);
     
-    public List<Commande> getCommandesNnLivres(List<Commande> commandes);
+    public List<Commande> getCommandesNnLivres();
     
-    public List<Commande> getCommandesLivres(List<Commande> commandes);
+    public List<Commande> getCommandesLivres();
 
-    public List<Commande> getCommandesAnnules(List<Commande> commandes);
+    public List<Commande> getCommandesAnnules();
     
     public void setStatusCommande(Long id, Integer i);
     
