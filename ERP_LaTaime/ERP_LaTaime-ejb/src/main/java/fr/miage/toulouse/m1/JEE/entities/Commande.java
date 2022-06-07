@@ -184,12 +184,12 @@ public class Commande implements Serializable {
         return true;
     }
 
-<<<<<<< Updated upstream
+
     @Override
     public String toString() {
         return "Commande{" + "idCommande=" + idCommande + ", dateCommande=" + dateCommande + ", montantCommande=" + montantCommande + '}';
     }
-=======
+
     /** Méthode Facturer, qui permet de retourner une facture dès que le statut 
      * de la commande est validé (différent de annulé) */
     public String facturer() {
@@ -204,6 +204,5 @@ public class Commande implements Serializable {
                 "\n listeIdProdQte=" + qteProd + ", utilisateur=" + utilisateur + '}';
     }
     
->>>>>>> Stashed changes
 
 }
