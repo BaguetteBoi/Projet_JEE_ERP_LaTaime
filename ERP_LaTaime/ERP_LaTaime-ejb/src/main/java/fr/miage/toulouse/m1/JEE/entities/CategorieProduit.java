@@ -13,10 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author AntoineGougault
- */
+/**Classe qui spécifie la catégorie des produits  */
 @Entity
 public class CategorieProduit implements Serializable {
 
@@ -33,7 +30,7 @@ public class CategorieProduit implements Serializable {
     /**
      * Get the value of produits
      *
-     * @return the value of produits
+     * @return Méthode de retour de la liste des produits 
      */
     public List<Produit> getProduits() {
         return produits;
@@ -41,7 +38,7 @@ public class CategorieProduit implements Serializable {
 
     /**
      * Set the value of produits
-     *
+     * 
      * @param produits new value of produits
      */
     public void setProduits(List<Produit> produits) {
@@ -54,7 +51,7 @@ public class CategorieProduit implements Serializable {
     
     /**
      * Add the value of produit
-     *
+     *Méthode d'ajout de produit 
      * @param produit new value of produits
      */
     public void addProduit(Produit produit) {
@@ -84,11 +81,12 @@ public class CategorieProduit implements Serializable {
         }
     }
 
-
+/** Méthode retournant l'ID du produit */
     public Long getId() {
         return id;
     }
 
+    /** Méthode qui définit l'ID du produit */
     public void setId(Long id) {
         try {
             this.id = id;

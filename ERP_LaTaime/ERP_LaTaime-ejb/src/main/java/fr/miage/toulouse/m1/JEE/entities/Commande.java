@@ -185,7 +185,8 @@ public class Commande implements Serializable {
         return true;
     }
 
-    
+    /** Méthode Facturer, qui permet de retourner une facture dès que le statut 
+     * de la commande est validé (différent de annulé) */
     public String facturer() {
         
         String qteProd = "";

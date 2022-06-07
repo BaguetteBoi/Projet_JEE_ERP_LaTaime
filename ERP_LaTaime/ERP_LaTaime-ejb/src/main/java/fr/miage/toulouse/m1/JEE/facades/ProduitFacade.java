@@ -29,7 +29,7 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     public ProduitFacade() {
         super(Produit.class);
     }
-
+/**Méthode permettant de créer un produit */
     @Override
     public void creerProduit(String libele, double prixUnitaire, String description) {
         Produit produit = new Produit();
@@ -43,13 +43,13 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     public Produit getProduit(long id) {
         return this.find(id);
     }
-
+/**Méthode permettant de récupérer une liste des produits */
     @Override
     public List<Produit> getAllProduits() {
         List<Produit> lp = findAll();
         return lp;
     }
-
+/**Méthode permettant de définir un quantité d'un produit dont l'ID est passé en paramètre */
     @Override
     public void setQuantite(long id, long quantite) {
         Produit p = find(id);
@@ -57,20 +57,20 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
         this.edit(p);
 
     }
-
+/**Méthode permettant de définir le prix unitaire d'un produit */
     @Override
     public void setPrixUnitaire(long id, double prixUnitaire) {
         Produit p = find(id);
         p.setPrixUnitaire(prixUnitaire);
         this.edit(p);
     }
-
+/**Méthode permettant de supprimer un produit dont l'ID est passé en paramètre*/
     @Override
     public void supprimerProduit(long id) {
         Produit p = find(id);
         this.remove(p);
     }
-
+/**Méthode permettant de modifier le libellé et la description d'un produit défini*/
     @Override
     public void modifierProduit(long id, String libelle, String description) {
         Produit p = getProduit(id);
@@ -86,7 +86,7 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
             this.edit(p);
         }
     }
-
+/**Méthode permettant de vérifier si un produit demandé en paramètre est disponible en stock */
     @Override
     public boolean isProduitEnStock(long id) {
         Produit p = find(id);

@@ -13,8 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-/**
- *
+
+/**Classe définissant le produit avec toutes ses spécifications liés 
+ * 
  * @author AntoineGougault
  */
 @Entity
@@ -58,11 +59,12 @@ public class Produit implements Serializable {
         }
     }
 
-    
+    /** Méthode pour récupérer l'ID d'un produit */
     public Long getId() {
         return id;
     }
 
+      /** Méthode pour définir l'ID d'un produit */
     public void setId(Long id) {
         try {
             this.id = id;
@@ -70,11 +72,11 @@ public class Produit implements Serializable {
             System.out.println("Erreur id produit : "+e);
         }
     }
-
+  /** Méthode pour récupérer le libelle d'un produit */
     public String getLibelle() {
         return libelle;
     }
-
+  /** Méthode pour définir le libelle d'un produit */
     public void setLibelle(String libelle) {
         try {
             this.libelle = libelle;
@@ -82,11 +84,11 @@ public class Produit implements Serializable {
             System.out.println("Erreur libelle produit : "+e);
         }
     }
-
+  /** Méthode pour récupérer la quantité d'un produit */
     public Long getQuantite() {
         return quantite;
     }
-
+/** Méthode pour définir la quantité d'un produit */
     public void setQuantite(Long quantite) {       
         try {
             this.quantite = quantite;
@@ -94,7 +96,7 @@ public class Produit implements Serializable {
             System.out.println("Erreur quantite produit : "+e);
         }
     }
-
+  /** Méthode pour récupérer le prix unitaire d'un produit */
     public double getPrixUnitaire() {
         return prixUnitaire;
     }
