@@ -32,7 +32,8 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     public UtilisateurFacade() {
         super(Utilisateur.class);
     }
-
+    
+    /**Méthode permettant de créer un nouvel utilisateur. On va faire appel à cette méthode afin de pouvoir créer tout type d'utilisateurs. */
     private void creerUtilisateur(String nom, String prenom, TypeU typeU) {
         Utilisateur user = new Utilisateur();
         user.setNom(nom);
@@ -41,6 +42,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         this.create(user);
     }
 
+    /**Méthode permettant de récupérer l'ensemble des commandes crées par l'utilisateur client*/
     @Override
     public List<Commande> getCommandes(Long id) {
         Utilisateur user = this.find(id);
@@ -48,6 +50,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
 
     }
 
+    /**Méthode permettant de créditer le solde de l'utilisateur client */
     @Override
     public void crediterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -60,6 +63,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
+    /**Méthode permettant de débiter le solde de l'utilisateur client */
     @Override
     public void debiterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -74,11 +78,13 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
     
+    /**Méthode permettant de créer un utilisateur Client */
     @Override
     public void creerUtilisateurClient(String nom, String prenom) {
         creerUtilisateur(nom, prenom, TypeU.Client);
     }
 
+    /**Méthode permettant de créer un utilisateur Commercial */
     @Override
     public void creerUtilisateurCommercial(Long id, String nom, String prenom) {
         Utilisateur user = this.find(id);
@@ -87,7 +93,8 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
             creerUtilisateur(nom, prenom, TypeU.Commercial);
         }
     }
-
+    
+    /**Méthode permettant de créer un utilisateur Livreur */
     @Override
     public void creerUtilisateurLivreur(Long id, String nom, String prenom) {
         Utilisateur user = this.find(id);
