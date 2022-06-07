@@ -26,18 +26,18 @@ public class WSLegLivreur {
     // "Web Service > Add Operation"
 
     @WebMethod(operationName = "getCommandesNnLivres")
-    public List<Commande> getCommandesNnLivres(@WebParam(name = "commandes") List<Commande> commandes) {
-        return ejbRef.getCommandesNnLivres(commandes);
+    public List<Commande> getCommandesNnLivres() {
+        return ejbRef.getCommandesNnLivres();
     }
 
     @WebMethod(operationName = "getCommandesLivres")
-    public List<Commande> getCommandesLivres(@WebParam(name = "commandes") List<Commande> commandes) {
-        return ejbRef.getCommandesLivres(commandes);
+    public List<Commande> getCommandesLivres() {
+        return ejbRef.getCommandesLivres();
     }
 
     @WebMethod(operationName = "getCommandesAnnules")
-    public List<Commande> getCommandesAnnules(@WebParam(name = "commandes") List<Commande> commandes) {
-        return ejbRef.getCommandesAnnules(commandes);
+    public List<Commande> getCommandesAnnules() {
+        return ejbRef.getCommandesAnnules();
     }
 
     @WebMethod(operationName = "setStatusCommande")

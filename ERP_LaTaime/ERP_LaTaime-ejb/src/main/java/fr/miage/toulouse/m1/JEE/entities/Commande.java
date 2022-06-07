@@ -141,6 +141,8 @@ public class Commande implements Serializable {
     public Double getMontant() {
         return montantCommande;
     }
+    
+ 
 
     public void setMontant(Double montant) {
         try {
@@ -183,9 +185,18 @@ public class Commande implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Commande{" + "idCommande=" + idCommande + ", dateCommande=" + dateCommande + ", montantCommande=" + montantCommande + '}';
+    
+    public String facturer() {
+        
+        String qteProd = "";
+        
+        for ()
+        return "Commande{" + "idCommande=" + idCommande +
+                "\n dateCommande=" + dateCommande +
+                "\n status=" + status +
+                "\n montantCommande=" + montantCommande+
+                "\n listeIdProdQte=" + qteProd + ", utilisateur=" + utilisateur + '}';
     }
+    
 
 }
