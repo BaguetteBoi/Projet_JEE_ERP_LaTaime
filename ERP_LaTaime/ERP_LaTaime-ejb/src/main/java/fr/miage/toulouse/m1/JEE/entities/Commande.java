@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -101,6 +102,17 @@ public class Commande implements Serializable {
     public void setListeIdProdQte(Map<Produit, Integer> listeIdProdQte) {
         try {
             this.listeIdProdQte = listeIdProdQte;
+        }catch(Exception e){
+            System.out.println("Erreur setListeIdProdQte commande : "+e);
+        }
+    }
+    
+    public void addProduitAndQteToListe(Produit p, Integer qte) {
+        try {
+            if(this.listeIdProdQte == null){
+                this.listeIdProdQte = new HashMap<Produit, Integer>();
+            }
+            this.listeIdProdQte.put(p, qte);
         }catch(Exception e){
             System.out.println("Erreur setListeIdProdQte commande : "+e);
         }

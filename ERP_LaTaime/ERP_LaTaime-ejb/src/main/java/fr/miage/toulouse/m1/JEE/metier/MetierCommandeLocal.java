@@ -21,7 +21,7 @@ import javax.ejb.Local;
 public interface MetierCommandeLocal {
     
     
-    public void creerCommande(Utilisateur u ,Map d, Date dateCommande);
+    public void creerCommande(Utilisateur u ,Map<Integer, Integer> d, Date dateCommande);
     
     public List<Commande> getCommandesNnLivres();
     

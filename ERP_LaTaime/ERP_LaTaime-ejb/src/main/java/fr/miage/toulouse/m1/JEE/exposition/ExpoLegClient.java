@@ -40,7 +40,7 @@ public class ExpoLegClient implements ExpoLegClientLocal {
       return this.metierUtilisateur.getCommandes(id);
     }
 
-   public void creerCommande(Utilisateur u, Map d, Date dateCommande){
+   public void creerCommande(Utilisateur u, Map<Integer, Integer> d, Date dateCommande){
       this.metierCommande.creerCommande(u, d, dateCommande);
     }
    
