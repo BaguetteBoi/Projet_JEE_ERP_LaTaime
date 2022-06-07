@@ -68,6 +68,7 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     @Override
     public void supprimerProduit(long id) {
         Produit p = find(id);
+        setQuantite(id,0);
         this.remove(p);
     }
 /**Méthode permettant de modifier le libellé et la description d'un produit défini*/
