@@ -64,4 +64,10 @@ public class ExpoLegClient implements ExpoLegClientLocal {
         this.metierUtilisateur.creerUtilisateurClient(nom, prenom);
     }
     
+    @Override
+    public void statutsoldeCompte(Long id) {
+        this.metierUtilisateur.statutsolde(id);
+    }
+    
+    
 }

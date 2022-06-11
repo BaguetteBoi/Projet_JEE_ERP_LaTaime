@@ -43,4 +43,6 @@ public interface UtilisateurFacadeLocal {
     public void creerUtilisateurLivreur(Long id, String nom, String prenom);
 
     public void creerUtilisateurCommercial(Long id, String nom, String prenom);
+    
+    public Long getStatutSoldeCompte(Long id);
 }

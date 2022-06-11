@@ -19,39 +19,33 @@ import javax.jws.WebService;
  *
  * @author AdnaneElBeqqali
  */
-@WebService(serviceName = "WSLegClient")
-public class WSLegClient {
+@WebService(serviceName = "wsTest")
+public class wsTest {
 
     @EJB
     private ExpoLegClientLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
     @WebMethod(operationName = "getUtilisateur")
-    public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") String idUtilisateur) {
-        Long idu = Long.parseLong(idUtilisateur);
-        return ejbRef.getUtilisateur(idu);
+    public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") Long idUtilisateur) {
+        return ejbRef.getUtilisateur(idUtilisateur);
     }
 
     @WebMethod(operationName = "getCommandes")
-    public List<Commande> getCommandes(@WebParam(name = "id") String id) {
-        Long idc = Long.parseLong(id);
-        return ejbRef.getCommandes(idc);
+    public List<Commande> getCommandes(@WebParam(name = "id") Long id) {
+        return ejbRef.getCommandes(id);
     }
 
     @WebMethod(operationName = "crediterSolde")
     @Oneway
-    public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
-         Long idu = Long.parseLong(id);
-          Long sld = Long.parseLong(solde);
-        ejbRef.crediterSolde(idu, sld);
+    public void crediterSolde(@WebParam(name = "id") Long id, @WebParam(name = "solde") Long solde) {
+        ejbRef.crediterSolde(id, solde);
     }
 
     @WebMethod(operationName = "debiterSolde")
     @Oneway
-    public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
-         Long idu = Long.parseLong(id);
-          Long sld = Long.parseLong(solde);
-        ejbRef.debiterSolde(idu, sld);
+    public void debiterSolde(@WebParam(name = "id") Long id, @WebParam(name = "solde") Long solde) {
+        ejbRef.debiterSolde(id, solde);
     }
 
     @WebMethod(operationName = "creerUtilisateurClient")
@@ -60,10 +54,10 @@ public class WSLegClient {
         ejbRef.creerUtilisateurClient(nom, prenom);
     }
 
- @WebMethod(operationName = "statutsoldeCompte")
+    @WebMethod(operationName = "statutsoldeCompte")
     @Oneway
-    public void statutsoldeCompte(@WebParam(name = "id") String id) {
-         Long idu = Long.parseLong(id);
-        ejbRef.statutsoldeCompte(idu);
+    public void statutsoldeCompte(@WebParam(name = "id") Long id) {
+        ejbRef.statutsoldeCompte(id);
     }
+    
 }

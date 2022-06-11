@@ -49,7 +49,13 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         return user.getCommandes();
 
     }
-
+    
+    /** Fonction permettant de récupérer le solde d'un utilisateur */
+    @Override
+    public Long getStatutSoldeCompte(Long id) {
+        Utilisateur user = this.find(id);
+        return user.getSolde();
+    }
     /**Méthode permettant de créditer le solde de l'utilisateur client */
     @Override
     public void crediterSolde(Long id, Long solde) {

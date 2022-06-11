@@ -35,6 +35,11 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
         return this.utilisateurFacade.getCommandes(id);
     }
     
+     @Override
+    public void statutsolde(Long id){
+        this.utilisateurFacade.getStatutSoldeCompte(id);
+    }
+    
     @Override
     public void crediterSolde(Long id, Long solde){
         this.utilisateurFacade.crediterSolde(id, solde);

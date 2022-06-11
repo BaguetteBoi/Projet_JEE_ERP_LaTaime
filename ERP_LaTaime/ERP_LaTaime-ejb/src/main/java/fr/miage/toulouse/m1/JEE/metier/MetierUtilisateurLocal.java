@@ -31,4 +31,6 @@ public interface MetierUtilisateurLocal {
      public void creerUtilisateurLivreur(Long id, String nom, String prenom);
      
      public void creerUtilisateurCommercial(Long id, String nom, String prenom);
+     
+     public void statutsolde(Long id);
 }
