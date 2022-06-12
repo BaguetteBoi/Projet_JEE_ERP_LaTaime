@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegCommercialLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -59,7 +60,7 @@ public class WSLegCommercial {
     }
 
     @WebMethod(operationName = "getProduit")
-    public Produit getProduit(@WebParam(name = "id") String id) {
+    public Produit getProduit(@WebParam(name = "id") String id) throws ProduitException{
         Long idp = Long.parseLong(id);
         return ejbRef.getProduit(idp);
     }
@@ -71,7 +72,7 @@ public class WSLegCommercial {
 
     @WebMethod(operationName = "setQuantite")
     @Oneway
-    public void setQuantite(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) {
+    public void setQuantite(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) throws ProduitException{
         Long idp = Long.parseLong(id);
         Long pru = Long.parseLong(prixUnitaire);
         ejbRef.setQuantite(idp, pru);
@@ -79,7 +80,7 @@ public class WSLegCommercial {
 
     @WebMethod(operationName = "setPrixUnitaire")
     @Oneway
-    public void setPrixUnitaire(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) {
+    public void setPrixUnitaire(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) throws ProduitException{
         Long idp = Long.parseLong(id);
         Double prxu = Double.parseDouble(prixUnitaire);
         ejbRef.setPrixUnitaire(idp, prxu);
@@ -87,20 +88,20 @@ public class WSLegCommercial {
 
     @WebMethod(operationName = "supprimerProduit")
     @Oneway
-    public void supprimerProduit(@WebParam(name = "id") String id) {
+    public void supprimerProduit(@WebParam(name = "id") String id) throws ProduitException{
         Long idp = Long.parseLong(id);
         ejbRef.supprimerProduit(idp);
     }
 
     @WebMethod(operationName = "modifierProduit")
     @Oneway
-    public void modifierProduit(@WebParam(name = "id") String id, @WebParam(name = "libele") String libele, @WebParam(name = "description") String description) {
+    public void modifierProduit(@WebParam(name = "id") String id, @WebParam(name = "libele") String libele, @WebParam(name = "description") String description) throws ProduitException{
         Long idp = Long.parseLong(id);
         ejbRef.modifierProduit(idp, libele, description);
     }
 
     @WebMethod(operationName = "isProduitEnStock")
-    public boolean isProduitEnStock(@WebParam(name = "id") String id) {
+    public boolean isProduitEnStock(@WebParam(name = "id") String id) throws ProduitException{
         Long idp = Long.parseLong(id);
         return ejbRef.isProduitEnStock(idp);
     }

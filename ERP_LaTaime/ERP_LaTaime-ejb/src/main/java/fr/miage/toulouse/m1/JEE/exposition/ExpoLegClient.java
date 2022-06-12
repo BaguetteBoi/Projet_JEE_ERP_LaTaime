@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
@@ -41,12 +42,12 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
 
     @Override
-    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande){
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException{
       this.metierCommande.creerCommande(idU, d, dateCommande);
     }
    
     @Override
-   public void annulerCommande (Long id)
+   public void annulerCommande (Long id) throws ProduitException
    {
        this.metierCommande.annulerCommande(id);
    }

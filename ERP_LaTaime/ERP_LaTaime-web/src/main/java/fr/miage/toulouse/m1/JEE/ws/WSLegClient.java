@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class WSLegClient {
 
     @WebMethod(operationName = "creerCommande")
     @Oneway
-    public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) {
+    public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) throws ProduitException{
 
         
         /*Sérialisation du string commande en Map<Integer, Integer> -> (idProduit, Qte) 
@@ -65,7 +66,7 @@ public class WSLegClient {
 
     @WebMethod(operationName = "annulerCommande")
     @Oneway
-    public void annulerCommande(@WebParam(name = "id") String id) {
+    public void annulerCommande(@WebParam(name = "id") String id) throws ProduitException{
         Long idu = Long.parseLong(id);
         ejbRef.annulerCommande(idu);
     }

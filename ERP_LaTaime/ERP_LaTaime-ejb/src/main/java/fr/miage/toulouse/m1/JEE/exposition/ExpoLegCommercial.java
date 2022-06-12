@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCategorieProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
@@ -60,7 +61,7 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public Produit getProduit(long id) {
+    public Produit getProduit(long id) throws ProduitException{
        return metierProduit.getProduit(id);
     }
 
@@ -70,27 +71,27 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public void setQuantite(long id, long prixUnitaire) {
+    public void setQuantite(long id, long prixUnitaire) throws ProduitException{
         metierProduit.setQuantite(id, prixUnitaire);
     }
 
     @Override
-    public void setPrixUnitaire(long id, double prixUnitaire) {
+    public void setPrixUnitaire(long id, double prixUnitaire) throws ProduitException{
         metierProduit.setPrixUnitaire(id, prixUnitaire);
     }
 
     @Override
-    public void supprimerProduit(long id) {
+    public void supprimerProduit(long id) throws ProduitException{
         metierProduit.supprimerProduit(id);
     }
 
     @Override
-    public void modifierProduit(long id, String libele, String description) {
+    public void modifierProduit(long id, String libele, String description) throws ProduitException{
         metierProduit.modifierProduit(id, libele, description);
     }
 
     @Override
-    public boolean isProduitEnStock(long id) {
+    public boolean isProduitEnStock(long id) throws ProduitException{
         return metierProduit.isProduitEnStock(id);
     }
     

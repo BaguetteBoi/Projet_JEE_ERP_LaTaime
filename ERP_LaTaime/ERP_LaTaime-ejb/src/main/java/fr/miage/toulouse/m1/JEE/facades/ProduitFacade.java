@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -29,7 +30,13 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     public ProduitFacade() {
         super(Produit.class);
     }
-/**Méthode permettant de créer un produit */
+
+    /**
+     * Méthode permettant de créer un produit
+     * @param libele
+     * @param prixUnitaire
+     * @param description
+     */
     @Override
     public void creerProduit(String libele, double prixUnitaire, String description) {
         Produit produit = new Produit();
@@ -40,58 +47,97 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     }
 
     @Override
-    public Produit getProduit(long id) {
-        return this.find(id);
+    public Produit getProduit(long id) throws ProduitException {
+        Produit p = this.find(id);
+        if (p != null) {
+            return p;
+        } else {
+            throw new ProduitException("Id Produit " + id + " inconnue");
+        }
     }
-/**Méthode permettant de récupérer une liste des produits */
+
+    /**
+     * Méthode permettant de récupérer une liste des produits
+     */
     @Override
     public List<Produit> getAllProduits() {
         List<Produit> lp = findAll();
         return lp;
     }
-/**Méthode permettant de définir un quantité d'un produit dont l'ID est passé en paramètre */
+
+    /**
+     * Méthode permettant de définir un quantité d'un produit dont l'ID est
+     * passé en paramètre
+     */
     @Override
-    public void setQuantite(long id, long quantite) {
-        Produit p = find(id);
+    public void setQuantite(long id, long quantite) throws ProduitException {
+        Produit p = getProduit(id);
         p.setQuantite(quantite);
         this.edit(p);
 
     }
-/**Méthode permettant de définir le prix unitaire d'un produit */
+
+    /**
+     * Méthode permettant de définir le prix unitaire d'un produit
+     */
     @Override
-    public void setPrixUnitaire(long id, double prixUnitaire) {
-        Produit p = find(id);
+    public void setPrixUnitaire(long id, double prixUnitaire) throws ProduitException {
+        Produit p = getProduit(id);
         p.setPrixUnitaire(prixUnitaire);
         this.edit(p);
     }
-/**Méthode permettant de supprimer un produit dont l'ID est passé en paramètre*/
+
+    /**
+     * Méthode permettant de supprimer un produit dont l'ID est passé en
+     * paramètr
+     *
+     * @param id
+     * @throws fr.miage.toulouse.m1.JEE.exceptions.ProduitException
+     */
     @Override
-    public void supprimerProduit(long id) {
-        Produit p = find(id);
-        setQuantite(id,0);
+    public void supprimerProduit(long id) throws ProduitException {
+        Produit p = getProduit(id);
+        setQuantite(id, 0);
         this.remove(p);
     }
-/**Méthode permettant de modifier le libellé et la description d'un produit défini*/
+
+    /**
+     * Méthode permettant de modifier le libellé et la description d'un produit
+     * défin
+     *
+     * @param id
+     * @param libelle
+     * @param description
+     * @throws fr.miage.toulouse.m1.JEE.exceptions.ProduitException
+     */
     @Override
-    public void modifierProduit(long id, String libelle, String description) {
+    public void modifierProduit(long id, String libelle, String description) throws ProduitException {
         Produit p = getProduit(id);
-        
+
         if (!libelle.isEmpty()) {
             p.setLibelle(libelle);
         }
         if (!description.isEmpty()) {
             p.setDescription(description);
         }
-        
+
         if (!libelle.isEmpty() || !description.isEmpty()) {
             this.edit(p);
         }
     }
-/**Méthode permettant de vérifier si un produit demandé en paramètre est disponible en stock */
+
+    /**
+     * Méthode permettant de vérifier si un produit demandé en paramètre est
+     * disponible en stock
+     *
+     * @param id
+     * @return
+     * @throws fr.miage.toulouse.m1.JEE.exceptions.ProduitException
+     */
     @Override
-    public boolean isProduitEnStock(long id) {
-        Produit p = find(id);
-        return p.getQuantite()>0;
+    public boolean isProduitEnStock(long id) throws ProduitException {
+        Produit p = getProduit(id);
+        return p.getQuantite() > 0;
     }
-    
+
 }
