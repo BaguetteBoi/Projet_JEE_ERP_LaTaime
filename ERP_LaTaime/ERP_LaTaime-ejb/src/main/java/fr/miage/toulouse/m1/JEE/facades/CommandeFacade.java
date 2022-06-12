@@ -37,95 +37,112 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     public CommandeFacade() {
         super(Commande.class);
     }
-/** Méthode permettant de créer un commande de produits d'un utilisateur */
+
+    /**
+     * Méthode permettant de créer un commande de produits d'un utilisateur
+     */
     @Override
     public void creerCommande(Utilisateur u, Map<Produit, Integer> d, Date dateCommande) {
         Commande commande = new Commande();
         commande.setDateCommande(dateCommande);
-        commande.setListeIdProdQte(m);
+        commande.setListeIdProdQte(d);
         commande.setUtilisateur(u);
         this.create(commande);
     }
-/**Méthode permettant de récupérer la liste des commandes non-livrés  */
+
+    /**
+     * Méthode permettant de récupérer la liste des commandes non-livrés
+     */
     @Override
     public List<Commande> getCommandesNnLivres() {
         List<Commande> commandes = this.findAll();
-        List<Commande> commNnLivres =  new ArrayList<Commande> ();
-        for ( Commande commande : commandes){
-            if (commande.getStatus()== Commande.StatusComm.nonLivre){
+        List<Commande> commNnLivres = new ArrayList<Commande>();
+        for (Commande commande : commandes) {
+            if (commande.getStatus() == Commande.StatusComm.nonLivre) {
                 commNnLivres.add(commande);
             }
         }
         return commNnLivres;
     }
-/**Méthode permettant de récupérer la liste des commandes livrés  */
+
+    /**
+     * Méthode permettant de récupérer la liste des commandes livrés
+     */
     @Override
     public List<Commande> getCommandesLivres() {
         List<Commande> commandes = this.findAll();
-        List<Commande> commLivres =  new ArrayList<Commande> ();
-        for ( Commande commande : commandes){
-            if (commande.getStatus()== Commande.StatusComm.livre){
+        List<Commande> commLivres = new ArrayList<Commande>();
+        for (Commande commande : commandes) {
+            if (commande.getStatus() == Commande.StatusComm.livre) {
                 commLivres.add(commande);
             }
         }
         return commLivres;
     }
-    /**Méthode permettant de récupérer la liste des commandes annulés*/
+
+    /**
+     * Méthode permettant de récupérer la liste des commandes annulés
+     */
     @Override
     public List<Commande> getCommandesAnnules() {
         List<Commande> commandes = this.findAll();
-        List<Commande> commAnnules = new ArrayList<Commande> ();
-        for ( Commande commande : commandes){
-            if (commande.getStatus()== Commande.StatusComm.annule){
+        List<Commande> commAnnules = new ArrayList<Commande>();
+        for (Commande commande : commandes) {
+            if (commande.getStatus() == Commande.StatusComm.annule) {
                 commAnnules.add(commande);
             }
         }
         return commAnnules;
     }
-    /**Méthode permettant d'annuler une commande*/
-     @Override
-    public void annulerCommande (Long id) {
-         Commande commande1 = find(id);
-         commande1.setStatus(Commande.StatusComm.annule);
+
+    /**
+     * Méthode permettant d'annuler une commande
+     */
+    @Override
+    public void annulerCommande(Long id) {
+        Commande commande1 = find(id);
+        commande1.setStatus(Commande.StatusComm.annule);
     }
-/**Méthode permettant de changer le statut d'une commande*/
+
+    /**
+     * Méthode permettant de changer le statut d'une commande
+     */
     @Override
     public void setStatusCommande(Long id, Integer i) {
-        
+
         Commande commande = find(id);
-        switch(i) {   
+        switch (i) {
             case 1:
-              commande.setStatus(Commande.StatusComm.livre);
-              break;
+                commande.setStatus(Commande.StatusComm.livre);
+                break;
             case 2:
-              commande.setStatus(Commande.StatusComm.nonLivre);
-              break;
+                commande.setStatus(Commande.StatusComm.nonLivre);
+                break;
             case 3:
-              commande.setStatus(Commande.StatusComm.annule);
-              break;
+                commande.setStatus(Commande.StatusComm.annule);
+                break;
             default:
         }
-        
+
         this.edit(commande);
     }
-    
-    
+
     public String facturer(Long id) {
-        
+
         String qteProd = "";
         Commande commande = find(id);
-        
-        for (int i = 0; i<commande.getListeIdProdQte().size();i++){
-            qteProd += commande.getListeIdProdQte().get(i)+"\n";
+
+        for (int i = 0; i < commande.getListeIdProdQte().size(); i++) {
+            qteProd += commande.getListeIdProdQte().get(i) + "\n";
         }
-        if (commande.getStatus()!= commande.getStatus().annule){
-            return  "Client = " + utilisateur +
-                "Id commande = " + commande.getIdCommande() +
-                "\n Date de la commande = " + commande.getDateCommande() +
-                "\n Status de la commande = " + status +
-                "\n Montant = " + commande.getMontantCommande()+
-                "\n Liste des produits et quantités = " + qteProd;
-        }else{
+        if (commande.getStatus() != commande.getStatus().annule) {
+            return "Client = " + utilisateur
+                    + "Id commande = " + commande.getIdCommande()
+                    + "\n Date de la commande = " + commande.getDateCommande()
+                    + "\n Status de la commande = " + status
+                    + "\n Montant = " + commande.getMontantCommande()
+                    + "\n Liste des produits et quantités = " + qteProd;
+        } else {
             return "Commande Annulée";
         }
     }

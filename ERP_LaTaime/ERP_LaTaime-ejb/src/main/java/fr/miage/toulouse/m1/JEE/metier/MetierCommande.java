@@ -10,8 +10,9 @@ import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import fr.miage.toulouse.m1.JEE.facades.ProduitFacadeLocal;
+import fr.miage.toulouse.m1.JEE.facades.UtilisateurFacadeLocal;
+import fr.miage.toulouse.m1.JEE.utility.ClientRest;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,31 +30,34 @@ public class MetierCommande implements MetierCommandeLocal {
     private ProduitFacadeLocal produitFacade;
 
     @EJB
-    private CommandeFacadeLocal commandeFacade;    
-    
-    
+    private CommandeFacadeLocal commandeFacade;
+
+    @EJB
+    private UtilisateurFacadeLocal utilisateurFacade;
 
     @Override
-    public void creerCommande(Utilisateur u ,Map<Integer, Integer> d, Date dateCommande) {
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) {
+
+        Utilisateur client = utilisateurFacade.find(idU);
+        ClientRest.CallVirementMiageBank(client.getNumCompteBancaire(), utilisateurFacade.getMiageCompteBancaire(), Long.MIN_VALUE);
+
         Map<Produit, Integer> MapProdQte = new HashMap<>();
-        for(Map.Entry<Integer, Integer> p : d.entrySet()){
+        for (Map.Entry<Integer, Integer> p : d.entrySet()) {
             MapProdQte.put(produitFacade.find(p.getKey()), p.getValue());
         }
-        commandeFacade.creerCommande(u, MapProdQte, dateCommande);
+        commandeFacade.creerCommande(client, MapProdQte, dateCommande);
     }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
-
     @Override
     public List<Commande> getCommandesNnLivres() {
-       return commandeFacade.getCommandesNnLivres();
+        return commandeFacade.getCommandesNnLivres();
     }
 
     @Override
     public List<Commande> getCommandesLivres() {
-       return commandeFacade.getCommandesLivres();
+        return commandeFacade.getCommandesLivres();
     }
 
     @Override
@@ -65,20 +69,20 @@ public class MetierCommande implements MetierCommandeLocal {
     public void setStatusCommande(Long id, Integer i) {
         commandeFacade.setStatusCommande(id, i);
     }
-    
+
     @Override
-    public void annulerCommande (Long id) {
+    public void annulerCommande(Long id) {
         Commande commande1 = commandeFacade.find(id);
-         
+
         commande1.setStatus(Commande.StatusComm.annule);
-        for (Map.Entry<Produit, Integer> p : commande1.getListeIdProdQte().entrySet()){
-           produitFacade.setQuantite(p.getKey().getId(), p.getKey().getQuantite()-p.getValue());           
+        for (Map.Entry<Produit, Integer> p : commande1.getListeIdProdQte().entrySet()) {
+            produitFacade.setQuantite(p.getKey().getId(), p.getKey().getQuantite() - p.getValue());
         }
-         
+
     }
-    
+
     @Override
     public void demanderfacture(Long id) {
-      commandeFacade.facturer(id);
+        commandeFacade.facturer(id);
     }
 }

@@ -124,4 +124,35 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
+    @Override
+    public Long getMiageCompteBancaire() {
+        return getCompteAdmin().getNumCompteBancaire();
+    }
+
+    @Override
+    public void setMiageCompteBancaire(Long num) {
+        Utilisateur u = getCompteAdmin();
+        u.setNumCompteBancaire(num);
+        this.edit(u);
+    }
+
+    public Utilisateur creerUtilisateurAdmin() {
+        Utilisateur user = new Utilisateur();
+        user.setNom("Admin");
+        user.setPrenom("LaTaime");
+        user.setType(TypeU.Admin);
+        this.create(user);
+        return user;
+    }
+    
+    private Utilisateur getCompteAdmin(){
+        List<Utilisateur> allU = this.findAll();
+        for(Utilisateur u : allU){
+            if(u.getType() == TypeU.Admin)
+                return u;
+        }
+        
+        return creerUtilisateurAdmin();
+    }
+
 }

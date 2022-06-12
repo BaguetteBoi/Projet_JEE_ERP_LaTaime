@@ -7,7 +7,6 @@ package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
-import fr.miage.toulouse.m1.JEE.entities.Utilisateur.TypeU;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -45,4 +44,8 @@ public interface UtilisateurFacadeLocal {
     public void creerUtilisateurCommercial(Long id, String nom, String prenom);
     
     public Long getStatutSoldeCompte(Long id);
+        
+    public Long getMiageCompteBancaire();
+    
+    public void setMiageCompteBancaire(Long num);
 }

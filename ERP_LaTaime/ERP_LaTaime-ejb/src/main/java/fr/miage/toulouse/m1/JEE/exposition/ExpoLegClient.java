@@ -33,17 +33,19 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     @Override
     public Utilisateur getUtilisateur(Long idUtilisateur) {
       return this.metierUtilisateur.getUtilisateur(idUtilisateur);
-        }
+    }
 
     @Override
     public List<Commande> getCommandes(Long id) {
       return this.metierUtilisateur.getCommandes(id);
     }
 
-   public void creerCommande(Utilisateur u, Map<Integer, Integer> d, Date dateCommande){
-      this.metierCommande.creerCommande(u, d, dateCommande);
+    @Override
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande){
+      this.metierCommande.creerCommande(idU, d, dateCommande);
     }
    
+    @Override
    public void annulerCommande (Long id)
    {
        this.metierCommande.annulerCommande(id);

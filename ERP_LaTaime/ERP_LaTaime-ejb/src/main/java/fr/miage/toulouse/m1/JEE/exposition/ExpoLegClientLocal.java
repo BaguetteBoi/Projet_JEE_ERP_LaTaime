@@ -7,7 +7,9 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Local;
 
 /**
@@ -17,13 +19,12 @@ import javax.ejb.Local;
 @Local
 public interface ExpoLegClientLocal {
   public Utilisateur getUtilisateur(Long idUtilisateur);
+  public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande);
+  public void annulerCommande (Long id);
   public List<Commande> getCommandes(Long id);
   public void crediterSolde(Long id, Long solde);
   public void debiterSolde(Long id, Long solde);
-  public void creerUtilisateurLivreur(String nom, String prenom);
-  public void creerUtilisateurCommercial(String nom, String prenom);
+  public void creerUtilisateurClient(String nom, String prenom);
   public void demanderfacture(Long id);
   public void statutsoldeCompte(Long id);
-
- 
 }

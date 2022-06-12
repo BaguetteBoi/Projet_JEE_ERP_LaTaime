@@ -8,7 +8,10 @@ package fr.miage.toulouse.m1.JEE.ws;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
@@ -38,19 +41,48 @@ public class WSLegClient {
         return ejbRef.getCommandes(idc);
     }
 
+    @WebMethod(operationName = "creerCommande")
+    @Oneway
+    public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) {
+
+        
+        /*Sérialisation du string commande en Map<Integer, Integer> -> (idProduit, Qte) 
+        ex : "{1=3,65=2,5=1}" */
+        commande = commande.substring(1, commande.length() - 1);
+        String[] keyValuePairs = commande.split(",");
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (String pair : keyValuePairs)
+        {
+            String[] entry = pair.split("=");
+            map.put(Integer.parseInt(entry[0].trim()), Integer.parseInt(entry[1].trim()));
+        }
+
+        Long idu = Long.parseLong(id);
+        
+        ejbRef.creerCommande(idu, map, new Date());
+    }
+
+    @WebMethod(operationName = "annulerCommande")
+    @Oneway
+    public void annulerCommande(@WebParam(name = "id") String id) {
+        Long idu = Long.parseLong(id);
+        ejbRef.annulerCommande(idu);
+    }
+
     @WebMethod(operationName = "crediterSolde")
     @Oneway
     public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
-         Long idu = Long.parseLong(id);
-          Long sld = Long.parseLong(solde);
+        Long idu = Long.parseLong(id);
+        Long sld = Long.parseLong(solde);
         ejbRef.crediterSolde(idu, sld);
     }
 
     @WebMethod(operationName = "debiterSolde")
     @Oneway
     public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
-         Long idu = Long.parseLong(id);
-          Long sld = Long.parseLong(solde);
+        Long idu = Long.parseLong(id);
+        Long sld = Long.parseLong(solde);
         ejbRef.debiterSolde(idu, sld);
     }
 
@@ -60,10 +92,17 @@ public class WSLegClient {
         ejbRef.creerUtilisateurClient(nom, prenom);
     }
 
- @WebMethod(operationName = "statutsoldeCompte")
+    @WebMethod(operationName = "demanderfacture")
+    @Oneway
+    public void demanderfacture(@WebParam(name = "id") String id) {
+        Long idu = Long.parseLong(id);
+        ejbRef.demanderfacture(idu);
+    }
+
+    @WebMethod(operationName = "statutsoldeCompte")
     @Oneway
     public void statutsoldeCompte(@WebParam(name = "id") String id) {
-         Long idu = Long.parseLong(id);
+        Long idu = Long.parseLong(id);
         ejbRef.statutsoldeCompte(idu);
     }
 }
