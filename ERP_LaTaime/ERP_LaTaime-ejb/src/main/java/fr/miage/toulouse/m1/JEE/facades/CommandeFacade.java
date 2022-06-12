@@ -6,6 +6,10 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import static fr.miage.toulouse.m1.JEE.entities.Commande_.listeIdProdQte;
+import static fr.miage.toulouse.m1.JEE.entities.Commande_.status;
+import static fr.miage.toulouse.m1.JEE.entities.Commande_.utilisateur;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,10 +39,10 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public void creerCommande(Utilisateur u, Map d, Date dateCommande) {
+    public void creerCommande(Utilisateur u, Map m, Date dateCommande) {
         Commande commande = new Commande();
         commande.setDateCommande(dateCommande);
-        commande.setListeIdProdQte(d);
+        commande.setListeIdProdQte(m);
         commande.setUtilisateur(u);
         this.create(commande);
     }
@@ -79,11 +83,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         return commAnnules;
     }
     
-     @Override
-    public void annulerCommande (Long id) {
-         Commande commande1 = find(id);
-         commande1.setStatus(Commande.StatusComm.annule);
-    }
+ 
 
     @Override
     public void setStatusCommande(Long id, Integer i) {
@@ -103,6 +103,27 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
         
         this.edit(commande);
+    }
+    
+    
+    public String facturer(Long id) {
+        
+        String qteProd = "";
+        Commande commande = find(id);
+        
+        for (int i = 0; i<commande.getListeIdProdQte().size();i++){
+            qteProd += commande.getListeIdProdQte().get(i)+"\n";
+        }
+        if (commande.getStatus()!= commande.getStatus().annule){
+            return  "Client = " + utilisateur +
+                "Id commande = " + commande.getIdCommande() +
+                "\n Date de la commande = " + commande.getDateCommande() +
+                "\n Status de la commande = " + status +
+                "\n Montant = " + commande.getMontantCommande()+
+                "\n Liste des produits et quantités = " + qteProd;
+        }else{
+            return "Commande Annulée";
+        }
     }
 
 }

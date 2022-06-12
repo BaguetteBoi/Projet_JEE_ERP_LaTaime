@@ -6,8 +6,10 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
+import fr.miage.toulouse.m1.JEE.facades.ProduitFacadeLocal;
 import java.util.Date;
 import java.util.Dictionary;
 import java.util.List;
@@ -23,7 +25,12 @@ import javax.ejb.Stateless;
 public class MetierCommande implements MetierCommandeLocal {
 
     @EJB
+    private ProduitFacadeLocal produitFacade;
+
+    @EJB
     private CommandeFacadeLocal commandeFacade;    
+    
+    
 
     @Override
     public void creerCommande(Utilisateur u ,Map d, Date dateCommande) {
@@ -54,8 +61,19 @@ public class MetierCommande implements MetierCommandeLocal {
         commandeFacade.setStatusCommande(id, i);
     }
     
-     @Override
+    @Override
     public void annulerCommande (Long id) {
-        commandeFacade.annulerCommande(id);
+        Commande commande1 = commandeFacade.find(id);
+         
+        commande1.setStatus(Commande.StatusComm.annule);
+        for (Map.Entry<Produit, Integer> p : commande1.getListeIdProdQte().entrySet()){
+           produitFacade.setQuantite(p.getKey().getId(), p.getKey().getQuantite()-p.getValue());           
+        }
+         
+    }
+    
+    @Override
+    public void demanderfacture(Long id) {
+      commandeFacade.facturer(id);
     }
 }

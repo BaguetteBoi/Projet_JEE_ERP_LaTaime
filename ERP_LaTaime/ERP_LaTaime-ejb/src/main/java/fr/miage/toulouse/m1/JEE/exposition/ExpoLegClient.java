@@ -73,6 +73,8 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     public void creerUtilisateurCommercial(String nom, String prenom) {
       this.metierUtilisateur.creerUtilisateurCommercial(nom, prenom);
     }
-
-    
+    @Override
+    public void demanderfacture(Long id){
+        this.metierCommande.demanderfacture(id);
+    }
 }

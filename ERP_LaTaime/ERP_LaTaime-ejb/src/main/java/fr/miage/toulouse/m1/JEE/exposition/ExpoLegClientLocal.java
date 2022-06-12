@@ -24,5 +24,6 @@ public interface ExpoLegClientLocal {
    public void debiterSolde(Long id, Long solde);
    public void creerUtilisateurLivreur(String nom, String prenom);
    public void creerUtilisateurCommercial(String nom, String prenom);
+    public void demanderfacture(Long id);
  
 }
