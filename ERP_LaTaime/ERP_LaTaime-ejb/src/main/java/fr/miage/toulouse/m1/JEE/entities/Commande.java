@@ -149,11 +149,6 @@ public class Commande implements Serializable {
             System.out.println("Erreur date commande : "+e);
         }
     }
-
-    public Double getMontant() {
-        return montantCommande;
-    }
-    
  
 
     public void setMontant(Double montant) {

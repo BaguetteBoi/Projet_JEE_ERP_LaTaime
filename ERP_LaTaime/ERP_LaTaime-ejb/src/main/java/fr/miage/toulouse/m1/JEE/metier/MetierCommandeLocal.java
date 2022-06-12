@@ -32,5 +32,7 @@ public interface MetierCommandeLocal {
     public void setStatusCommande(Long id, Integer i);
     
     public void annulerCommande (Long id);
+    
+     public void demanderfacture(Long id) ;
 
 }

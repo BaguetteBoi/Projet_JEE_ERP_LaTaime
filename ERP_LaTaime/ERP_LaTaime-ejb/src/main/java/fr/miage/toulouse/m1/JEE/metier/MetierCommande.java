@@ -30,6 +30,8 @@ public class MetierCommande implements MetierCommandeLocal {
 
     @EJB
     private CommandeFacadeLocal commandeFacade;    
+    
+    
 
     @Override
     public void creerCommande(Utilisateur u ,Map<Integer, Integer> d, Date dateCommande) {
@@ -64,8 +66,19 @@ public class MetierCommande implements MetierCommandeLocal {
         commandeFacade.setStatusCommande(id, i);
     }
     
-     @Override
+    @Override
     public void annulerCommande (Long id) {
-        commandeFacade.annulerCommande(id);
+        Commande commande1 = commandeFacade.find(id);
+         
+        commande1.setStatus(Commande.StatusComm.annule);
+        for (Map.Entry<Produit, Integer> p : commande1.getListeIdProdQte().entrySet()){
+           produitFacade.setQuantite(p.getKey().getId(), p.getKey().getQuantite()-p.getValue());           
+        }
+         
+    }
+    
+    @Override
+    public void demanderfacture(Long id) {
+      commandeFacade.facturer(id);
     }
 }

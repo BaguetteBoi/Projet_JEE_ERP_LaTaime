@@ -68,6 +68,8 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     public void statutsoldeCompte(Long id) {
         this.metierUtilisateur.statutsolde(id);
     }
-    
-    
+    @Override
+    public void demanderfacture(Long id){
+        this.metierCommande.demanderfacture(id);
+    }
 }
