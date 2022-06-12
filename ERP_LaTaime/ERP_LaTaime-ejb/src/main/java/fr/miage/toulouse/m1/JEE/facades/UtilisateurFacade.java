@@ -8,7 +8,6 @@ package fr.miage.toulouse.m1.JEE.facades;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur.TypeU;
-import static fr.miage.toulouse.m1.JEE.entities.Utilisateur_.id;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -42,7 +41,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         this.create(user);
     }
 
-    /**Méthode permettant de récupérer l'ensemble des commandes crées par l'utilisateur client*/
+    /**Méthode permettant de récupérer l'ensemble des commandes crées par l'utilisateur clie
+     * @param id
+     * @param idn
+     * @return */
     @Override
     public List<Commande> getCommandes(Long id) {
         Utilisateur user = this.find(id);
@@ -56,7 +58,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         Utilisateur user = this.find(id);
         return user.getSolde();
     }
-    /**Méthode permettant de créditer le solde de l'utilisateur client */
+
+    /**Méthode permettant de créditer le solde de l'utilisateur client
+     * @param id
+     * @param solde */
     @Override
     public void crediterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -69,7 +74,9 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
-    /**Méthode permettant de débiter le solde de l'utilisateur client */
+    /**Méthode permettant de débiter le solde de l'utilisateur client
+     * @param id
+     * @param solde */
     @Override
     public void debiterSolde(Long id, Long solde) {
         Utilisateur user = this.find(id);
@@ -84,13 +91,18 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
     
-    /**Méthode permettant de créer un utilisateur Client */
+    /**Méthode permettant de créer un utilisateur Client
+     * @param nom
+     * @param prenom */
     @Override
     public void creerUtilisateurClient(String nom, String prenom) {
         creerUtilisateur(nom, prenom, TypeU.Client);
     }
 
-    /**Méthode permettant de créer un utilisateur Commercial */
+    /**Méthode permettant de créer un utilisateur Commercial
+     * @param id
+     * @param nom
+     * @param prenom */
     @Override
     public void creerUtilisateurCommercial(Long id, String nom, String prenom) {
         Utilisateur user = this.find(id);
@@ -100,7 +112,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
     
-    /**Méthode permettant de créer un utilisateur Livreur */
+    /**Méthode permettant de créer un utilisateur Livreur
+     * @param id
+     * @param nom
+     * @param prenom */
     @Override
     public void creerUtilisateurLivreur(Long id, String nom, String prenom) {
         Utilisateur user = this.find(id);

@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.Date;
 import java.util.Dictionary;
@@ -34,7 +35,7 @@ public interface CommandeFacadeLocal {
 
     int count();
     
-    public void creerCommande(Utilisateur u, Map d , Date dateCommande);
+    public void creerCommande(Utilisateur u, Map<Produit, Integer> d , Date dateCommande);
     
     public List<Commande> getCommandesNnLivres();
     

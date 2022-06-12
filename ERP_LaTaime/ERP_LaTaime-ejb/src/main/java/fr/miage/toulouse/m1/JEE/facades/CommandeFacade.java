@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,7 +36,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 /** Méthode permettant de créer un commande de produits d'un utilisateur */
     @Override
-    public void creerCommande(Utilisateur u, Map d, Date dateCommande) {
+    public void creerCommande(Utilisateur u, Map<Produit, Integer> d, Date dateCommande) {
         Commande commande = new Commande();
         commande.setDateCommande(dateCommande);
         commande.setListeIdProdQte(d);
