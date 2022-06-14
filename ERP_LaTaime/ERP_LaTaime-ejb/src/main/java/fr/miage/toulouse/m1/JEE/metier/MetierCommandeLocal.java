@@ -20,20 +20,19 @@ import javax.ejb.Local;
  */
 @Local
 public interface MetierCommandeLocal {
-    
-    
-    public void creerCommande(Long idU ,Map<Integer, Integer> d, Date dateCommande) throws ProduitException;
-    
+
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException;
+
     public List<Commande> getCommandesNnLivres();
-    
+
     public List<Commande> getCommandesLivres();
 
     public List<Commande> getCommandesAnnules();
-    
+
     public void setStatusCommande(Long id, Integer i);
-    
-    public void annulerCommande (Long id) throws ProduitException;
-    
-     public void demanderfacture(Long id) ;
+
+    public void annulerCommande(Long id) throws ProduitException;
+
+    public void demanderfacture(Long id);
 
 }

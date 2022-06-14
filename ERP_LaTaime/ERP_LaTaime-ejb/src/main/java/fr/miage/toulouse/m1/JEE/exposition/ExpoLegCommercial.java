@@ -7,7 +7,9 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCategorieProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
@@ -31,7 +33,7 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
 
     @EJB
     private MetierCommandeLocal metierCommande;
-    
+
     @EJB
     private MetierCategorieProduitLocal metierCategorieProduit;
 
@@ -61,8 +63,8 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public Produit getProduit(long id) throws ProduitException{
-       return metierProduit.getProduit(id);
+    public Produit getProduit(long id) throws ProduitException {
+        return metierProduit.getProduit(id);
     }
 
     @Override
@@ -71,37 +73,52 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public void setQuantite(long id, long prixUnitaire) throws ProduitException{
+    public void setQuantite(long id, long prixUnitaire) throws ProduitException {
         metierProduit.setQuantite(id, prixUnitaire);
     }
 
     @Override
-    public void setPrixUnitaire(long id, double prixUnitaire) throws ProduitException{
+    public void setPrixUnitaire(long id, double prixUnitaire) throws ProduitException {
         metierProduit.setPrixUnitaire(id, prixUnitaire);
     }
 
     @Override
-    public void supprimerProduit(long id) throws ProduitException{
+    public void supprimerProduit(long id) throws ProduitException {
         metierProduit.supprimerProduit(id);
     }
 
     @Override
-    public void modifierProduit(long id, String libele, String description) throws ProduitException{
+    public void modifierProduit(long id, String libele, String description) throws ProduitException {
         metierProduit.modifierProduit(id, libele, description);
     }
 
     @Override
-    public boolean isProduitEnStock(long id) throws ProduitException{
+    public boolean isProduitEnStock(long id) throws ProduitException {
         return metierProduit.isProduitEnStock(id);
     }
-    
+
     @Override
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom) {
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException {
         this.metierUtilisateur.creerUtilisateurCommercial(id, nom, prenom);
     }
 
     @Override
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom) {
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException {
         this.metierUtilisateur.creerUtilisateurLivreur(id, nom, prenom);
-    }    
+    }
+
+    @Override
+    public Long getMiageCompteBancaire() throws UtilisateurException {
+        return metierUtilisateur.getMiageCompteBancaire();
+    }
+
+    @Override
+    public void setMiageCompteBancaire(Long num) throws UtilisateurException {
+        metierUtilisateur.setMiageCompteBancaire(num);
+    }
+
+    @Override
+    public Utilisateur creerUtilisateurAdmin() throws UtilisateurException {
+        return metierUtilisateur.creerUtilisateurAdmin();
+    }
 }

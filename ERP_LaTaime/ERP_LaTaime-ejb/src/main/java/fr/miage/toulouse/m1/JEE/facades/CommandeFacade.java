@@ -127,6 +127,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         this.edit(commande);
     }
 
+    @Override
     public String facturer(Long id) {
 
         String qteProd = "";
@@ -135,7 +136,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         for (int i = 0; i < commande.getListeIdProdQte().size(); i++) {
             qteProd += commande.getListeIdProdQte().get(i) + "\n";
         }
-        if (commande.getStatus() != commande.getStatus().annule) {
+        if (commande.getStatus() != Commande.StatusComm.annule) {
             return "Client = " + utilisateur
                     + "Id commande = " + commande.getIdCommande()
                     + "\n Date de la commande = " + commande.getDateCommande()

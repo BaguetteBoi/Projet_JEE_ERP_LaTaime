@@ -197,8 +197,10 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + '}';
+        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", type=" + type + ", numCompteBancaire=" + numCompteBancaire + ", solde=" + solde + '}';
     }
+
+    
     /** La classe TypeU définit le type de l'utilisateur.
      * Un utilisateur peut être un client, un commercial, un livreur ou un et un seul Admin qui possède le compte de laTaime 
      * 

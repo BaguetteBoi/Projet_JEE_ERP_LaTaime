@@ -7,7 +7,9 @@ package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegCommercialLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -28,20 +30,17 @@ public class WSLegCommercial {
     // "Web Service > Add Operation"
 
     @WebMethod(operationName = "creerTypeProduit")
-    @Oneway
     public void creerTypeProduit(@WebParam(name = "libelle") String libelle) {
         ejbRef.creerTypeProduit(libelle);
     }
 
     @WebMethod(operationName = "supprimerTypeProduit")
-    @Oneway
     public void supprimerTypeProduit(@WebParam(name = "id") String id) {
         Long idp = Long.parseLong(id);
         ejbRef.supprimerTypeProduit(idp);
     }
 
     @WebMethod(operationName = "majTypeProduit")
-    @Oneway
     public void majTypeProduit(@WebParam(name = "id") String id, @WebParam(name = "libelle") String libelle) {
         Long idp = Long.parseLong(id);
         ejbRef.majTypeProduit(idp, libelle);
@@ -53,7 +52,6 @@ public class WSLegCommercial {
     }
 
     @WebMethod(operationName = "creerProduit")
-    @Oneway
     public void creerProduit(@WebParam(name = "libele") String libele, @WebParam(name = "prixUnitaire") String prixUnitaire, @WebParam(name = "description") String description) {
         Double prxu = Double.parseDouble(prixUnitaire);
         ejbRef.creerProduit(libele, prxu, description);
@@ -71,7 +69,6 @@ public class WSLegCommercial {
     }
 
     @WebMethod(operationName = "setQuantite")
-    @Oneway
     public void setQuantite(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) throws ProduitException{
         Long idp = Long.parseLong(id);
         Long pru = Long.parseLong(prixUnitaire);
@@ -79,7 +76,6 @@ public class WSLegCommercial {
     }
 
     @WebMethod(operationName = "setPrixUnitaire")
-    @Oneway
     public void setPrixUnitaire(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) throws ProduitException{
         Long idp = Long.parseLong(id);
         Double prxu = Double.parseDouble(prixUnitaire);
@@ -87,14 +83,12 @@ public class WSLegCommercial {
     }
 
     @WebMethod(operationName = "supprimerProduit")
-    @Oneway
     public void supprimerProduit(@WebParam(name = "id") String id) throws ProduitException{
         Long idp = Long.parseLong(id);
         ejbRef.supprimerProduit(idp);
     }
 
     @WebMethod(operationName = "modifierProduit")
-    @Oneway
     public void modifierProduit(@WebParam(name = "id") String id, @WebParam(name = "libele") String libele, @WebParam(name = "description") String description) throws ProduitException{
         Long idp = Long.parseLong(id);
         ejbRef.modifierProduit(idp, libele, description);
@@ -107,16 +101,30 @@ public class WSLegCommercial {
     }
     
     @WebMethod(operationName = "creerUtilisateurCommercial")
-    @Oneway
-    public void creerUtilisateurCommercial(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+    public void creerUtilisateurCommercial(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) throws UtilisateurException {
         Long idp = Long.parseLong(id);
         ejbRef.creerUtilisateurCommercial(idp, nom, prenom);
     } 
     
     @WebMethod(operationName = "creerUtilisateurLivreur")
-    @Oneway
-    public void creerUtilisateurLivreur(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+    public void creerUtilisateurLivreur(@WebParam(name = "id") String id, @WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) throws UtilisateurException {
         Long idp = Long.parseLong(id);
         ejbRef.creerUtilisateurLivreur(idp, nom, prenom);
+    }
+    
+    @WebMethod(operationName = "getMiageCompteBancaire")
+    public Long getMiageCompteBancaire() throws UtilisateurException {
+        return ejbRef.getMiageCompteBancaire();
+    }
+
+    @WebMethod(operationName = "setMiageCompteBancaire")
+    public void setMiageCompteBancaire(@WebParam(name = "num") String num) throws UtilisateurException {
+        Long numC = Long.parseLong(num);
+        ejbRef.setMiageCompteBancaire(numC);
+    }
+
+    @WebMethod(operationName = "creerUtilisateurAdmin")
+    public Utilisateur creerUtilisateurAdmin() throws UtilisateurException {
+        return ejbRef.creerUtilisateurAdmin();
     }
 }

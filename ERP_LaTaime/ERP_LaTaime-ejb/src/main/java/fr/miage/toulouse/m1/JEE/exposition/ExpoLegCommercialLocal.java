@@ -7,7 +7,9 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,11 +18,11 @@ import javax.ejb.Local;
  * @author AntoineGougault
  */
 @Local
-public interface ExpoLegCommercialLocal {    
-    
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom);
-    
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom);
+public interface ExpoLegCommercialLocal {
+
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
+
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
 
     //crud categories (type prod)
     public void creerTypeProduit(String libelle);
@@ -47,4 +49,10 @@ public interface ExpoLegCommercialLocal {
     public void modifierProduit(long id, String libele, String description) throws ProduitException;
 
     public boolean isProduitEnStock(long id) throws ProduitException;
+    
+    public Long getMiageCompteBancaire() throws UtilisateurException;
+    
+    public void setMiageCompteBancaire(Long num) throws UtilisateurException;
+    
+    public Utilisateur creerUtilisateurAdmin() throws UtilisateurException;
 }

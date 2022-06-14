@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,20 +18,30 @@ import javax.ejb.Local;
 @Local
 public interface MetierUtilisateurLocal {
 
-    public Utilisateur getUtilisateur(Long idUtilisateur);
+    public Utilisateur getUtilisateur(Long idUtilisateur) throws UtilisateurException;
     // Partie d'ajout de commandes au métier de l'utilisateur 
 
-    public List<Commande> getCommandes(Long id);
+    public List<Commande> getCommandes(Long id) throws UtilisateurException;
 
-    public void crediterSolde(Long id, Long solde);
+    public void crediterSolde(Long id, Long solde) throws UtilisateurException;
+
+    public void debiterSolde(Long id, Long solde) throws UtilisateurException;
+
+    public void creerUtilisateurClient(String nom, String prenom);
+
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
+
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
+
+    public void statutsolde(Long id) throws UtilisateurException;
+        
+    public Long getStatutSoldeCompte(Long id) throws UtilisateurException;
+        
+    public Long getMiageCompteBancaire() throws UtilisateurException;
     
-     public void debiterSolde(Long id, Long solde);
-     
-     public void creerUtilisateurClient(String nom, String prenom);
-     
-     public void creerUtilisateurLivreur(Long id, String nom, String prenom);
-     
-     public void creerUtilisateurCommercial(Long id, String nom, String prenom);
-     
-     public void statutsolde(Long id);
+    public void setMiageCompteBancaire(Long num) throws UtilisateurException;
+    
+    public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException;
+    
+    public Utilisateur creerUtilisateurAdmin() throws UtilisateurException;
 }

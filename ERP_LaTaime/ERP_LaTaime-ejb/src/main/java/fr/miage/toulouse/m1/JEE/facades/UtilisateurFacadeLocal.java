@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,21 +32,27 @@ public interface UtilisateurFacadeLocal {
 
     int count();
 
-    public List<Commande> getCommandes(Long id);
+    public List<Commande> getCommandes(Long id) throws UtilisateurException;
 
-    public void crediterSolde(Long id, Long solde);
+    public void crediterSolde(Long id, Long solde) throws UtilisateurException;
 
-    public void debiterSolde(Long id, Long solde);
+    public void debiterSolde(Long id, Long solde) throws UtilisateurException;
     
     public void creerUtilisateurClient(String nom, String prenom);
 
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom);
+    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
 
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom);
+    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
     
-    public Long getStatutSoldeCompte(Long id);
+    public Utilisateur getUtilisateur(Long id) throws UtilisateurException;
+    
+    public Long getStatutSoldeCompte(Long id) throws UtilisateurException;
         
-    public Long getMiageCompteBancaire();
+    public Long getMiageCompteBancaire() throws UtilisateurException;
     
-    public void setMiageCompteBancaire(Long num);
+    public void setMiageCompteBancaire(Long num) throws UtilisateurException;
+    
+    public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException;
+    
+    public Utilisateur creerUtilisateurAdmin() throws UtilisateurException;
 }

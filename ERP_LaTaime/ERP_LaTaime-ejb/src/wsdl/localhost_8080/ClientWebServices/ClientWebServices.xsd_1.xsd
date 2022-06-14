@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://webservices.miagebank.toulouse.miage.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservices.miagebank.toulouse.miage.fr/">
+
+<xs:element name="CompteClotureException" type="tns:CompteClotureException"/>
+
+<xs:element name="CompteInconnuException" type="tns:CompteInconnuException"/>
+
+<xs:element name="MontantInvalidException" type="tns:MontantInvalidException"/>
+
+<xs:element name="SoldeInsufisantException" type="tns:SoldeInsufisantException"/>
+
+<xs:element name="consulter" type="tns:consulter"/>
+
+<xs:element name="consulterResponse" type="tns:consulterResponse"/>
+
+<xs:element name="virer" type="tns:virer"/>
+
+<xs:element name="virerResponse" type="tns:virerResponse"/>
+
+<xs:complexType name="consulter">
+<xs:sequence>
+<xs:element name="idCompte" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consulterResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:position" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="position">
+<xs:sequence>
+<xs:element name="dateInterrogation" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="solde" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CompteInconnuException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CompteClotureException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="virer">
+<xs:sequence>
+<xs:element name="idCompteDebiteur" type="xs:long"/>
+<xs:element name="idCompteCrediteur" type="xs:long"/>
+<xs:element name="montant" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="virerResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="MontantInvalidException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SoldeInsufisantException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

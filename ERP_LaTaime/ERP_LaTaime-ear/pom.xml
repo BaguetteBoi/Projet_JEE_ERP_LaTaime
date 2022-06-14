@@ -4,12 +4,12 @@
     <parent>
     <artifactId>ERP_LaTaime</artifactId>
     <groupId>fr.miage.toulouse.m1.JEE</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1-SNAPSHOT</version>
   </parent>
 
     <groupId>fr.miage.toulouse.m1.JEE</groupId>
     <artifactId>ERP_LaTaime-ear</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1-SNAPSHOT</version>
     <packaging>ear</packaging>
 
     <name>ERP_LaTaime-ear</name>
@@ -44,13 +44,13 @@
         <dependency>
             <groupId>fr.miage.toulouse.m1.JEE</groupId>
             <artifactId>ERP_LaTaime-ejb</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>v1-SNAPSHOT</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>fr.miage.toulouse.m1.JEE</groupId>
             <artifactId>ERP_LaTaime-web</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>v1-SNAPSHOT</version>
             <type>war</type>
         </dependency>
     </dependencies>

@@ -21,10 +21,8 @@ public class MetierCategorieProduit implements MetierCategorieProduitLocal {
     @EJB
     private CategorieProduitFacadeLocal typeProduitFacade;
 
-    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
     @Override
     public List<CategorieProduit> getAllTypeProduit() {
         return typeProduitFacade.findAll();

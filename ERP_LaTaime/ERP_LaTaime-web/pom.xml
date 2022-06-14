@@ -4,12 +4,12 @@
     <parent>
     <artifactId>ERP_LaTaime</artifactId>
     <groupId>fr.miage.toulouse.m1.JEE</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1-SNAPSHOT</version>
   </parent>
 
     <groupId>fr.miage.toulouse.m1.JEE</groupId>
     <artifactId>ERP_LaTaime-web</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>ERP_LaTaime-web</name>

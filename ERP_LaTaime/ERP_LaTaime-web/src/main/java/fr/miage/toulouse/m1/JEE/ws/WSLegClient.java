@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.ws;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,19 +32,18 @@ public class WSLegClient {
     // "Web Service > Add Operation"
 
     @WebMethod(operationName = "getUtilisateur")
-    public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") String idUtilisateur) {
+    public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") String idUtilisateur) throws UtilisateurException {
         Long idu = Long.parseLong(idUtilisateur);
         return ejbRef.getUtilisateur(idu);
     }
 
     @WebMethod(operationName = "getCommandes")
-    public List<Commande> getCommandes(@WebParam(name = "id") String id) {
+    public List<Commande> getCommandes(@WebParam(name = "id") String id) throws UtilisateurException {
         Long idc = Long.parseLong(id);
         return ejbRef.getCommandes(idc);
     }
 
     @WebMethod(operationName = "creerCommande")
-    @Oneway
     public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) throws ProduitException{
 
         
@@ -65,45 +65,46 @@ public class WSLegClient {
     }
 
     @WebMethod(operationName = "annulerCommande")
-    @Oneway
     public void annulerCommande(@WebParam(name = "id") String id) throws ProduitException{
         Long idu = Long.parseLong(id);
         ejbRef.annulerCommande(idu);
     }
 
     @WebMethod(operationName = "crediterSolde")
-    @Oneway
-    public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
+    public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
         Long sld = Long.parseLong(solde);
         ejbRef.crediterSolde(idu, sld);
     }
 
     @WebMethod(operationName = "debiterSolde")
-    @Oneway
-    public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) {
+    public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
         Long sld = Long.parseLong(solde);
         ejbRef.debiterSolde(idu, sld);
     }
 
     @WebMethod(operationName = "creerUtilisateurClient")
-    @Oneway
     public void creerUtilisateurClient(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
         ejbRef.creerUtilisateurClient(nom, prenom);
     }
 
     @WebMethod(operationName = "demanderfacture")
-    @Oneway
     public void demanderfacture(@WebParam(name = "id") String id) {
         Long idu = Long.parseLong(id);
         ejbRef.demanderfacture(idu);
     }
 
     @WebMethod(operationName = "statutsoldeCompte")
-    @Oneway
-    public void statutsoldeCompte(@WebParam(name = "id") String id) {
+    public void statutsoldeCompte(@WebParam(name = "id") String id) throws UtilisateurException {
         Long idu = Long.parseLong(id);
         ejbRef.statutsoldeCompte(idu);
+    }
+    
+    @WebMethod(operationName = "setUtilisateurCompteBancaire")
+    public void setUtilisateurCompteBancaire(@WebParam(name = "id") String id, @WebParam(name = "num") String num) throws UtilisateurException {
+        Long idu = Long.parseLong(id);
+        Long numS = Long.parseLong(num);
+        ejbRef.setUtilisateurCompteBancaire(idu, numS);
     }
 }

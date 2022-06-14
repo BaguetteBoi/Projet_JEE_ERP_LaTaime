@@ -12,7 +12,6 @@ import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import fr.miage.toulouse.m1.JEE.facades.ProduitFacadeLocal;
 import fr.miage.toulouse.m1.JEE.facades.UtilisateurFacadeLocal;
-import fr.miage.toulouse.m1.JEE.utility.ClientRest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,8 +39,7 @@ public class MetierCommande implements MetierCommandeLocal {
     public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException{
 
         Utilisateur client = utilisateurFacade.find(idU);
-        ClientRest.CallVirementMiageBank(client.getNumCompteBancaire(), utilisateurFacade.getMiageCompteBancaire(), Long.MIN_VALUE);
-
+        
         Map<Produit, Integer> MapProdQte = new HashMap<>();
         for (Map.Entry<Integer, Integer> p : d.entrySet()) {
             MapProdQte.put(produitFacade.getProduit(p.getKey()), p.getValue());

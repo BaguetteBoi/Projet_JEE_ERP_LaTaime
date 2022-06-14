@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
@@ -17,62 +18,65 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-
-
 @Stateless
 public class ExpoLegClient implements ExpoLegClientLocal {
-
+    
     @EJB
     private MetierUtilisateurLocal metierUtilisateur;
-
+    
     @EJB
     private MetierProduitLocal metierProduit;
-
+    
     @EJB
     private MetierCommandeLocal metierCommande;
-
+    
     @Override
-    public Utilisateur getUtilisateur(Long idUtilisateur) {
-      return this.metierUtilisateur.getUtilisateur(idUtilisateur);
+    public Utilisateur getUtilisateur(Long idUtilisateur) throws UtilisateurException {
+        return this.metierUtilisateur.getUtilisateur(idUtilisateur);
+    }
+    
+    @Override
+    public List<Commande> getCommandes(Long id) throws UtilisateurException {
+        return this.metierUtilisateur.getCommandes(id);
+    }
+    
+    @Override
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException {
+        this.metierCommande.creerCommande(idU, d, dateCommande);
+    }
+    
+    @Override
+    public void annulerCommande(Long id) throws ProduitException {
+        this.metierCommande.annulerCommande(id);
     }
 
     @Override
-    public List<Commande> getCommandes(Long id) {
-      return this.metierUtilisateur.getCommandes(id);
+    public void crediterSolde(Long id, Long solde) throws UtilisateurException {
+        this.metierUtilisateur.crediterSolde(id, solde);
     }
-
+    
     @Override
-    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException{
-      this.metierCommande.creerCommande(idU, d, dateCommande);
-    }
-   
-    @Override
-   public void annulerCommande (Long id) throws ProduitException
-   {
-       this.metierCommande.annulerCommande(id);
-   }
-    @Override
-   public void crediterSolde(Long id, Long solde)
-   {
-       this.metierUtilisateur.crediterSolde(id, solde);
-   }
-   
-    @Override
-    public void debiterSolde(Long id, Long solde){
+    public void debiterSolde(Long id, Long solde) throws UtilisateurException {
         this.metierUtilisateur.debiterSolde(id, solde);
     }
-
+    
     @Override
     public void creerUtilisateurClient(String nom, String prenom) {
         this.metierUtilisateur.creerUtilisateurClient(nom, prenom);
     }
     
     @Override
-    public void statutsoldeCompte(Long id) {
+    public void statutsoldeCompte(Long id) throws UtilisateurException {
         this.metierUtilisateur.statutsolde(id);
     }
+
     @Override
-    public void demanderfacture(Long id){
+    public void demanderfacture(Long id) {
         this.metierCommande.demanderfacture(id);
+    }
+    
+    @Override
+    public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException {
+        this.metierUtilisateur.setUtilisateurCompteBancaire(id, num);
     }
 }
