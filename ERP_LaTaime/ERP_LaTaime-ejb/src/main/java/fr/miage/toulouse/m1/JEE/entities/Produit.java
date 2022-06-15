@@ -33,31 +33,6 @@ public class Produit implements Serializable {
     private double prixUnitaire;
     
     private String description;
-    
-    @ManyToOne
-    private CategorieProduit categorieProduit;
-
-    /**
-     * Get the value of categorieProduit
-     *
-     * @return the value of categorieProduit
-     */
-    public CategorieProduit getCategorieProduit() {
-        return categorieProduit;
-    }
-
-    /**
-     * Set the value of categorieProduit
-     *
-     * @param categorieProduit new value of categorieProduit
-     */
-    public void setCategorieProduit(CategorieProduit categorieProduit) {
-        try {
-            this.categorieProduit = categorieProduit;
-        }catch(Exception e){
-            System.out.println("Erreur Catégorie produit : "+e);
-        }
-    }
 
     /** Méthode pour récupérer l'ID d'un produit */
     public Long getId() {
@@ -164,7 +139,7 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", libele=" + libelle + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + ", description=" + description + '}';
+        return "Produit{" + "id=" + id + ", libelle=" + libelle + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + ", description=" + description + '}';
     }
     
 }

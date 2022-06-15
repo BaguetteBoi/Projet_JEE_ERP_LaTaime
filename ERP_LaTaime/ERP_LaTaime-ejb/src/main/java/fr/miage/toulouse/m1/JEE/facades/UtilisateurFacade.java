@@ -39,13 +39,14 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * Méthode permettant de créer un nouvel utilisateur. On va faire appel à
      * cette méthode afin de pouvoir créer tout type d'utilisateurs.
      */
-    private void creerUtilisateur(String nom, String prenom, TypeU typeU) {
+    private Utilisateur creerUtilisateur(String nom, String prenom, TypeU typeU) {
         Utilisateur user = new Utilisateur();
         user.setNom(nom);
         user.setPrenom(prenom);
         user.setType(typeU);
-        user.setSolde(0L);
+        user.setSolde(0D);
         this.create(user);
+        return user;
     }
 
     /**
@@ -71,7 +72,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @throws fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException
      */
     @Override
-    public Long getStatutSoldeCompte(Long id) throws UtilisateurException {
+    public Double getStatutSoldeCompte(Long id) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
         return user.getSolde();
     }
@@ -84,10 +85,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @throws fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException
      */
     @Override
-    public void crediterSolde(Long id, Long solde) throws UtilisateurException {
+    public void crediterSolde(Long id, Double solde) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
-        Long currentsolde = user.getSolde();
-        Long totsolde = solde + currentsolde;
+        Double currentsolde = user.getSolde();
+        Double totsolde = solde + currentsolde;
         user.setSolde(totsolde);
         this.edit(user);
     }
@@ -100,10 +101,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @throws fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException
      */
     @Override
-    public void debiterSolde(Long id, Long solde) throws UtilisateurException {
+    public void debiterSolde(Long id, Double solde) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
-        Long currentsolde = user.getSolde();
-        Long totsolde = currentsolde - solde;
+        Double currentsolde = user.getSolde();
+        Double totsolde = currentsolde - solde;
         if (totsolde >= 0) {
             user.setSolde(totsolde);
             this.edit(user);
@@ -119,8 +120,8 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @param prenom
      */
     @Override
-    public void creerUtilisateurClient(String nom, String prenom) {
-        creerUtilisateur(nom, prenom, TypeU.Client);
+    public Utilisateur creerUtilisateurClient(String nom, String prenom) {
+        return creerUtilisateur(nom, prenom, TypeU.Client);
     }
 
     /**
@@ -132,11 +133,13 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @throws fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException
      */
     @Override
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException {
+    public Utilisateur creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
 
         if (user.getType() == Utilisateur.TypeU.Admin || user.getType() == Utilisateur.TypeU.Commercial) {
-            creerUtilisateur(nom, prenom, TypeU.Commercial);
+            return creerUtilisateur(nom, prenom, TypeU.Commercial);
+        }else{
+            throw new UtilisateurException("L'Utilisateur ID=" + id + "n'a pas les droits nécessaire pour créer ce type d'utilisateur");
         }
     }
 
@@ -149,10 +152,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
      * @throws fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException
      */
     @Override
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException {
+    public Utilisateur creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
         if (user.getType() == Utilisateur.TypeU.Admin || user.getType() == Utilisateur.TypeU.Commercial) {
-            creerUtilisateur(nom, prenom, TypeU.Livreur);
+            return creerUtilisateur(nom, prenom, TypeU.Livreur);
+        }else{
+            throw new UtilisateurException("L'Utilisateur ID=" + id + "n'a pas les droits nécessaire pour créer ce type d'utilisateur");
         }
     }
 
@@ -197,7 +202,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
             Utilisateur user = new Utilisateur();
             user.setNom("Admin");
             user.setPrenom("LaTaime");
-            user.setSolde(0L);
+            user.setSolde(0D);
             user.setType(TypeU.Admin);
             user.setNumCompteBancaire(2);
             this.create(user);
@@ -220,6 +225,13 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
         user.setNumCompteBancaire(num);
+        this.edit(user);
+    }
+
+    @Override
+    public void addCommande(Long id, Commande c) throws UtilisateurException {
+        Utilisateur user = getUtilisateur(id);
+        user.addCommande(c);
         this.edit(user);
     }
 }

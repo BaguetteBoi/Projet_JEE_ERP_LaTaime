@@ -44,7 +44,7 @@ public class WSLegClient {
     }
 
     @WebMethod(operationName = "creerCommande")
-    public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) throws ProduitException{
+    public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) throws ProduitException, UtilisateurException{
 
         
         /*Sérialisation du string commande en Map<Integer, Integer> -> (idProduit, Qte) 
@@ -73,20 +73,20 @@ public class WSLegClient {
     @WebMethod(operationName = "crediterSolde")
     public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
-        Long sld = Long.parseLong(solde);
+        Double sld = Double.parseDouble(solde);
         ejbRef.crediterSolde(idu, sld);
     }
 
     @WebMethod(operationName = "debiterSolde")
     public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
-        Long sld = Long.parseLong(solde);
+        Double sld = Double.parseDouble(solde);
         ejbRef.debiterSolde(idu, sld);
     }
 
     @WebMethod(operationName = "creerUtilisateurClient")
-    public void creerUtilisateurClient(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
-        ejbRef.creerUtilisateurClient(nom, prenom);
+    public Utilisateur creerUtilisateurClient(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
+        return ejbRef.creerUtilisateurClient(nom, prenom);
     }
 
     @WebMethod(operationName = "demanderfacture")
@@ -95,10 +95,10 @@ public class WSLegClient {
         ejbRef.demanderfacture(idu);
     }
 
-    @WebMethod(operationName = "statutsoldeCompte")
-    public void statutsoldeCompte(@WebParam(name = "id") String id) throws UtilisateurException {
+    @WebMethod(operationName = "getStatutSoldeCompte")
+    public Double statutsoldeCompte(@WebParam(name = "id") String id) throws UtilisateurException {
         Long idu = Long.parseLong(id);
-        ejbRef.statutsoldeCompte(idu);
+        return ejbRef.getStatutSoldeCompte(idu);
     }
     
     @WebMethod(operationName = "setUtilisateurCompteBancaire")

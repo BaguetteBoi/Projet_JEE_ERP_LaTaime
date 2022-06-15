@@ -5,6 +5,7 @@
  */
 package fr.miage.toulouse.m1.JEE.facades;
 
+import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import java.util.List;

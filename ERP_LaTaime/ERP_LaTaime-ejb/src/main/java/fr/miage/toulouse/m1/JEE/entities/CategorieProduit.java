@@ -117,7 +117,15 @@ public class CategorieProduit implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.miage.toulouse.m1.JEE.entities.TypeProduit[ id=" + id + " ]";
+        String msg =  "CategorieProduit{" + "id=" + id + ", libelle=" + libelle + ", produits=";
+        for(Produit p : produits ){
+            msg += p.toString() + ",";
+        }       
+        msg+= '}';
+        
+        return msg;
     }
+
+    
     
 }

@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCategorieProduitLocal;
@@ -38,23 +39,33 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     private MetierCategorieProduitLocal metierCategorieProduit;
 
     @Override
-    public void creerTypeProduit(String libelle) {
-        metierCategorieProduit.creerTypeProduit(libelle);
+    public void creerCategorieProduit(String libelle) {
+        metierCategorieProduit.creerCategorieProduit(libelle);
     }
 
     @Override
-    public void supprimerTypeProduit(Long id) {
-        metierCategorieProduit.supprimerTypeProduit(id);
+    public void supprimerCategorieProduit(Long id) throws CategorieProduitException{
+        metierCategorieProduit.supprimerCategorieProduit(id);
     }
 
     @Override
-    public void majTypeProduit(Long id, String libelle) {
-        metierCategorieProduit.majTypeProduit(id, libelle);
+    public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException{
+        metierCategorieProduit.majCategorieProduit(id, libelle);
+    }
+    
+    @Override
+    public void ajouterProduitACategorieProduit(Long idQ, Long IdP) throws CategorieProduitException, ProduitException {
+        metierCategorieProduit.ajouterProduitACategorieProduit(idQ, IdP);
     }
 
     @Override
-    public List<CategorieProduit> getAllTypeProduit() {
-        return metierCategorieProduit.getAllTypeProduit();
+    public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException {
+        return metierCategorieProduit.getCategorieProduit(id);
+    }
+
+    @Override
+    public List<CategorieProduit> getAllCategorieProduit() {
+        return metierCategorieProduit.getAllCategorieProduit();
     }
 
     @Override
@@ -98,13 +109,13 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException {
-        this.metierUtilisateur.creerUtilisateurCommercial(id, nom, prenom);
+    public Utilisateur creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException {
+        return this.metierUtilisateur.creerUtilisateurCommercial(id, nom, prenom);
     }
 
     @Override
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException {
-        this.metierUtilisateur.creerUtilisateurLivreur(id, nom, prenom);
+    public Utilisateur creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException {
+        return this.metierUtilisateur.creerUtilisateurLivreur(id, nom, prenom);
     }
 
     @Override

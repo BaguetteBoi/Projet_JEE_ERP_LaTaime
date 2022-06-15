@@ -42,12 +42,15 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
      * Méthode permettant de créer un commande de produits d'un utilisateur
      */
     @Override
-    public void creerCommande(Utilisateur u, Map<Produit, Integer> d, Date dateCommande) {
+    public Commande creerCommande(Utilisateur u, Map<Produit, Integer> d, Date dateCommande, Double montant) {
         Commande commande = new Commande();
         commande.setDateCommande(dateCommande);
         commande.setListeIdProdQte(d);
         commande.setUtilisateur(u);
+        commande.setStatus(Commande.StatusComm.nonLivre);
+        commande.setMontantCommande(montant);
         this.create(commande);
+        return commande;
     }
 
     /**

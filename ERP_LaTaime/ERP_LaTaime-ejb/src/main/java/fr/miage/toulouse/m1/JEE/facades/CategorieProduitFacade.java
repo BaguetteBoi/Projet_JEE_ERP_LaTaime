@@ -7,6 +7,8 @@ package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,29 +34,46 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
     }
 
     @Override
-    public void creerTypeProduit(String libelle) {
+    public void creerCategorieProduit(String libelle) {
         CategorieProduit typeProduit = new CategorieProduit();
         typeProduit.setLibelle(libelle);
+        typeProduit.setProduits(new ArrayList<Produit>());
         this.create(typeProduit);
+    }
+    
+    @Override
+    public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException{
+        CategorieProduit cp = find(id);
+        if(cp != null){
+            return cp;
+        }else{
+            throw new CategorieProduitException("Id CategorieProduit "+ id+ "inconnue");
+        }
     }
 
     @Override
-    public void supprimerTypeProduit(Long id) {
-        CategorieProduit cp = find(id);
+    public void supprimerCategorieProduit(Long id) throws CategorieProduitException{
+        CategorieProduit cp = getCategorieProduit(id);
         this.remove(cp);
     }
     
     @Override
-    public List<CategorieProduit> getAllTypeProduit() {
+    public List<CategorieProduit> getAllCategorieProduit() {
         List<CategorieProduit> cp = findAll();
         return cp;
     }
 
     @Override
-    public void majTypeProduit(Long id, String libelle) {
-        CategorieProduit cp = find(id);
+    public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException{
+        CategorieProduit cp = getCategorieProduit(id);
         cp.setLibelle(libelle);
         this.edit(cp);
     }
-    
+
+    @Override
+    public void ajouterProduitACategorieProduit(Long id, Produit p) throws CategorieProduitException{
+        CategorieProduit cp = getCategorieProduit(id);
+        cp.addProduit(p);
+        this.edit(cp);
+    }
 }

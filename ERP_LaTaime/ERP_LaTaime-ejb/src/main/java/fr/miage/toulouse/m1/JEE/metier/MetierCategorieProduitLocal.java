@@ -6,6 +6,9 @@
 package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,14 +19,16 @@ import javax.ejb.Local;
 @Local
 public interface MetierCategorieProduitLocal {
     
-    public List<CategorieProduit> getAllTypeProduit();
+    public List<CategorieProduit> getAllCategorieProduit();
     
-    public CategorieProduit getTypeProduit(Long id);
+    public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException;
     
-    public void creerTypeProduit(String libelle);
+    public void creerCategorieProduit(String libelle);
     
-    public void supprimerTypeProduit(Long id);
+    public void supprimerCategorieProduit(Long id) throws CategorieProduitException;
         
-    public void majTypeProduit(Long id, String libelle);
+    public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException;
+    
+    public void ajouterProduitACategorieProduit(Long idQ, Long IdP) throws CategorieProduitException, ProduitException;
     
 }

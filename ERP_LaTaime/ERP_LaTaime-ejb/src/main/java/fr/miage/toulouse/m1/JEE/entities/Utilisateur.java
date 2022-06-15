@@ -37,7 +37,7 @@ public class Utilisateur implements Serializable {
     
     private long numCompteBancaire;
 
-    private Long solde;
+    private Double solde;
     @OneToMany
     private List<Commande> commandes;
 
@@ -93,11 +93,11 @@ public class Utilisateur implements Serializable {
         }
     }
     
-    public Long getSolde() {
+    public Double getSolde() {
         return solde;
     }
 
-    public void setSolde(Long solde) {
+    public void setSolde(Double solde) {
         this.solde = solde;
     }
 

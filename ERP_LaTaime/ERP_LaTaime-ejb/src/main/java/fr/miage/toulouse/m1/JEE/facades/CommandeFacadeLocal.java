@@ -35,7 +35,7 @@ public interface CommandeFacadeLocal {
 
     int count();
     
-    public void creerCommande(Utilisateur u, Map<Produit, Integer> d , Date dateCommande);
+    public Commande creerCommande(Utilisateur u, Map<Produit, Integer> d , Date dateCommande, Double montant);
     
     public List<Commande> getCommandesNnLivres();
     

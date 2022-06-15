@@ -6,6 +6,8 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
+import fr.miage.toulouse.m1.JEE.entities.Produit;
+import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,12 +32,16 @@ public interface CategorieProduitFacadeLocal {
 
     int count();
     
-    public void creerTypeProduit(String libelle);
+    public void creerCategorieProduit(String libelle);
     
-    public void supprimerTypeProduit(Long id);
+    public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException;
     
-    public void majTypeProduit(Long id, String libelle);
+    public void supprimerCategorieProduit(Long id) throws CategorieProduitException;
     
-    public List<CategorieProduit> getAllTypeProduit();
+    public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException;
+    
+    public List<CategorieProduit> getAllCategorieProduit();
+    
+    public void ajouterProduitACategorieProduit(Long id, Produit p) throws CategorieProduitException;
     
 }

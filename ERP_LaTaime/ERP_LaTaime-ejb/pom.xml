@@ -117,7 +117,7 @@
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:8080/ClientWebServices/ClientWebServices?wsdl</wsdlLocation>
+                            <wsdlLocation>http://localhost:8080/ClientWebServices/ClientWebServices?WSDL</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/ClientWebServices.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-ClientWebServices</id>

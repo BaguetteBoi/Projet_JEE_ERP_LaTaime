@@ -9,6 +9,7 @@ import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
+import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
 import fr.miage.toulouse.m1.JEE.facades.ProduitFacadeLocal;
 import fr.miage.toulouse.m1.JEE.facades.UtilisateurFacadeLocal;
@@ -36,15 +37,23 @@ public class MetierCommande implements MetierCommandeLocal {
     private UtilisateurFacadeLocal utilisateurFacade;
 
     @Override
-    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException{
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException, UtilisateurException{
 
         Utilisateur client = utilisateurFacade.find(idU);
+        Double montantC = 0d;
         
         Map<Produit, Integer> MapProdQte = new HashMap<>();
         for (Map.Entry<Integer, Integer> p : d.entrySet()) {
             MapProdQte.put(produitFacade.getProduit(p.getKey()), p.getValue());
         }
-        commandeFacade.creerCommande(client, MapProdQte, dateCommande);
+        
+        for(Map.Entry<Produit, Integer> p : MapProdQte.entrySet()){
+            montantC += ( p.getKey().getPrixUnitaire() * p.getValue() );
+        }
+        
+        utilisateurFacade.debiterSolde(idU, montantC);
+        Commande c = commandeFacade.creerCommande(client, MapProdQte, dateCommande, montantC);
+        utilisateurFacade.addCommande(idU, c);
     }
 
     // Add business logic below. (Right-click in editor and choose

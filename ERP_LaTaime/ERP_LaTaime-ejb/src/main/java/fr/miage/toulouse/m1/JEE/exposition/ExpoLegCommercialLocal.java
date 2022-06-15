@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 import fr.miage.toulouse.m1.JEE.entities.CategorieProduit;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.List;
@@ -20,18 +21,22 @@ import javax.ejb.Local;
 @Local
 public interface ExpoLegCommercialLocal {
 
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
+    public Utilisateur creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
 
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
+    public Utilisateur creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
 
     //crud categories (type prod)
-    public void creerTypeProduit(String libelle);
+    public void creerCategorieProduit(String libelle);
 
-    public void supprimerTypeProduit(Long id);
+    public void supprimerCategorieProduit(Long id) throws CategorieProduitException;
 
-    public void majTypeProduit(Long id, String libelle);
+    public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException;
 
-    public List<CategorieProduit> getAllTypeProduit();
+    public List<CategorieProduit> getAllCategorieProduit();
+    
+    public void ajouterProduitACategorieProduit(Long idQ, Long IdP) throws CategorieProduitException, ProduitException;
+    
+    public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException;
 
     //Produit
     public void creerProduit(String libele, double prixUnitaire, String description);
@@ -55,4 +60,5 @@ public interface ExpoLegCommercialLocal {
     public void setMiageCompteBancaire(Long num) throws UtilisateurException;
     
     public Utilisateur creerUtilisateurAdmin() throws UtilisateurException;
+    
 }

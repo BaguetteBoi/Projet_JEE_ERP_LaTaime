@@ -150,15 +150,6 @@ public class Commande implements Serializable {
         }
     }
  
-
-    public void setMontant(Double montant) {
-        try {
-            this.montantCommande = montant;
-        }catch(Exception e){
-            System.out.println("Erreur Montant commande : "+e);
-        }
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;

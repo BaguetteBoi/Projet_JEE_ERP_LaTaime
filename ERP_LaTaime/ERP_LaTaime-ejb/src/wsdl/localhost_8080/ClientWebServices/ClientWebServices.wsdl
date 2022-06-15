@@ -4,23 +4,14 @@
 <xsd:import namespace="http://webservices.miagebank.toulouse.miage.fr/" schemaLocation="http://localhost:8080/ClientWebServices/ClientWebServices?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="consulter">
-<part name="parameters" element="tns:consulter"/>
-</message>
-<message name="consulterResponse">
-<part name="parameters" element="tns:consulterResponse"/>
-</message>
-<message name="CompteInconnuException">
-<part name="fault" element="tns:CompteInconnuException"/>
-</message>
-<message name="CompteClotureException">
-<part name="fault" element="tns:CompteClotureException"/>
-</message>
 <message name="virer">
 <part name="parameters" element="tns:virer"/>
 </message>
 <message name="virerResponse">
 <part name="parameters" element="tns:virerResponse"/>
+</message>
+<message name="CompteInconnuException">
+<part name="fault" element="tns:CompteInconnuException"/>
 </message>
 <message name="MontantInvalidException">
 <part name="fault" element="tns:MontantInvalidException"/>
@@ -28,13 +19,16 @@
 <message name="SoldeInsufisantException">
 <part name="fault" element="tns:SoldeInsufisantException"/>
 </message>
+<message name="CompteClotureException">
+<part name="fault" element="tns:CompteClotureException"/>
+</message>
+<message name="consulter">
+<part name="parameters" element="tns:consulter"/>
+</message>
+<message name="consulterResponse">
+<part name="parameters" element="tns:consulterResponse"/>
+</message>
 <portType name="ClientWebServices">
-<operation name="consulter">
-<input wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulterRequest" message="tns:consulter"/>
-<output wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulterResponse" message="tns:consulterResponse"/>
-<fault message="tns:CompteInconnuException" name="CompteInconnuException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulter/Fault/CompteInconnuException"/>
-<fault message="tns:CompteClotureException" name="CompteClotureException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulter/Fault/CompteClotureException"/>
-</operation>
 <operation name="virer">
 <input wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/virerRequest" message="tns:virer"/>
 <output wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/virerResponse" message="tns:virerResponse"/>
@@ -43,24 +37,15 @@
 <fault message="tns:SoldeInsufisantException" name="SoldeInsufisantException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/virer/Fault/SoldeInsufisantException"/>
 <fault message="tns:CompteClotureException" name="CompteClotureException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/virer/Fault/CompteClotureException"/>
 </operation>
+<operation name="consulter">
+<input wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulterRequest" message="tns:consulter"/>
+<output wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulterResponse" message="tns:consulterResponse"/>
+<fault message="tns:CompteInconnuException" name="CompteInconnuException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulter/Fault/CompteInconnuException"/>
+<fault message="tns:CompteClotureException" name="CompteClotureException" wsam:Action="http://webservices.miagebank.toulouse.miage.fr/ClientWebServices/consulter/Fault/CompteClotureException"/>
+</operation>
 </portType>
 <binding name="ClientWebServicesPortBinding" type="tns:ClientWebServices">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="consulter">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-<fault name="CompteInconnuException">
-<soap:fault name="CompteInconnuException" use="literal"/>
-</fault>
-<fault name="CompteClotureException">
-<soap:fault name="CompteClotureException" use="literal"/>
-</fault>
-</operation>
 <operation name="virer">
 <soap:operation soapAction=""/>
 <input>
@@ -77,6 +62,21 @@
 </fault>
 <fault name="SoldeInsufisantException">
 <soap:fault name="SoldeInsufisantException" use="literal"/>
+</fault>
+<fault name="CompteClotureException">
+<soap:fault name="CompteClotureException" use="literal"/>
+</fault>
+</operation>
+<operation name="consulter">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="CompteInconnuException">
+<soap:fault name="CompteInconnuException" use="literal"/>
 </fault>
 <fault name="CompteClotureException">
 <soap:fault name="CompteClotureException" use="literal"/>

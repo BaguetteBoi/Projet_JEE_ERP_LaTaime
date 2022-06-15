@@ -23,21 +23,21 @@ public interface ExpoLegClientLocal {
 
     public Utilisateur getUtilisateur(Long idUtilisateur) throws UtilisateurException;
 
-    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException;
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException, UtilisateurException;
 
     public void annulerCommande(Long id) throws ProduitException;
 
     public List<Commande> getCommandes(Long id) throws UtilisateurException;
 
-    public void crediterSolde(Long id, Long solde) throws UtilisateurException;
+    public void crediterSolde(Long id, Double solde) throws UtilisateurException;
 
-    public void debiterSolde(Long id, Long solde) throws UtilisateurException;
+    public void debiterSolde(Long id, Double solde) throws UtilisateurException;
 
-    public void creerUtilisateurClient(String nom, String prenom);
+    public Utilisateur creerUtilisateurClient(String nom, String prenom);
 
     public void demanderfacture(Long id);
 
-    public void statutsoldeCompte(Long id) throws UtilisateurException;
+    public Double getStatutSoldeCompte(Long id) throws UtilisateurException;
 
     public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException;
 }

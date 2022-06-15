@@ -54,7 +54,7 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
     }
     
     @Override
-    public void crediterSolde(Long id, Long solde) throws UtilisateurException{
+    public void crediterSolde(Long id, Double solde) throws UtilisateurException{
         
         Utilisateur client = utilisateurFacade.find(id);
         //ClientRest.CallVirementMiageBank(client.getNumCompteBancaire(), utilisateurFacade.getMiageCompteBancaire(), solde);
@@ -76,27 +76,27 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
     }
     
     @Override
-     public void debiterSolde(Long id, Long solde) throws UtilisateurException{
+     public void debiterSolde(Long id, Double solde) throws UtilisateurException{
          this.utilisateurFacade.debiterSolde(id, solde);
      }
      
      @Override
-     public void creerUtilisateurClient(String nom, String prenom){
-         this.utilisateurFacade.creerUtilisateurClient(nom, prenom);
+     public Utilisateur creerUtilisateurClient(String nom, String prenom){
+         return this.utilisateurFacade.creerUtilisateurClient(nom, prenom);
      }
      
      @Override
-     public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException{
-         this.utilisateurFacade.creerUtilisateurCommercial(id, nom, prenom);
+     public Utilisateur creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException{
+         return this.utilisateurFacade.creerUtilisateurCommercial(id, nom, prenom);
      }
      
      @Override
-     public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException{
-         this.utilisateurFacade.creerUtilisateurLivreur(id, nom, prenom);
+     public Utilisateur creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException{
+         return this.utilisateurFacade.creerUtilisateurLivreur(id, nom, prenom);
      }
 
     @Override
-    public Long getStatutSoldeCompte(Long id) throws UtilisateurException {
+    public Double getStatutSoldeCompte(Long id) throws UtilisateurException {
         return utilisateurFacade.getStatutSoldeCompte(id);
     }
 

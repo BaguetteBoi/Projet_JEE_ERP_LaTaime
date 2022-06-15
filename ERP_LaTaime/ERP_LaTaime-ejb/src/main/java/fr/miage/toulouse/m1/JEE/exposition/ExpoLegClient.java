@@ -41,7 +41,7 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
     
     @Override
-    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException {
+    public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException, UtilisateurException {
         this.metierCommande.creerCommande(idU, d, dateCommande);
     }
     
@@ -51,23 +51,23 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
 
     @Override
-    public void crediterSolde(Long id, Long solde) throws UtilisateurException {
+    public void crediterSolde(Long id, Double solde) throws UtilisateurException {
         this.metierUtilisateur.crediterSolde(id, solde);
     }
     
     @Override
-    public void debiterSolde(Long id, Long solde) throws UtilisateurException {
+    public void debiterSolde(Long id, Double solde) throws UtilisateurException {
         this.metierUtilisateur.debiterSolde(id, solde);
     }
     
     @Override
-    public void creerUtilisateurClient(String nom, String prenom) {
-        this.metierUtilisateur.creerUtilisateurClient(nom, prenom);
+    public Utilisateur creerUtilisateurClient(String nom, String prenom) {
+        return this.metierUtilisateur.creerUtilisateurClient(nom, prenom);
     }
     
     @Override
-    public void statutsoldeCompte(Long id) throws UtilisateurException {
-        this.metierUtilisateur.statutsolde(id);
+    public Double getStatutSoldeCompte(Long id) throws UtilisateurException {
+        return this.metierUtilisateur.getStatutSoldeCompte(id);
     }
 
     @Override

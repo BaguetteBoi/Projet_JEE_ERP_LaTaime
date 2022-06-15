@@ -34,19 +34,21 @@ public interface UtilisateurFacadeLocal {
 
     public List<Commande> getCommandes(Long id) throws UtilisateurException;
 
-    public void crediterSolde(Long id, Long solde) throws UtilisateurException;
+    public void crediterSolde(Long id, Double solde) throws UtilisateurException;
 
-    public void debiterSolde(Long id, Long solde) throws UtilisateurException;
+    public void debiterSolde(Long id, Double solde) throws UtilisateurException;
     
-    public void creerUtilisateurClient(String nom, String prenom);
+    public Utilisateur creerUtilisateurClient(String nom, String prenom);
 
-    public void creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
+    public Utilisateur creerUtilisateurLivreur(Long id, String nom, String prenom) throws UtilisateurException;
 
-    public void creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
+    public Utilisateur creerUtilisateurCommercial(Long id, String nom, String prenom) throws UtilisateurException;
+    
+    public void addCommande(Long id, Commande c) throws UtilisateurException;
     
     public Utilisateur getUtilisateur(Long id) throws UtilisateurException;
     
-    public Long getStatutSoldeCompte(Long id) throws UtilisateurException;
+    public Double getStatutSoldeCompte(Long id) throws UtilisateurException;
         
     public Long getMiageCompteBancaire() throws UtilisateurException;
     
