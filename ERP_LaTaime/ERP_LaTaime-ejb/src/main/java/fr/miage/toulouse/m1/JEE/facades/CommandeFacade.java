@@ -115,13 +115,13 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
 
         Commande commande = find(id);
         switch (i) {
-            case 1:
+            case 0:
                 commande.setStatus(Commande.StatusComm.livre);
                 break;
-            case 2:
+            case 1:
                 commande.setStatus(Commande.StatusComm.nonLivre);
                 break;
-            case 3:
+            case 2:
                 commande.setStatus(Commande.StatusComm.annule);
                 break;
             default:

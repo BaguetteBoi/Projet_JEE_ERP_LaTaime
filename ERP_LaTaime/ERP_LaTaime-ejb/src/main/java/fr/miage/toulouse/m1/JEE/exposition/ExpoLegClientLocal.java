@@ -35,7 +35,7 @@ public interface ExpoLegClientLocal {
 
     public Utilisateur creerUtilisateurClient(String nom, String prenom);
 
-    public void demanderfacture(Long id);
+    public String demanderfacture(Long id);
 
     public Double getStatutSoldeCompte(Long id) throws UtilisateurException;
 

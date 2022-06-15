@@ -34,6 +34,6 @@ public interface MetierCommandeLocal {
 
     public void annulerCommande(Long id) throws ProduitException;
 
-    public void demanderfacture(Long id);
+    public String demanderfacture(Long id);
 
 }

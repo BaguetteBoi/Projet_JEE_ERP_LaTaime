@@ -71,8 +71,8 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
 
     @Override
-    public void demanderfacture(Long id) {
-        this.metierCommande.demanderfacture(id);
+    public String demanderfacture(Long id) {
+        return this.metierCommande.demanderfacture(id);
     }
     
     @Override

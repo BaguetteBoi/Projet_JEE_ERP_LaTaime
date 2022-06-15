@@ -90,7 +90,7 @@ public class MetierCommande implements MetierCommandeLocal {
     }
 
     @Override
-    public void demanderfacture(Long id) {
-        commandeFacade.facturer(id);
+    public String demanderfacture(Long id) {
+        return commandeFacade.facturer(id);
     }
 }

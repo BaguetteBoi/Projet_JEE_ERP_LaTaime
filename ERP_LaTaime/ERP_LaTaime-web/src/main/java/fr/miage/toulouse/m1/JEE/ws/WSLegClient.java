@@ -90,9 +90,9 @@ public class WSLegClient {
     }
 
     @WebMethod(operationName = "demanderfacture")
-    public void demanderfacture(@WebParam(name = "id") String id) {
+    public String demanderfacture(@WebParam(name = "id") String id) {
         Long idu = Long.parseLong(id);
-        ejbRef.demanderfacture(idu);
+        return ejbRef.demanderfacture(idu);
     }
 
     @WebMethod(operationName = "getStatutSoldeCompte")
