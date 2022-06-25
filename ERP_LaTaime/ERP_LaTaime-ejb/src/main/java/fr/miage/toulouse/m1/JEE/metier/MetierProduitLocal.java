@@ -23,7 +23,7 @@ public interface MetierProduitLocal {
     
     public List<Produit> getAllProduits();
     
-    public void setQuantite(long id, long prixUnitaire) throws ProduitException;
+    public void setQuantite(long id, int prixUnitaire) throws ProduitException;
        
     public void setPrixUnitaire(long id, double prixUnitaire) throws ProduitException;
     

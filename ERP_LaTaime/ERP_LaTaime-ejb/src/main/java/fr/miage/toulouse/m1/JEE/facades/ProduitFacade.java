@@ -71,7 +71,7 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
      * passé en paramètre
      */
     @Override
-    public void setQuantite(long id, long quantite) throws ProduitException {
+    public void setQuantite(long id, int quantite) throws ProduitException {
         Produit p = getProduit(id);
         p.setQuantite(quantite);
         this.edit(p);

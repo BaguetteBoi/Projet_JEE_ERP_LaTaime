@@ -28,7 +28,7 @@ public class Produit implements Serializable {
     
     private String libelle;
     
-    private Long quantite;
+    private int quantite;
     
     private double prixUnitaire;
     
@@ -60,11 +60,11 @@ public class Produit implements Serializable {
         }
     }
   /** Méthode pour récupérer la quantité d'un produit */
-    public Long getQuantite() {
+    public int getQuantite() {
         return quantite;
     }
 /** Méthode pour définir la quantité d'un produit */
-    public void setQuantite(Long quantite) {       
+    public void setQuantite(int quantite) {       
         try {
             this.quantite = quantite;
         }catch(Exception e){

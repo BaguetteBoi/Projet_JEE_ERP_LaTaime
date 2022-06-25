@@ -85,7 +85,7 @@ public class WSLegCommercial {
     @WebMethod(operationName = "setQuantite")
     public void setQuantite(@WebParam(name = "id") String id, @WebParam(name = "prixUnitaire") String prixUnitaire) throws ProduitException{
         Long idp = Long.parseLong(id);
-        Long pru = Long.parseLong(prixUnitaire);
+        int pru = Integer.parseInt(prixUnitaire);
         ejbRef.setQuantite(idp, pru);
     }
 

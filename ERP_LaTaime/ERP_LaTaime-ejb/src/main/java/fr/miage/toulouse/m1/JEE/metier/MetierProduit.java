@@ -43,7 +43,7 @@ public class MetierProduit implements MetierProduitLocal {
     }
 
     @Override
-    public void setQuantite(long id, long quantite) throws ProduitException{
+    public void setQuantite(long id, int quantite) throws ProduitException{
         produitFacade.setQuantite(id, quantite);
     }
 

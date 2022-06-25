@@ -84,7 +84,7 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
     }
 
     @Override
-    public void setQuantite(long id, long prixUnitaire) throws ProduitException {
+    public void setQuantite(long id, int prixUnitaire) throws ProduitException {
         metierProduit.setQuantite(id, prixUnitaire);
     }
 
