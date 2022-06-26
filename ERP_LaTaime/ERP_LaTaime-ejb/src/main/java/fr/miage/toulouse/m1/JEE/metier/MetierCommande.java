@@ -83,7 +83,7 @@ public class MetierCommande implements MetierCommandeLocal {
         Commande commande1 = commandeFacade.find(id);
 
         commande1.setStatus(Commande.StatusComm.annule);
-        for (Map.Entry<Produit, Integer> p : commande1.getListeIdProdQte().entrySet()) {
+        for (Map.Entry<Produit, Integer> p : commande1.getListeProdQte().entrySet()) {
             produitFacade.setQuantite(p.getKey().getId(), p.getKey().getQuantite() - p.getValue());
         }
 

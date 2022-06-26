@@ -6,7 +6,7 @@
 package fr.miage.toulouse.m1.JEE.facades;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
-import static fr.miage.toulouse.m1.JEE.entities.Commande_.listeIdProdQte;
+import static fr.miage.toulouse.m1.JEE.entities.Commande_.listeProdQte;
 import static fr.miage.toulouse.m1.JEE.entities.Commande_.status;
 import static fr.miage.toulouse.m1.JEE.entities.Commande_.utilisateur;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
@@ -45,9 +45,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     public Commande creerCommande(Utilisateur u, Map<Produit, Integer> d, Date dateCommande, Double montant) {
         Commande commande = new Commande();
         commande.setDateCommande(dateCommande);
-        commande.setListeIdProdQte(d);
+        commande.setListeProdQte(d);
         commande.setUtilisateur(u);
-        commande.setStatus(Commande.StatusComm.nonLivre);
+        commande.setStatus(Commande.StatusComm.nonLivrer);
         commande.setMontantCommande(montant);
         this.create(commande);
         return commande;
@@ -61,7 +61,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         List<Commande> commandes = this.findAll();
         List<Commande> commNnLivres = new ArrayList<Commande>();
         for (Commande commande : commandes) {
-            if (commande.getStatus() == Commande.StatusComm.nonLivre) {
+            if (commande.getStatus() == Commande.StatusComm.nonLivrer) {
                 commNnLivres.add(commande);
             }
         }
@@ -76,7 +76,7 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         List<Commande> commandes = this.findAll();
         List<Commande> commLivres = new ArrayList<Commande>();
         for (Commande commande : commandes) {
-            if (commande.getStatus() == Commande.StatusComm.livre) {
+            if (commande.getStatus() == Commande.StatusComm.livrer) {
                 commLivres.add(commande);
             }
         }
@@ -116,10 +116,10 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         Commande commande = find(id);
         switch (i) {
             case 0:
-                commande.setStatus(Commande.StatusComm.livre);
+                commande.setStatus(Commande.StatusComm.livrer);
                 break;
             case 1:
-                commande.setStatus(Commande.StatusComm.nonLivre);
+                commande.setStatus(Commande.StatusComm.nonLivrer);
                 break;
             case 2:
                 commande.setStatus(Commande.StatusComm.annule);
@@ -136,8 +136,8 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         String qteProd = "";
         Commande commande = find(id);
 
-        for (int i = 0; i < commande.getListeIdProdQte().size(); i++) {
-            qteProd += commande.getListeIdProdQte().get(i) + "\n";
+        for (int i = 0; i < commande.getListeProdQte().size(); i++) {
+            qteProd += commande.getListeProdQte().get(i) + "\n";
         }
         if (commande.getStatus() != Commande.StatusComm.annule) {
             return "Client = " + utilisateur

@@ -67,12 +67,12 @@ public class MetierUtilisateur implements MetierUtilisateurLocal {
             long idCompteCrediteur = utilisateurFacade.getMiageCompteBancaire();
             double montant = solde;
             port.virer(idCompteDebiteur, idCompteCrediteur, montant);
+            //Si pas d'exception remonter par la MiageBanque on peut crediter le Solde
+            this.utilisateurFacade.crediterSolde(id, solde);
         } catch (Exception ex) {
             Logger.getLogger(MetierUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-        this.utilisateurFacade.crediterSolde(id, solde);
     }
     
     @Override

@@ -35,14 +35,14 @@ public class Commande implements Serializable {
     private Date dateCommande;
 
     public enum StatusComm {
-        livre, nonLivre, annule;
+        livrer, nonLivrer, annule;
     }
 
     private StatusComm status;
 
     private Double montantCommande;
 
-    private Map<Produit, Integer> listeIdProdQte; // id porduit/quantite commande 
+    private Map<Produit, Integer> listeProdQte; // porduit/quantite commande 
 
     @ManyToOne
     private Utilisateur utilisateur;
@@ -95,13 +95,13 @@ public class Commande implements Serializable {
         }
     }
 
-    public Map<Produit, Integer> getListeIdProdQte() {
-        return listeIdProdQte;
+    public Map<Produit, Integer> getListeProdQte() {
+        return listeProdQte;
     }
 
-    public void setListeIdProdQte(Map<Produit, Integer> listeIdProdQte) {
+    public void setListeProdQte(Map<Produit, Integer> listeProdQte) {
         try {
-            this.listeIdProdQte = listeIdProdQte;
+            this.listeProdQte = listeProdQte;
         }catch(Exception e){
             System.out.println("Erreur setListeIdProdQte commande : "+e);
         }
@@ -109,20 +109,12 @@ public class Commande implements Serializable {
     
     public void addProduitAndQteToListe(Produit p, Integer qte) {
         try {
-            if(this.listeIdProdQte == null){
-                this.listeIdProdQte = new HashMap<Produit, Integer>();
+            if(this.listeProdQte == null){
+                this.listeProdQte = new HashMap<Produit, Integer>();
             }
-            this.listeIdProdQte.put(p, qte);
+            this.listeProdQte.put(p, qte);
         }catch(Exception e){
             System.out.println("Erreur setListeIdProdQte commande : "+e);
-        }
-    }
-
-    public void addListeIdProdQte(Produit prod, int qte) {
-        try {
-            this.listeIdProdQte.put(prod, qte);
-        }catch(Exception e){
-            System.out.println("Erreur addListeIdProdQte commande : "+e);
         }
     }
 
@@ -189,8 +181,8 @@ public class Commande implements Serializable {
         
         String qteProd = "";
         
-        for (int i = 0; i<listeIdProdQte.size();i++){
-            qteProd += listeIdProdQte.get(i)+"\n";
+        for (int i = 0; i<listeProdQte.size();i++){
+            qteProd += listeProdQte.get(i)+"\n";
         }
         if (status!= status.annule){
             return  "Client = " + utilisateur +

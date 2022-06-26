@@ -7,8 +7,6 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
-import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
-import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -19,12 +17,6 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ExpoLegLivreur implements ExpoLegLivreurLocal {
-    
-    @EJB
-    private MetierUtilisateurLocal metierUtilisateur;
-
-    @EJB
-    private MetierProduitLocal metierProduit;
 
     @EJB
     private MetierCommandeLocal metierCommande;

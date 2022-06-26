@@ -10,7 +10,6 @@ import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
-import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
 import java.util.Date;
 import java.util.List;
@@ -23,10 +22,7 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     
     @EJB
     private MetierUtilisateurLocal metierUtilisateur;
-    
-    @EJB
-    private MetierProduitLocal metierProduit;
-    
+        
     @EJB
     private MetierCommandeLocal metierCommande;
     

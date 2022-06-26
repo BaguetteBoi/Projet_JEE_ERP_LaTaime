@@ -12,7 +12,6 @@ import fr.miage.toulouse.m1.JEE.exceptions.CategorieProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCategorieProduitLocal;
-import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierProduitLocal;
 import fr.miage.toulouse.m1.JEE.metier.MetierUtilisateurLocal;
 import java.util.List;
@@ -31,9 +30,6 @@ public class ExpoLegCommercial implements ExpoLegCommercialLocal {
 
     @EJB
     private MetierProduitLocal metierProduit;
-
-    @EJB
-    private MetierCommandeLocal metierCommande;
 
     @EJB
     private MetierCategorieProduitLocal metierCategorieProduit;
