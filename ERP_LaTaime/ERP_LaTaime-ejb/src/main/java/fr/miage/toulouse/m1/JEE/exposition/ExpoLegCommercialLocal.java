@@ -54,8 +54,8 @@ public interface ExpoLegCommercialLocal {
     public void modifierProduit(long id, String libele, String description) throws ProduitException;
 
     public boolean isProduitEnStock(long id) throws ProduitException;
-    
-    public Long getMiageCompteBancaire() throws UtilisateurException;
+    //compte bancaire de l'admin
+    public Long getMiageCompteBancaire() throws UtilisateurException; 
     
     public void setMiageCompteBancaire(Long num) throws UtilisateurException;
     
