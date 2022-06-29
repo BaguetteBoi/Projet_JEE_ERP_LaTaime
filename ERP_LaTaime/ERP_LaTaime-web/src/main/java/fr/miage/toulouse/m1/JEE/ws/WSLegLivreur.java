@@ -26,26 +26,44 @@ public class WSLegLivreur {
     private ExpoLegLivreurLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
+    /**
+     * Methode webservice permettant de récupérer toutes les commande dont le status est égale à 'non livrés'
+     * @return
+     */
     @WebMethod(operationName = "getCommandesNnLivres")
     public List<Commande> getCommandesNnLivres() {
         return ejbRef.getCommandesNnLivres();
     }
 
+    /**
+     * Methode webservice permettant de récupérer toutes les commande dont le status est égale à 'livrés'
+     * @return
+     */
     @WebMethod(operationName = "getCommandesLivres")
     public List<Commande> getCommandesLivres() {
         return ejbRef.getCommandesLivres();
     }
 
+    /**
+     * Methode webservice permettant de récupérer toutes les commande dont le status est égale à 'annulé'
+     * @return
+     */
     @WebMethod(operationName = "getCommandesAnnules")
     public List<Commande> getCommandesAnnules() {
         return ejbRef.getCommandesAnnules();
     }
 
+    /**
+     * Methode webservice permettant changer le status d'une commande
+     * @param idCommande
+     * @param status
+     * @throws CommandeException
+     */
     @WebMethod(operationName = "setStatusCommande")
     @Oneway
-    public void setStatusCommande(@WebParam(name = "idCommande") String idCommande, @WebParam(name = "i") String i) throws CommandeException{
+    public void setStatusCommande(@WebParam(name = "idCommande") String idCommande, @WebParam(name = "status") String status) throws CommandeException{
         Long idc = Long.parseLong(idCommande);
-        Integer ind = Integer.parseInt(i);
+        Integer ind = Integer.parseInt(status);
         ejbRef.setStatusCommande(idc, ind);
     }
     
