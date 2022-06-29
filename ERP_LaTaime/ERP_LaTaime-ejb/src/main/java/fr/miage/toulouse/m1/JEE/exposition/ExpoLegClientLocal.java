@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.Date;
@@ -25,7 +26,7 @@ public interface ExpoLegClientLocal {
 
     public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException, UtilisateurException;
 
-    public void annulerCommande(Long id) throws ProduitException;
+    public void annulerCommande(Long id) throws ProduitException, CommandeException;
 
     public List<Commande> getCommandes(Long id) throws UtilisateurException;
 
@@ -35,7 +36,7 @@ public interface ExpoLegClientLocal {
 
     public Utilisateur creerUtilisateurClient(String nom, String prenom);
 
-    public String demanderfacture(Long id);
+    public String demanderfacture(Long id) throws CommandeException;
 
     public Double getStatutSoldeCompte(Long id) throws UtilisateurException;
 

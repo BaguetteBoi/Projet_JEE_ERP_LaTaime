@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -41,7 +42,7 @@ public class ExpoLegLivreur implements ExpoLegLivreurLocal {
     }
 
     @Override
-    public void setStatusCommande(Long idCommande, Integer i) {
+    public void setStatusCommande(Long idCommande, Integer i) throws CommandeException{
         metierCommande.setStatusCommande(idCommande, i);
     }
 }

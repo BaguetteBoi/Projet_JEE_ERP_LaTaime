@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.facades;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import java.util.Date;
 import java.util.Dictionary;
 import java.util.List;
@@ -43,10 +44,12 @@ public interface CommandeFacadeLocal {
 
     public List<Commande> getCommandesAnnules();
     
-    public void setStatusCommande(Long id, Integer i);
+    public void setStatusCommande(Long id, Integer i) throws CommandeException;
     
-    public void annulerCommande(Long id);
+    public void annulerCommande(Long id) throws CommandeException;
     
-    public String facturer(Long id);
+    public Commande getCommande(Long id)throws CommandeException;
+    
+    public String facturer(Long id) throws CommandeException;
     
 }

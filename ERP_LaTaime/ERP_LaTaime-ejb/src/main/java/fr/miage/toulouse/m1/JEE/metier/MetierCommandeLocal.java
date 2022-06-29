@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.metier;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import java.util.Date;
@@ -30,10 +31,10 @@ public interface MetierCommandeLocal {
 
     public List<Commande> getCommandesAnnules();
 
-    public void setStatusCommande(Long id, Integer i);
+    public void setStatusCommande(Long id, Integer i) throws CommandeException;
 
-    public void annulerCommande(Long id) throws ProduitException;
+    public void annulerCommande(Long id) throws ProduitException, CommandeException;
 
-    public String demanderfacture(Long id);
+    public String demanderfacture(Long id) throws CommandeException;
 
 }

@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.metier;
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.facades.CommandeFacadeLocal;
@@ -74,13 +75,13 @@ public class MetierCommande implements MetierCommandeLocal {
     }
 
     @Override
-    public void setStatusCommande(Long id, Integer i) {
+    public void setStatusCommande(Long id, Integer i) throws CommandeException{
         commandeFacade.setStatusCommande(id, i);
     }
 
     @Override
-    public void annulerCommande(Long id) throws ProduitException{
-        Commande commande1 = commandeFacade.find(id);
+    public void annulerCommande(Long id) throws ProduitException, CommandeException{
+        Commande commande1 = commandeFacade.getCommande(id);
 
         commande1.setStatus(Commande.StatusComm.annule);
         for (Map.Entry<Produit, Integer> p : commande1.getListeProdQte().entrySet()) {
@@ -90,7 +91,7 @@ public class MetierCommande implements MetierCommandeLocal {
     }
 
     @Override
-    public String demanderfacture(Long id) {
+    public String demanderfacture(Long id) throws CommandeException{
         return commandeFacade.facturer(id);
     }
 }

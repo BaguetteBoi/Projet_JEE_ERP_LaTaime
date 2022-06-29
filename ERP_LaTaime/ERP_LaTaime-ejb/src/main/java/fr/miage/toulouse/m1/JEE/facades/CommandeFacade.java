@@ -11,6 +11,7 @@ import static fr.miage.toulouse.m1.JEE.entities.Commande_.status;
 import static fr.miage.toulouse.m1.JEE.entities.Commande_.utilisateur;
 import fr.miage.toulouse.m1.JEE.entities.Produit;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -102,8 +103,8 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
      * Méthode permettant d'annuler une commande
      */
     @Override
-    public void annulerCommande(Long id) {
-        Commande commande1 = find(id);
+    public void annulerCommande(Long id) throws CommandeException{
+        Commande commande1 = getCommande(id);
         commande1.setStatus(Commande.StatusComm.annule);
     }
 
@@ -111,9 +112,9 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
      * Méthode permettant de changer le statut d'une commande
      */
     @Override
-    public void setStatusCommande(Long id, Integer i) {
+    public void setStatusCommande(Long id, Integer i) throws CommandeException{
 
-        Commande commande = find(id);
+        Commande commande = getCommande(id);
         switch (i) {
             case 0:
                 commande.setStatus(Commande.StatusComm.livrer);
@@ -131,10 +132,10 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     }
 
     @Override
-    public String facturer(Long id) {
+    public String facturer(Long id) throws CommandeException{
 
         String qteProd = "";
-        Commande commande = find(id);
+        Commande commande = getCommande(id);
 
         for (int i = 0; i < commande.getListeProdQte().size(); i++) {
             qteProd += commande.getListeProdQte().get(i) + "\n";
@@ -150,5 +151,17 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
             return "Commande Annulée";
         }
     }
+
+    @Override
+    public Commande getCommande(Long id) throws CommandeException{
+        Commande c = this.find(id);
+        if (c != null) {
+            return c;
+        } else {
+            throw new CommandeException("Id Commande " + id + " inconnue");
+        }
+    }
+    
+    
 
 }

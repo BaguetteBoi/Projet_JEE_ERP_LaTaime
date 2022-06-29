@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegLivreurLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -42,7 +43,7 @@ public class WSLegLivreur {
 
     @WebMethod(operationName = "setStatusCommande")
     @Oneway
-    public void setStatusCommande(@WebParam(name = "idCommande") String idCommande, @WebParam(name = "i") String i) {
+    public void setStatusCommande(@WebParam(name = "idCommande") String idCommande, @WebParam(name = "i") String i) throws CommandeException{
         Long idc = Long.parseLong(idCommande);
         Integer ind = Integer.parseInt(i);
         ejbRef.setStatusCommande(idc, ind);

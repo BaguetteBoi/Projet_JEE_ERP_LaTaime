@@ -6,6 +6,7 @@
 package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -22,5 +23,5 @@ public interface ExpoLegLivreurLocal {
 
     public List<Commande> getCommandesAnnules();
     
-    public void setStatusCommande(Long idCommande, Integer i);
+    public void setStatusCommande(Long idCommande, Integer i) throws CommandeException;
 }

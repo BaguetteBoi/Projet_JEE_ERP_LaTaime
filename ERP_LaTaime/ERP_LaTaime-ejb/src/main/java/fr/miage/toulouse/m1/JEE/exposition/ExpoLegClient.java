@@ -7,6 +7,7 @@ package fr.miage.toulouse.m1.JEE.exposition;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.metier.MetierCommandeLocal;
@@ -42,7 +43,7 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
     
     @Override
-    public void annulerCommande(Long id) throws ProduitException {
+    public void annulerCommande(Long id) throws ProduitException, CommandeException {
         this.metierCommande.annulerCommande(id);
     }
 
@@ -67,7 +68,7 @@ public class ExpoLegClient implements ExpoLegClientLocal {
     }
 
     @Override
-    public String demanderfacture(Long id) {
+    public String demanderfacture(Long id) throws CommandeException{
         return this.metierCommande.demanderfacture(id);
     }
     

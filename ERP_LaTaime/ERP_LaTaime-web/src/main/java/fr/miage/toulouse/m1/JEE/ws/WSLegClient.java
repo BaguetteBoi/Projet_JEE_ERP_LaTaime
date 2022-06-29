@@ -8,6 +8,7 @@ package fr.miage.toulouse.m1.JEE.ws;
 
 import fr.miage.toulouse.m1.JEE.entities.Commande;
 import fr.miage.toulouse.m1.JEE.entities.Utilisateur;
+import fr.miage.toulouse.m1.JEE.exceptions.CommandeException;
 import fr.miage.toulouse.m1.JEE.exceptions.ProduitException;
 import fr.miage.toulouse.m1.JEE.exceptions.UtilisateurException;
 import fr.miage.toulouse.m1.JEE.exposition.ExpoLegClientLocal;
@@ -66,7 +67,7 @@ public class WSLegClient {
     }
 
     @WebMethod(operationName = "annulerCommande")
-    public void annulerCommande(@WebParam(name = "id") String id) throws ProduitException{
+    public void annulerCommande(@WebParam(name = "id") String id) throws ProduitException, CommandeException{
         Long idu = Long.parseLong(id);
         ejbRef.annulerCommande(idu);
     }
@@ -91,7 +92,7 @@ public class WSLegClient {
     }
 
     @WebMethod(operationName = "demanderfacture")
-    public String demanderfacture(@WebParam(name = "id") String id) {
+    public String demanderfacture(@WebParam(name = "id") String id) throws CommandeException{
         Long idu = Long.parseLong(id);
         return ejbRef.demanderfacture(idu);
     }
