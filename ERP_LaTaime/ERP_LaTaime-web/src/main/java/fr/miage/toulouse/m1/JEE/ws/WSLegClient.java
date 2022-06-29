@@ -33,18 +33,37 @@ public class WSLegClient {
     private ExpoLegClientLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
+    /**
+     * Methode webservice permettant de récupérer un utilisateur
+     * @param idUtilisateur
+     * @return
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "getUtilisateur")
     public Utilisateur getUtilisateur(@WebParam(name = "idUtilisateur") String idUtilisateur) throws UtilisateurException {
         Long idu = Long.parseLong(idUtilisateur);
         return ejbRef.getUtilisateur(idu);
     }
 
+    /**
+     * Methode webservice permettant de récupérer toutes les commandes passé par un utilisateur
+     * @param id
+     * @return
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "getCommandes")
     public List<Commande> getCommandes(@WebParam(name = "id") String id) throws UtilisateurException {
         Long idc = Long.parseLong(id);
         return ejbRef.getCommandes(idc);
     }
 
+    /**
+     * Methode webservice permettant de créer une commande est de la lier à un utilisateur
+     * @param id
+     * @param commande
+     * @throws ProduitException
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "creerCommande")
     public void creerCommande(@WebParam(name = "idU") String id, @WebParam(name = "commande") String commande) throws ProduitException, UtilisateurException{
 
@@ -66,12 +85,24 @@ public class WSLegClient {
         ejbRef.creerCommande(idu, map, new Date());
     }
 
+    /**
+     * Methode webservice permettant de changer le status d'une commande à "annuler"
+     * @param id
+     * @throws ProduitException
+     * @throws CommandeException
+     */
     @WebMethod(operationName = "annulerCommande")
     public void annulerCommande(@WebParam(name = "id") String id) throws ProduitException, CommandeException{
         Long idu = Long.parseLong(id);
         ejbRef.annulerCommande(idu);
     }
 
+    /**
+     * Methode webservice permettant de créditer le solde d'un utilisateur en crédit "MIAGE" (un appler en webservice sera fait à la MIAGEBank)
+     * @param id
+     * @param solde
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "crediterSolde")
     public void crediterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
@@ -79,6 +110,12 @@ public class WSLegClient {
         ejbRef.crediterSolde(idu, sld);
     }
 
+    /**
+     * Methode webservice permettant de débiter le solde d'un utilisateur en crédit "MIAGE"
+     * @param id
+     * @param solde
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "debiterSolde")
     public void debiterSolde(@WebParam(name = "id") String id, @WebParam(name = "solde") String solde) throws UtilisateurException {
         Long idu = Long.parseLong(id);
@@ -86,23 +123,47 @@ public class WSLegClient {
         ejbRef.debiterSolde(idu, sld);
     }
 
+    /**
+     * Methode webservice permettant de créer un Utilisateur de type "Client"
+     * @param nom
+     * @param prenom
+     * @return
+     */
     @WebMethod(operationName = "creerUtilisateurClient")
     public Utilisateur creerUtilisateurClient(@WebParam(name = "nom") String nom, @WebParam(name = "prenom") String prenom) {
         return ejbRef.creerUtilisateurClient(nom, prenom);
     }
 
+    /**
+     * Methode webservice permettant de demander une facture pour une commande donné
+     * @param id
+     * @return
+     * @throws CommandeException
+     */
     @WebMethod(operationName = "demanderfacture")
     public String demanderfacture(@WebParam(name = "id") String id) throws CommandeException{
         Long idu = Long.parseLong(id);
         return ejbRef.demanderfacture(idu);
     }
 
+    /**
+     * Methode webservice permettant de voir le solde de crédit "MIAGE" d'un utilisateur 
+     * @param id 
+     * @return
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "getStatutSoldeCompte")
     public Double statutsoldeCompte(@WebParam(name = "id") String id) throws UtilisateurException {
         Long idu = Long.parseLong(id);
         return ejbRef.getStatutSoldeCompte(idu);
     }
     
+    /**
+     * Methode webservice permettant de configurer le numéro de compte bancaire d'un utilisateur
+     * @param id
+     * @param num
+     * @throws UtilisateurException
+     */
     @WebMethod(operationName = "setUtilisateurCompteBancaire")
     public void setUtilisateurCompteBancaire(@WebParam(name = "id") String id, @WebParam(name = "num") String num) throws UtilisateurException {
         Long idu = Long.parseLong(id);
