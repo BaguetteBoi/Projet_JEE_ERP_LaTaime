@@ -33,6 +33,10 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
         super(CategorieProduit.class);
     }
 
+    /**
+     * Méthode permettant de créer une Catégorie de produit
+     * @param libelle
+     */
     @Override
     public void creerCategorieProduit(String libelle) {
         CategorieProduit typeProduit = new CategorieProduit();
@@ -41,6 +45,12 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
         this.create(typeProduit);
     }
     
+    /**
+     * Méthode permettant de récupérer une catégorie de produit
+     * @param id
+     * @return
+     * @throws CategorieProduitException
+     */
     @Override
     public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException{
         CategorieProduit cp = find(id);
@@ -51,18 +61,33 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
         }
     }
 
+    /**
+     * Méthode permettant de supprimer une catégorie de produit
+     * @param id
+     * @throws CategorieProduitException
+     */
     @Override
     public void supprimerCategorieProduit(Long id) throws CategorieProduitException{
         CategorieProduit cp = getCategorieProduit(id);
         this.remove(cp);
     }
     
+    /**
+     * Méthode permettant de renvoie toutes les catégorie de produit
+     * @return
+     */
     @Override
     public List<CategorieProduit> getAllCategorieProduit() {
         List<CategorieProduit> cp = findAll();
         return cp;
     }
 
+    /**
+     * Méthode permettant de modifié le libelle d'une catégorie de produit
+     * @param id
+     * @param libelle
+     * @throws CategorieProduitException
+     */
     @Override
     public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException{
         CategorieProduit cp = getCategorieProduit(id);
@@ -70,6 +95,12 @@ public class CategorieProduitFacade extends AbstractFacade<CategorieProduit> imp
         this.edit(cp);
     }
 
+    /**
+     * Méthode permettant d'ajouter un produit à une catégorie de produit
+     * @param id
+     * @param p
+     * @throws CategorieProduitException
+     */
     @Override
     public void ajouterProduitACategorieProduit(Long id, Produit p) throws CategorieProduitException{
         CategorieProduit cp = getCategorieProduit(id);

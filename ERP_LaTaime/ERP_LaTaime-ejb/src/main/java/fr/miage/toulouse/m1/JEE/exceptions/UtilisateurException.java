@@ -11,6 +11,10 @@ package fr.miage.toulouse.m1.JEE.exceptions;
  */
 public class UtilisateurException extends Exception{
     
+    /**
+     *
+     * @param message
+     */
     public UtilisateurException(String message) {
         super(message);
     }

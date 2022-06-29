@@ -11,6 +11,10 @@ package fr.miage.toulouse.m1.JEE.exceptions;
  */
 public class CommandeException extends Exception{
     
+    /**
+     *
+     * @param message
+     */
     public CommandeException(String message) {
         super(message);
     }

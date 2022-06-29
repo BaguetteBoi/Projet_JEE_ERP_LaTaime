@@ -13,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**Classe qui spécifie la catégorie des produits  */
+/**
+ * Classe qui spécifie la catégorie des produits
+ */
 @Entity
 public class CategorieProduit implements Serializable {
 
@@ -21,16 +23,16 @@ public class CategorieProduit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String libelle;
-    
+
     @OneToMany
     private List<Produit> produits;
 
     /**
      * Get the value of produits
      *
-     * @return Méthode de retour de la liste des produits 
+     * @return Méthode de retour de la liste des produits
      */
     public List<Produit> getProduits() {
         return produits;
@@ -38,26 +40,25 @@ public class CategorieProduit implements Serializable {
 
     /**
      * Set the value of produits
-     * 
+     *
      * @param produits new value of produits
      */
     public void setProduits(List<Produit> produits) {
         try {
             this.produits = produits;
-        }catch(Exception e){
-            System.out.println("Erreur setProduits : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur setProduits : " + e);
         }
     }
-    
+
     /**
-     * Add the value of produit
-     *Méthode d'ajout de produit 
+     * Add the value of produit Méthode d'ajout de produit
+     *
      * @param produit new value of produits
      */
     public void addProduit(Produit produit) {
         this.produits.add(produit);
     }
-
 
     /**
      * Get the value of libelle
@@ -76,22 +77,28 @@ public class CategorieProduit implements Serializable {
     public void setLibelle(String libelle) {
         try {
             this.libelle = libelle;
-        }catch(Exception e){
-            System.out.println("Erreur libelle Produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur libelle Produit : " + e);
         }
     }
 
-/** Méthode retournant l'ID du produit */
+    /**
+     * Méthode retournant l'ID du produit
+     * @return 
+     */
     public Long getId() {
         return id;
     }
 
-    /** Méthode qui définit l'ID du produit */
+    /**
+     * Méthode qui définit l'ID du produit
+     * @param id
+     */
     public void setId(Long id) {
         try {
             this.id = id;
-        }catch(Exception e){
-            System.out.println("Erreur setProduits : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur setProduits : " + e);
         }
     }
 
@@ -117,15 +124,13 @@ public class CategorieProduit implements Serializable {
 
     @Override
     public String toString() {
-        String msg =  "CategorieProduit{" + "id=" + id + ", libelle=" + libelle + ", produits=";
-        for(Produit p : produits ){
+        String msg = "CategorieProduit{" + "id=" + id + ", libelle=" + libelle + ", produits=";
+        for (Produit p : produits) {
             msg += p.toString() + ",";
-        }       
-        msg+= '}';
-        
+        }
+        msg += '}';
+
         return msg;
     }
 
-    
-    
 }

@@ -37,6 +37,14 @@ public class MetierCommande implements MetierCommandeLocal {
     @EJB
     private UtilisateurFacadeLocal utilisateurFacade;
 
+    /**
+     *
+     * @param idU
+     * @param d
+     * @param dateCommande
+     * @throws ProduitException
+     * @throws UtilisateurException
+     */
     @Override
     public void creerCommande(Long idU, Map<Integer, Integer> d, Date dateCommande) throws ProduitException, UtilisateurException{
 
@@ -59,26 +67,51 @@ public class MetierCommande implements MetierCommandeLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesNnLivres() {
         return commandeFacade.getCommandesNnLivres();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesLivres() {
         return commandeFacade.getCommandesLivres();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesAnnules() {
         return commandeFacade.getCommandesAnnules();
     }
 
+    /**
+     *
+     * @param id
+     * @param i
+     * @throws CommandeException
+     */
     @Override
     public void setStatusCommande(Long id, Integer i) throws CommandeException{
         commandeFacade.setStatusCommande(id, i);
     }
 
+    /**
+     *
+     * @param id
+     * @throws ProduitException
+     * @throws CommandeException
+     */
     @Override
     public void annulerCommande(Long id) throws ProduitException, CommandeException{
         Commande commande1 = commandeFacade.getCommande(id);
@@ -90,6 +123,12 @@ public class MetierCommande implements MetierCommandeLocal {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CommandeException
+     */
     @Override
     public String demanderfacture(Long id) throws CommandeException{
         return commandeFacade.facturer(id);

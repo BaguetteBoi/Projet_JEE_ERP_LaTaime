@@ -47,10 +47,18 @@ public class Commande implements Serializable {
     @ManyToOne
     private Utilisateur utilisateur;
 
+    /**
+     * Get the value of status
+     * @return
+     */
     public StatusComm getStatus() {
         return status;
     }
 
+    /**
+     * Set the value of status
+     * @param s
+     */
     public void setStatus(StatusComm s) {
         try {
             status = s;
@@ -83,10 +91,18 @@ public class Commande implements Serializable {
         }
     }
 
+    /**
+     * Get the value of montantCommande
+     * @return
+     */
     public Double getMontantCommande() {
         return montantCommande;
     }
 
+    /**
+     * Set the value of montantCommande
+     * @param montantCommande
+     */
     public void setMontantCommande(Double montantCommande) {
         try {
             this.montantCommande = montantCommande;
@@ -95,10 +111,18 @@ public class Commande implements Serializable {
         }
     }
 
+    /**
+     * Get the value of listeProdQte
+     * @return
+     */
     public Map<Produit, Integer> getListeProdQte() {
         return listeProdQte;
     }
 
+    /**
+     * Set the value of listeProdQte
+     * @param listeProdQte
+     */
     public void setListeProdQte(Map<Produit, Integer> listeProdQte) {
         try {
             this.listeProdQte = listeProdQte;
@@ -107,6 +131,11 @@ public class Commande implements Serializable {
         }
     }
     
+    /**
+     * Ajoute un produit et une quantité à la liste de produit de la commande
+     * @param p
+     * @param qte
+     */
     public void addProduitAndQteToListe(Produit p, Integer qte) {
         try {
             if(this.listeProdQte == null){
@@ -118,10 +147,18 @@ public class Commande implements Serializable {
         }
     }
 
+    /**
+     * Get the value of setIdCommande
+     * @return
+     */
     public Long getIdCommande() {
         return idCommande;
     }
 
+    /**
+     * Set the value of setIdCommande
+     * @param idCommande
+     */
     public void setIdCommande(Long idCommande) {
         try {
             this.idCommande = idCommande;
@@ -130,10 +167,18 @@ public class Commande implements Serializable {
         }
     }
 
+    /**
+     * Get the value of dateCommande
+     * @return
+     */
     public Date getDateCommande() {
         return dateCommande;
     }
 
+    /**
+     * Set the value of dateCommande
+     * @param dateCommande
+     */
     public void setDateCommande(Date dateCommande) {
         try {
             this.dateCommande = dateCommande;

@@ -13,9 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
-/**Classe définissant le produit avec toutes ses spécifications liés 
- * 
+/**
+ * Classe définissant le produit avec toutes ses spécifications liés
+ *
  * @author AntoineGougault
  */
 @Entity
@@ -25,74 +25,112 @@ public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String libelle;
-    
+
     private int quantite;
-    
+
     private double prixUnitaire;
-    
+
     private String description;
 
-    /** Méthode pour récupérer l'ID d'un produit */
+    /**
+     * Méthode pour récupérer l'ID d'un produit
+     * @return 
+     */
     public Long getId() {
         return id;
     }
 
-      /** Méthode pour définir l'ID d'un produit */
+    /**
+     * Méthode pour définir l'ID d'un produit
+     * @param id
+     */
     public void setId(Long id) {
         try {
             this.id = id;
-        }catch(Exception e){
-            System.out.println("Erreur id produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur id produit : " + e);
         }
     }
-  /** Méthode pour récupérer le libelle d'un produit */
+
+    /**
+     * Méthode pour récupérer le libelle d'un produit
+     * @return 
+     */
     public String getLibelle() {
         return libelle;
     }
-  /** Méthode pour définir le libelle d'un produit */
+
+    /**
+     * Méthode pour définir le libelle d'un produit
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         try {
             this.libelle = libelle;
-        }catch(Exception e){
-            System.out.println("Erreur libelle produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur libelle produit : " + e);
         }
     }
-  /** Méthode pour récupérer la quantité d'un produit */
+
+    /**
+     * Méthode pour récupérer la quantité d'un produit
+     * @return 
+     */
     public int getQuantite() {
         return quantite;
     }
-/** Méthode pour définir la quantité d'un produit */
-    public void setQuantite(int quantite) {       
+
+    /**
+     * Méthode pour définir la quantité d'un produit
+     * @param quantite
+     */
+    public void setQuantite(int quantite) {
         try {
             this.quantite = quantite;
-        }catch(Exception e){
-            System.out.println("Erreur quantite produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur quantite produit : " + e);
         }
     }
-  /** Méthode pour récupérer le prix unitaire d'un produit */
+
+    /**
+     * Méthode pour récupérer le prix unitaire d'un produit
+     * @return 
+     */
     public double getPrixUnitaire() {
         return prixUnitaire;
     }
 
+    /**
+     * Méthode pour configurer le prix unitaire d'un produit
+     * @param prixUnitaire
+     */
     public void setPrixUnitaire(double prixUnitaire) {
         try {
             this.prixUnitaire = prixUnitaire;
-        }catch(Exception e){
-            System.out.println("Erreur prix unitaire produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur prix unitaire produit : " + e);
         }
     }
 
+    /**
+     * Méthode pour récupérer la description d'un produit
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Méthode pour configurer la description d'un produit
+     * @param description
+     */
     public void setDescription(String description) {
         try {
             this.description = description;
-        }catch(Exception e){
-            System.out.println("Erreur description produit : "+e);
+        } catch (Exception e) {
+            System.out.println("Erreur description produit : " + e);
         }
     }
 
@@ -141,5 +179,5 @@ public class Produit implements Serializable {
     public String toString() {
         return "Produit{" + "id=" + id + ", libelle=" + libelle + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + ", description=" + description + '}';
     }
-    
+
 }

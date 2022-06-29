@@ -30,31 +30,64 @@ public class MetierCategorieProduit implements MetierCategorieProduitLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    /**
+     *
+     * @return
+     */
     @Override
     public List<CategorieProduit> getAllCategorieProduit() {
         return CategorieProduitFacade.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CategorieProduitException
+     */
     @Override
     public CategorieProduit getCategorieProduit(Long id) throws CategorieProduitException {
         return CategorieProduitFacade.getCategorieProduit(id);
     }
 
+    /**
+     *
+     * @param libelle
+     */
     @Override
     public void creerCategorieProduit(String libelle) {
         CategorieProduitFacade.creerCategorieProduit(libelle);
     }
 
+    /**
+     *
+     * @param id
+     * @throws CategorieProduitException
+     */
     @Override
     public void supprimerCategorieProduit(Long id) throws CategorieProduitException {
         CategorieProduitFacade.supprimerCategorieProduit(id);
     }
 
+    /**
+     *
+     * @param id
+     * @param libelle
+     * @throws CategorieProduitException
+     */
     @Override
     public void majCategorieProduit(Long id, String libelle) throws CategorieProduitException {
         CategorieProduitFacade.majCategorieProduit(id, libelle);
     }
 
+    /**
+     *
+     * @param idQ
+     * @param IdP
+     * @throws CategorieProduitException
+     * @throws ProduitException
+     */
     @Override
     public void ajouterProduitACategorieProduit(Long idQ, Long IdP) throws CategorieProduitException, ProduitException {
         CategorieProduitFacade.ajouterProduitACategorieProduit(idQ, produitFacade.getProduit(IdP));

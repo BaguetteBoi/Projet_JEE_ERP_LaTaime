@@ -161,6 +161,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
+    /**
+     * Méthode permettant de récupérer un utilisateur
+     * @param id
+     * @return
+     * @throws UtilisateurException
+     */
     @Override
     public Utilisateur getUtilisateur(Long id) throws UtilisateurException {
         Utilisateur u = this.find(id);
@@ -171,6 +177,11 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
+    /**
+     * Méthode permettant de récupérer le numéro de compte de la Miage (compte admin)
+     * @return
+     * @throws UtilisateurException
+     */
     @Override
     public Long getMiageCompteBancaire() throws UtilisateurException {
         try {
@@ -180,6 +191,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         }
     }
 
+    /**
+     * Méthode permettant de configurer le numéro de compte de la Miage (compte admin)
+     *
+     * Méthode permettant de @param num
+     * @throws UtilisateurException
+     */
     @Override
     public void setMiageCompteBancaire(Long num) throws UtilisateurException {
         Utilisateur u;
@@ -192,6 +209,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         this.edit(u);
     }
 
+    /**
+     * Méthode permettant de créer l'utilisateur admin
+     * @return
+     */
     @Override
     public Utilisateur creerUtilisateurAdmin() {
 
@@ -221,6 +242,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         throw new UtilisateurException("Le compte Utilisateur Admin n'existe pas");
     }
 
+    /**
+     * Méthode permettant de configurer le numéro de compte bancaire d'un utilisateur
+     * @param id
+     * @param num
+     * @throws UtilisateurException
+     */
     @Override
     public void setUtilisateurCompteBancaire(Long id, Long num) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);
@@ -228,6 +255,12 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         this.edit(user);
     }
 
+    /**
+     * Méthode permettant d'ajouter une commande à un utilisateur
+     * @param id
+     * @param c
+     * @throws UtilisateurException
+     */
     @Override
     public void addCommande(Long id, Commande c) throws UtilisateurException {
         Utilisateur user = getUtilisateur(id);

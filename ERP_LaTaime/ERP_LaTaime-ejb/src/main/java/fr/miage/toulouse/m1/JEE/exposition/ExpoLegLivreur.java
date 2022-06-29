@@ -25,22 +25,39 @@ public class ExpoLegLivreur implements ExpoLegLivreurLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesNnLivres() {
        return metierCommande.getCommandesNnLivres();   
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesLivres() {
         return metierCommande.getCommandesLivres();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Commande> getCommandesAnnules() {
         return metierCommande.getCommandesAnnules();
     }
 
+    /**
+     *
+     * @param idCommande
+     * @param i
+     * @throws CommandeException
+     */
     @Override
     public void setStatusCommande(Long idCommande, Integer i) throws CommandeException{
         metierCommande.setStatusCommande(idCommande, i);

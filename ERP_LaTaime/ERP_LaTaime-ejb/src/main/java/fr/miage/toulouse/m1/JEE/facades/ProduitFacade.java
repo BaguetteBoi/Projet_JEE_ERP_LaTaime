@@ -47,6 +47,12 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
         this.create(produit);
     }
 
+    /**
+     * Méthode permettant de récupérer un produit
+     * @param id
+     * @return
+     * @throws ProduitException
+     */
     @Override
     public Produit getProduit(long id) throws ProduitException {
         Produit p = this.find(id);

@@ -131,6 +131,12 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         this.edit(commande);
     }
 
+    /**
+     * Méthode permettant de générer la facture d'une commande
+     * @param id
+     * @return
+     * @throws CommandeException
+     */
     @Override
     public String facturer(Long id) throws CommandeException{
 
@@ -152,6 +158,12 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         }
     }
 
+    /**
+     * Méthode permettant de récupérer une commande
+     * @param id
+     * @return
+     * @throws CommandeException
+     */
     @Override
     public Commande getCommande(Long id) throws CommandeException{
         Commande c = this.find(id);

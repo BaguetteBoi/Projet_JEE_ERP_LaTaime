@@ -45,10 +45,18 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
+    /**
+     * Get the value of nom
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Set the value of nom
+     * @param nom
+     */
     public void setNom(String nom) {  
         try {
             this.nom = nom;
@@ -57,10 +65,18 @@ public class Utilisateur implements Serializable {
         }
     }
 
+    /**
+     * Get the value of prenom
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     * Set the value of prenom
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         try {
             this.prenom = prenom;
@@ -69,10 +85,18 @@ public class Utilisateur implements Serializable {
         }
     }
 
+    /**
+     * Get the value of type
+     * @return
+     */
     public TypeU getType() {
         return type;
     }
 
+    /**
+     * Set the value of type
+     * @param type
+     */
     public void setType(TypeU type) {
         try {
             this.type = type;
@@ -81,10 +105,18 @@ public class Utilisateur implements Serializable {
         }
     }
 
+    /**
+     * Get the value of id
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Set the value of id
+     * @param id
+     */
     public void setId(Long id) {
         try {
             this.id = id;
@@ -93,10 +125,18 @@ public class Utilisateur implements Serializable {
         }
     }
     
+    /**
+     * Get the value of solde
+     * @return
+     */
     public Double getSolde() {
         return solde;
     }
 
+    /**
+     * Set the value of solde
+     * @param solde
+     */
     public void setSolde(Double solde) {
         this.solde = solde;
     }

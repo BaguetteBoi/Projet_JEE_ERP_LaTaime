@@ -11,6 +11,10 @@ package fr.miage.toulouse.m1.JEE.exceptions;
  */
 public class CategorieProduitException extends Exception{
 
+    /**
+     *
+     * @param message
+     */
     public CategorieProduitException(String message) {
         super(message);
     }
